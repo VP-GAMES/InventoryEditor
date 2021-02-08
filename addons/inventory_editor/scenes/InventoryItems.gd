@@ -1,4 +1,3 @@
-
 # Dialogue inventories UI for DialogueEditor : MIT License
 # @author Vladimir Petrenko
 tool

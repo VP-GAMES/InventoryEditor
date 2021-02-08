@@ -4,12 +4,10 @@
 tool
 extends TextureRect
 
-var _resource: Dictionary
 var _item: InventoryItem
 var _data: InventoryData
 
-func set_data(resource: Dictionary, item: InventoryItem, data: InventoryData) -> void:
-	_resource = resource
+func set_data(item: InventoryItem, data: InventoryData) -> void:
 	_item = item
 	_data = data
 
@@ -22,8 +20,6 @@ func can_drop_data(position, data) -> bool:
 	return false
 
 func drop_data(position, data) -> void:
-	var resource_value = data["files"][0]
-	_resource_value_changed(resource_value)
-
-func _resource_value_changed(resource_value) -> void:
-	_item.change_resource_path(_resource, resource_value)
+	var path_value = data["files"][0]
+	_item.set_icon(path_value)
+	_data.emit_item_icon_changed(_item)

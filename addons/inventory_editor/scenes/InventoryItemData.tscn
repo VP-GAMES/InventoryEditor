@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/inventory_editor/scenes/InventoryItemDataPut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/inventory_editor/scenes/InventoryItemDataPath.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/inventory_editor/icons/Add.png" type="Texture" id=3]
+[ext_resource path="res://addons/inventory_editor/scenes/InventoryItemData.gd" type="Script" id=4]
 
-[node name="ItemsData" type="HBoxContainer"]
+[node name="InventoryItemData" type="HBoxContainer"]
 margin_left = 221.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -57,9 +59,8 @@ text = "Icon"
 margin_left = 80.0
 margin_right = 100.0
 margin_bottom = 30.0
-stretch_mode = 6
 
-[node name="DialogueActorDataPath" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( 2 )]
+[node name="Icon" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 104.0
@@ -78,7 +79,7 @@ margin_top = 71.0
 margin_right = 399.0
 margin_bottom = 91.0
 
-[node name="Button" type="Button" parent="MarginData/VBox/HBoxAdd"]
+[node name="Add" type="Button" parent="MarginData/VBox/HBoxAdd"]
 margin_right = 22.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 20 )
@@ -112,6 +113,11 @@ text = "Value"
 margin_top = 113.0
 margin_right = 399.0
 margin_bottom = 117.0
+
+[node name="VBoxProperties" type="VBoxContainer" parent="MarginData/VBox"]
+margin_top = 121.0
+margin_right = 399.0
+margin_bottom = 121.0
 
 [node name="MarginPreview" type="MarginContainer" parent="."]
 margin_left = 403.0

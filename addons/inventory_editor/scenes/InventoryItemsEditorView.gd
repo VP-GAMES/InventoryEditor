@@ -8,10 +8,12 @@ var _split_viewport_size = 0
 
 onready var _split_ui = $Split
 onready var _items_ui = $Split/Items
+onready var _itemsdata_ui = $Split/ItemsData
 
 func set_data(data: InventoryData) -> void:
 	_data = data
 	_items_ui.set_data(data)
+	_itemsdata_ui.set_data(_data)
 	_init_connections()
 
 func _init_connections() -> void:

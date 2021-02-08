@@ -30,6 +30,8 @@ func _init_connections() -> void:
 		assert(_data.connect("item_added", self, "_on_item_added") == OK)
 	if not _data.is_connected("item_removed", self, "_on_item_removed"):
 		assert(_data.connect("item_removed", self, "_on_item_removed") == OK)
+	if not _item.is_connected("icon_changed", self, "_on_icon_changed"):
+		assert(_item.connect("icon_changed", self, "_on_icon_changed") == OK)
 	if not _data.is_connected("item_selection_changed", self, "_on_item_selection_changed"):
 		assert(_data.connect("item_selection_changed", self, "_on_item_selection_changed") == OK)
 	if not _texture_ui.is_connected("gui_input", self, "_on_gui_input"):
@@ -50,6 +52,9 @@ func _on_item_added(item: InventoryItem) -> void:
 
 func _on_item_removed(item: InventoryItem) -> void:
 	_draw_style()
+
+func _on_icon_changed() -> void:
+	_draw_view()
 
 func _on_item_selection_changed(item: InventoryItem) -> void:
 	_draw_style()
@@ -82,6 +87,16 @@ func _del_pressed() -> void:
 
 func _draw_view() -> void:
 	_name_ui.text = _item.name
+	_draw_texture()
+
+func _draw_texture() -> void:
+	var texture
+	if _item.icon and not _item.icon.empty() and _data.resource_exists(_item.icon):
+		texture = load(_item.icon)
+		texture = _data.resize_texture(texture, Vector2(16, 16))
+	else:
+		texture = load("res://addons/inventory_editor/icons/Item.png")
+	_texture_ui.texture = texture
 
 func _draw_style() -> void:
 	if _data.selected_item() == _item:

@@ -35,10 +35,11 @@ func _init_connections() -> void:
 	if not is_connected("gui_input", self, "_on_gui_input"):
 		assert(connect("gui_input", self, "_on_gui_input") == OK)
 
-func _on_icon_changed(path) -> void:
+func _on_icon_changed() -> void:
 	_draw_view()
 
 func _draw_view() -> void:
+	text = ""
 	if _item.icon:
 		if has_focus():
 			 text = _item.icon

@@ -8,15 +8,36 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "InventoryData",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/model/InventoryData.gd"
+}, {
+"base": "Resource",
+"class": "InventoryInventory",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/model/InventoryInventory.gd"
+}, {
+"base": "Resource",
+"class": "InventoryItem",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/model/InventoryItem.gd"
+} ]
 _global_script_class_icons={
-
+"InventoryData": "",
+"InventoryInventory": "",
+"InventoryItem": ""
 }
 
 [application]
 
 config/name="InventoryEditor"
 config/icon="res://icon.png"
+
+[dialogue_editor]
+
+inventories_split_offset=189
 
 [editor_plugins]
 

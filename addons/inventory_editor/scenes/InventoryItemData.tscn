@@ -1,0 +1,121 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/inventory_editor/scenes/InventoryItemDataPut.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/inventory_editor/scenes/InventoryItemDataPath.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/inventory_editor/icons/Add.png" type="Texture" id=3]
+
+[node name="ItemsData" type="HBoxContainer"]
+margin_left = 221.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginData" type="MarginContainer" parent="."]
+margin_right = 399.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="MarginData"]
+margin_right = 399.0
+margin_bottom = 600.0
+
+[node name="HBoxStack" type="HBoxContainer" parent="MarginData/VBox"]
+margin_right = 399.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxStack"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 100, 0 )
+text = "Stacksize"
+
+[node name="Stacksize" type="LineEdit" parent="MarginData/VBox/HBoxStack"]
+margin_left = 104.0
+margin_right = 399.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="HBoxIcon" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 28.0
+margin_right = 399.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxIcon"]
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 76, 0 )
+text = "Icon"
+
+[node name="Put" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( 1 )]
+margin_left = 80.0
+margin_right = 100.0
+margin_bottom = 30.0
+stretch_mode = 6
+
+[node name="DialogueActorDataPath" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 0.0
+margin_right = 399.0
+margin_bottom = 30.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 62.0
+margin_right = 399.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="HBoxAdd" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 71.0
+margin_right = 399.0
+margin_bottom = 91.0
+
+[node name="Button" type="Button" parent="MarginData/VBox/HBoxAdd"]
+margin_right = 22.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+icon = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxAdd"]
+margin_left = 26.0
+margin_top = 3.0
+margin_right = 92.0
+margin_bottom = 17.0
+text = "Properties"
+
+[node name="HBoxNames" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 95.0
+margin_right = 399.0
+margin_bottom = 109.0
+
+[node name="Name" type="Label" parent="MarginData/VBox/HBoxNames"]
+margin_right = 120.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 0 )
+text = "Name"
+
+[node name="Value" type="Label" parent="MarginData/VBox/HBoxNames"]
+margin_left = 124.0
+margin_right = 159.0
+margin_bottom = 14.0
+text = "Value"
+
+[node name="HSeparator" type="HSeparator" parent="MarginData/VBox"]
+margin_top = 113.0
+margin_right = 399.0
+margin_bottom = 117.0
+
+[node name="MarginPreview" type="MarginContainer" parent="."]
+margin_left = 403.0
+margin_right = 803.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

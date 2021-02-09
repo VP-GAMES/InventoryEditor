@@ -13,6 +13,8 @@ func editor() -> EditorPlugin:
 
 func set_editor(editor: EditorPlugin) -> void:
 	_editor = editor
+	for inventory in inventories:
+		inventory.set_editor(_editor)
 	_undo_redo = _editor.get_undo_redo()
 
 const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")

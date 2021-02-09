@@ -19,12 +19,28 @@ func set_data(property, item: InventoryItem) -> void:
 	_draw_view()
 
 func _init_connections() -> void:
-	if not _item.is_connected("property_changed", self, "_on_property_changed"):
-		assert(_item.connect("property_changed", self, "_on_property_changed") == OK)
+	if not _name_ui.is_connected("text_changed", self, "_on_name_text_changed"):
+		assert(_name_ui.connect("text_changed", self, "_on_name_text_changed") == OK)
+	if not _value_ui.is_connected("text_changed", self, "_on_value_text_changed"):
+		assert(_value_ui.connect("text_changed", self, "_on_value_text_changed") == OK)
+	if not _item.is_connected("property_name_changed", self, "_on_property_name_changed"):
+		assert(_item.connect("property_name_changed", self, "_on_property_name_changed") == OK)
+	if not _item.is_connected("property_value_changed", self, "_on_property_value_changed"):
+		assert(_item.connect("property_value_changed", self, "_on_property_value_changed") == OK)
 	if not _del_ui.is_connected("pressed", self, "_on_del_pressed"):
 		assert(_del_ui.connect("pressed", self, "_on_del_pressed") == OK)
 
-func _on_property_changed(property) -> void:
+func _on_name_text_changed(new_text: String) -> void:
+	_item.change_property_name(_property, new_text, false)
+
+func _on_value_text_changed(new_text: String) -> void:
+	_item.change_property_value(_property, new_text, false)
+
+func _on_property_name_changed(property) -> void:
+	if _property == property:
+		_draw_view_name()
+
+func _on_property_value_changed(property) -> void:
 	if _property == property:
 		_draw_view_value()
 

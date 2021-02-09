@@ -58,6 +58,7 @@ func add_inventory(sendSignal = true) -> void:
 
 func _create_inventory() -> InventoryInventory:
 	var inventory = InventoryInventory.new()
+	inventory.set_editor(_editor)
 	inventory.uuid = UUID.v4()
 	inventory.name = _next_inventory_name()
 	inventory.items = []
@@ -143,6 +144,7 @@ func add_item(sendSignal = true) -> void:
 
 func _create_item() -> InventoryItem:
 	var item = InventoryItem.new()
+	item.set_editor(_editor)
 	item.uuid = UUID.v4()
 	item.type = _inventory_selected.uuid
 	item.name = _next_item_name()

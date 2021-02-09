@@ -12,7 +12,8 @@ func set_editor(editor: EditorPlugin) -> void:
 	_editor = editor
 	for item in items:
 		item.set_editor(_editor)
-	_undo_redo = _editor.get_undo_redo()
+	if _editor:
+		_undo_redo = _editor.get_undo_redo()
 # ***** EDITOR_PLUGIN_END *****
 
 export (String) var uuid

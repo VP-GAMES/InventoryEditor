@@ -26,12 +26,12 @@ func _process(delta):
 		_init_split_offset()
 
 func _init_split_offset() -> void:
-	var offset = InventoryData.SETTINGS_INVENTORIES_SPLIT_OFFSET_DEFAULT
+	var offset = InventoryData.SETTINGS_ITEMS_SPLIT_OFFSET_DEFAULT
 	if _data:
-		offset = _data.setting_inventories_split_offset()
+		offset = _data.setting_items_split_offset()
 	_split_ui.set_split_offset(-rect_size.x / 2 + offset)
 
 func _on_split_dragged(offset: int) -> void:
 	if _data != null:
 		var value = -(-rect_size.x / 2 - offset)
-		_data.setting_inventories_split_offset_put(value)
+		_data.setting_items_split_offset_put(value)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sword.png-a508f2a209eb56f346d3c7175e706d82.stex"
+path="res://.import/SwordDestroyer.png-3b2109f234ff78cd5a4d52aa9a4ef986.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_example/textures/Sword.png"
-dest_files=[ "res://.import/Sword.png-a508f2a209eb56f346d3c7175e706d82.stex" ]
+source_file="res://addons/inventory_example/textures/weapons/SwordDestroyer.png"
+dest_files=[ "res://.import/SwordDestroyer.png-3b2109f234ff78cd5a4d52aa9a4ef986.stex" ]
 
 [params]
 

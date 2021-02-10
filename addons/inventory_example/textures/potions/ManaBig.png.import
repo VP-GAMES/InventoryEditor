@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/AxeRound.png-3b126a8a6295828bb59a1385ed6c5f41.stex"
+path="res://.import/ManaBig.png-d3cff2cece3c898e583d7f49d966d6c9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_example/textures/AxeRound.png"
-dest_files=[ "res://.import/AxeRound.png-3b126a8a6295828bb59a1385ed6c5f41.stex" ]
+source_file="res://addons/inventory_example/textures/potions/ManaBig.png"
+dest_files=[ "res://.import/ManaBig.png-d3cff2cece3c898e583d7f49d966d6c9.stex" ]
 
 [params]
 

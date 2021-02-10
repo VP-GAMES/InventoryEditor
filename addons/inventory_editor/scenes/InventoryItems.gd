@@ -47,8 +47,10 @@ func _clear_view() -> void:
 		item_ui.queue_free()
 
 func _draw_view() -> void:
-	for item in _data.selected_inventory().items:
-		_draw_item(item)
+	var inventory = _data.selected_inventory()
+	if inventory:
+		for item in inventory.items:
+			_draw_item(item)
 
 func _draw_item(item: InventoryItem) -> void:
 	var item_ui = InventoryItemUI.instance()

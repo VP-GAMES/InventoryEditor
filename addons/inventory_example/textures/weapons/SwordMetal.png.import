@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SwordWidth.png-f8641305bd33cf67c3a33659e5778e88.stex"
+path="res://.import/SwordMetal.png-264b81f9697095d2ef0e82dba376172a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_example/textures/SwordWidth.png"
-dest_files=[ "res://.import/SwordWidth.png-f8641305bd33cf67c3a33659e5778e88.stex" ]
+source_file="res://addons/inventory_example/textures/weapons/SwordMetal.png"
+dest_files=[ "res://.import/SwordMetal.png-264b81f9697095d2ef0e82dba376172a.stex" ]
 
 [params]
 

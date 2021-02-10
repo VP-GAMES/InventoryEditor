@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Axe.png-33d69729c947e9807a62df17965c3e5d.stex"
+path="res://.import/SwordKryptonite.png-32c502caba7492e087681da118d7c003.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_example/textures/Axe.png"
-dest_files=[ "res://.import/Axe.png-33d69729c947e9807a62df17965c3e5d.stex" ]
+source_file="res://addons/inventory_example/textures/weapons/SwordKryptonite.png"
+dest_files=[ "res://.import/SwordKryptonite.png-32c502caba7492e087681da118d7c003.stex" ]
 
 [params]
 

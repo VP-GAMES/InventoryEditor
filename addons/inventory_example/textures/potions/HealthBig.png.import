@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SwordSharp.png-1faa1d883aefe217ecc6dfcbf6bad375.stex"
+path="res://.import/HealthBig.png-3df5b9397502b71f3e1b84c5f913deb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_example/textures/SwordSharp.png"
-dest_files=[ "res://.import/SwordSharp.png-1faa1d883aefe217ecc6dfcbf6bad375.stex" ]
+source_file="res://addons/inventory_example/textures/potions/HealthBig.png"
+dest_files=[ "res://.import/HealthBig.png-3df5b9397502b71f3e1b84c5f913deb9.stex" ]
 
 [params]
 

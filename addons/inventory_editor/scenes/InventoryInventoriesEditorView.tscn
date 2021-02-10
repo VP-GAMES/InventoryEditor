@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/inventory_editor/scenes/InventoryInventories.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/inventory_editor/scenes/InventoryInventoriesEditorView.gd" type="Script" id=2]
 [ext_resource path="res://addons/inventory_editor/scenes/InventoryItemsEditorView.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/inventory_editor/scenes/InventoryInventoryData.tscn" type="PackedScene" id=4]
 
 [node name="InventoryInventoriesEditorView" type="VBoxContainer"]
 anchor_right = 1.0
@@ -27,9 +28,23 @@ anchor_bottom = 0.0
 margin_right = 209.0
 margin_bottom = 600.0
 
-[node name="InventoryItems" parent="Split" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBoxData" type="VBoxContainer" parent="Split"]
 margin_left = 221.0
 margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventoryData" parent="Split/VBoxData" instance=ExtResource( 4 )]
+
+[node name="HSeparator" type="HSeparator" parent="Split/VBoxData"]
+margin_top = 46.0
+margin_right = 803.0
+margin_bottom = 50.0
+
+[node name="InventoryItems" parent="Split/VBoxData" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 803.0
 margin_bottom = 600.0

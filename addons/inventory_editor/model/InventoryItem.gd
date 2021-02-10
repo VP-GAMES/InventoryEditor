@@ -26,9 +26,9 @@ signal property_value_changed(property)
 export (String) var uuid
 export (String) var type # uuid from InventoryInventory
 export (String) var name
+export (int) var stacksize
 export (String) var icon
 export (Array) var properties
-export (int) var stacksize = 1
 
 func set_stacksize(new_stacksize: int) -> void:
 	stacksize = new_stacksize

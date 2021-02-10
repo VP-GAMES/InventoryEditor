@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/inventory_editor/scenes/InventoryInventoryDataPut.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/inventory_editor/scenes/InventoryInventoryDataPath.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/inventory_editor/icons/Inventory.png" type="Texture" id=3]
+
+[node name="InventoryInventoryData" type="HBoxContainer"]
+margin_right = 803.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginData" type="MarginContainer" parent="."]
+margin_right = 399.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="MarginData"]
+margin_right = 399.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxStacks" type="HBoxContainer" parent="MarginData/VBox"]
+margin_right = 399.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxStacks"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 100, 0 )
+text = "Stacks"
+
+[node name="Stacks" type="LineEdit" parent="MarginData/VBox/HBoxStacks"]
+margin_left = 104.0
+margin_right = 399.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="HBoxIcon" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 28.0
+margin_right = 399.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxIcon"]
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 76, 0 )
+text = "Icon"
+
+[node name="Put" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( 1 )]
+margin_left = 80.0
+margin_right = 100.0
+margin_bottom = 30.0
+
+[node name="Path" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 0.0
+margin_right = 399.0
+margin_bottom = 30.0
+
+[node name="MarginPreview" type="MarginContainer" parent="."]
+margin_left = 403.0
+margin_right = 803.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="MarginPreview"]
+margin_right = 400.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginPreview/VBox"]
+margin_right = 400.0
+margin_bottom = 14.0
+text = "Preview"
+align = 1
+valign = 1
+
+[node name="Texture" type="TextureRect" parent="MarginPreview/VBox"]
+margin_top = 18.0
+margin_right = 400.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+stretch_mode = 6

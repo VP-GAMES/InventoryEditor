@@ -190,7 +190,7 @@ func copy_item(item: InventoryItem) -> void:
 	new_item.type = item.type
 	new_item.name = _next_item_name()
 	new_item.icon = item.icon
-	new_item.properties = item.properties.duplicate()
+	new_item.properties = item.properties.duplicate(true)
 	if _undo_redo != null:
 		_undo_redo.create_action("Copy item")
 		_undo_redo.add_do_method(self, "_add_item", new_item, true, _inventory_selected.items.size(), false)

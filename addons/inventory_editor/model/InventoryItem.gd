@@ -16,6 +16,7 @@ func set_editor(editor: EditorPlugin) -> void:
 const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")
 # ***** EDITOR_PLUGIN_END *****
 
+signal name_changed(name)
 signal stacksize_changed
 signal icon_changed
 signal property_added
@@ -29,6 +30,10 @@ export (String) var name
 export (int) var stacksize
 export (String) var icon
 export (Array) var properties
+
+func change_name(new_name: String):
+	name = new_name
+	emit_signal("name_changed")
 
 func set_stacksize(new_stacksize: int) -> void:
 	stacksize = new_stacksize

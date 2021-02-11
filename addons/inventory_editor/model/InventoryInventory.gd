@@ -17,6 +17,7 @@ func set_editor(editor: EditorPlugin) -> void:
 # ***** EDITOR_PLUGIN_END *****
 
 signal name_changed(name)
+signal stacks_changed
 signal icon_changed
 
 export (String) var uuid
@@ -29,6 +30,10 @@ export (Resource) var selected
 func change_name(new_name: String):
 	name = new_name
 	emit_signal("name_changed")
+
+func set_stacks(new_stacks: int) -> void:
+	stacks = new_stacks
+	emit_signal("stacks_changed")
 
 func set_icon(new_icon_path: String) -> void:
 	icon = new_icon_path

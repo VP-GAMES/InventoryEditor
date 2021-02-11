@@ -187,17 +187,17 @@ func _add_item(item: InventoryItem, sendSignal = true, position = _inventory_sel
 
 func copy_item(item: InventoryItem) -> void:
 	var new_item = _create_item()
-	new_item.type = item.type
 	new_item.name = _next_item_name()
-	new_item.icon = item.icon
+	new_item.stacksize = item.stacksize
+	new_item.icon = "" + item.icon
 	new_item.properties = item.properties.duplicate(true)
 	if _undo_redo != null:
 		_undo_redo.create_action("Copy item")
-		_undo_redo.add_do_method(self, "_add_item", new_item, true, _inventory_selected.items.size(), false)
+		_undo_redo.add_do_method(self, "_add_item", new_item, true, _inventory_selected.items.size())
 		_undo_redo.add_undo_method(self, "_del_item", new_item)
 		_undo_redo.commit_action()
 	else:
-		_add_item(new_item, true, _inventory_selected.items.size(), false)
+		_add_item(new_item, true, _inventory_selected.items.size())
 
 func del_item(item) -> void:
 	if _undo_redo != null:

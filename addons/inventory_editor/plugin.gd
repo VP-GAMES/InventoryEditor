@@ -6,6 +6,11 @@ extends EditorPlugin
 const IconResource = preload("res://addons/inventory_editor/icons/Inventory.png")
 const InventoryEditor = preload("res://addons/inventory_editor/InventoryEditor.tscn")
 
+# New Types
+const InventoryItem2D = preload("res://addons/inventory_editor/InventoryItem2D.gd")
+const InventoryItem3D = preload("res://addons/inventory_editor/InventoryItem3D.gd")
+const InventoryItemIcon = preload("res://addons/inventory_editor/icons/Item.png")
+
 var _inventory_editor
 
 func _enter_tree() -> void:
@@ -13,10 +18,14 @@ func _enter_tree() -> void:
 	get_editor_interface().get_editor_viewport().add_child(_inventory_editor)
 	_inventory_editor.set_editor(self)
 	make_visible(false)
+	add_custom_type("Item2D", "Area2D", InventoryItem2D, InventoryItemIcon)
+	add_custom_type("Item3D", "Area", InventoryItem3D, InventoryItemIcon)
 
 func _exit_tree() -> void:
 	if _inventory_editor:
 		_inventory_editor.queue_free()
+	remove_custom_type("Item2D")
+	remove_custom_type("Item3D")
 
 func has_main_screen():
 	return true

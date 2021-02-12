@@ -23,11 +23,23 @@ _global_script_classes=[ {
 "class": "InventoryItem",
 "language": "GDScript",
 "path": "res://addons/inventory_editor/model/InventoryItem.gd"
+}, {
+"base": "Area2D",
+"class": "Item2D",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/InventoryItem2D.gd"
+}, {
+"base": "Area",
+"class": "Item3D",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/InventoryItem3D.gd"
 } ]
 _global_script_class_icons={
 "InventoryData": "",
 "InventoryInventory": "",
-"InventoryItem": ""
+"InventoryItem": "",
+"Item2D": "",
+"Item3D": ""
 }
 
 [application]

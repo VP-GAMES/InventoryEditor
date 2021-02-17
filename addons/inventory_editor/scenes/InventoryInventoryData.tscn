@@ -17,13 +17,13 @@ __meta__ = {
 
 [node name="MarginData" type="MarginContainer" parent="."]
 margin_right = 399.0
-margin_bottom = 100.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="MarginData"]
 margin_right = 399.0
-margin_bottom = 100.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -69,16 +69,33 @@ margin_top = 0.0
 margin_right = 399.0
 margin_bottom = 30.0
 
+[node name="HBoxAny" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 62.0
+margin_right = 399.0
+margin_bottom = 102.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxAny"]
+margin_top = 13.0
+margin_right = 100.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 100, 0 )
+text = "Any type"
+
+[node name="Any" type="CheckButton" parent="MarginData/VBox/HBoxAny"]
+margin_left = 104.0
+margin_right = 180.0
+margin_bottom = 40.0
+
 [node name="MarginPreview" type="MarginContainer" parent="."]
 margin_left = 403.0
 margin_right = 803.0
-margin_bottom = 100.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="MarginPreview"]
 margin_right = 400.0
-margin_bottom = 100.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -92,7 +109,7 @@ valign = 1
 [node name="Texture" type="TextureRect" parent="MarginPreview/VBox"]
 margin_top = 18.0
 margin_right = 400.0
-margin_bottom = 100.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )

@@ -19,11 +19,13 @@ func set_editor(editor: EditorPlugin) -> void:
 signal name_changed(name)
 signal stacks_changed
 signal icon_changed
+signal any_changed
 
 export (String) var uuid
 export (String) var name
 export (int) var stacks = 9
 export (String) var icon
+export (bool) var any = false
 export (Array) var items
 export (Resource) var selected
 
@@ -38,3 +40,7 @@ func set_stacks(new_stacks: int) -> void:
 func set_icon(new_icon_path: String) -> void:
 	icon = new_icon_path
 	emit_signal("icon_changed")
+
+func set_any(new_any: bool) -> void:
+	any = new_any
+	emit_signal("any_changed")

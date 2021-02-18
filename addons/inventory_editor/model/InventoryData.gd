@@ -227,6 +227,13 @@ func select_item(item: InventoryItem) -> void:
 	_inventory_selected.selected = item
 	emit_signal("item_selection_changed", _inventory_selected.selected)
 
+func get_item_by_uuid(uuid: String) -> InventoryItem:
+	for inventory in inventories:
+		for item in inventory.items:
+			if item.uuid == uuid:
+				return item
+	return null
+
 # ***** EDITOR SETTINGS *****
 const BACKGROUND_COLOR_SELECTED = Color("#868991")
 

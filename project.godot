@@ -56,7 +56,7 @@ config/icon="res://icon.png"
 [dialogue_editor]
 
 inventories_split_offset=183
-items_split_offset=188
+items_split_offset=243
 
 [editor_plugins]
 

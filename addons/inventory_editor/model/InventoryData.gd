@@ -234,6 +234,12 @@ func get_item_by_uuid(uuid: String) -> InventoryItem:
 				return item
 	return null
 
+func get_inventory_by_uuid(uuid: String) -> InventoryItem:
+	for inventory in inventories:
+		if inventory.uuid == uuid:
+			return inventory
+	return null
+
 # ***** EDITOR SETTINGS *****
 const BACKGROUND_COLOR_SELECTED = Color("#868991")
 

@@ -150,7 +150,7 @@ func _create_item() -> InventoryItem:
 	var item = InventoryItem.new()
 	item.set_editor(_editor)
 	item.uuid = UUID.v4()
-	item.type = _inventory_selected.uuid
+	item.inventory_uuid = _inventory_selected.uuid
 	item.name = _next_item_name()
 	return item
 

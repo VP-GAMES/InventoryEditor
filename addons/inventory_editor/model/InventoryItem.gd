@@ -25,7 +25,7 @@ signal property_name_changed(property)
 signal property_value_changed(property)
 
 export (String) var uuid
-export (String) var type # uuid from InventoryInventory
+export (String) var inventory_uuid # uuid from InventoryInventory
 export (String) var name
 export (int) var stacksize
 export (String) var icon

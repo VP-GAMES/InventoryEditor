@@ -18,6 +18,9 @@ func set_editor(editor: EditorPlugin) -> void:
 	_init_connections()
 	_draw_view()
 
+func get_data() -> InventoryData:
+	return _data
+
 func _init_connections() -> void:
 	if not _save_ui.is_connected("pressed", self, "save_data"):
 		assert(_save_ui.connect("pressed", self, "save_data") == OK)

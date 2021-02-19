@@ -12,6 +12,7 @@ const InventoryItem3D = preload("res://addons/inventory_editor/InventoryItem3D.g
 const InventoryItemIcon = preload("res://addons/inventory_editor/icons/Item.png")
 
 var _inventory_editor
+var _inventory_editor_plugin
 
 func _enter_tree() -> void:
 	_inventory_editor = InventoryEditor.instance()
@@ -20,6 +21,9 @@ func _enter_tree() -> void:
 	make_visible(false)
 	add_custom_type("Item2D", "Area2D", InventoryItem2D, InventoryItemIcon)
 	add_custom_type("Item3D", "Area", InventoryItem3D, InventoryItemIcon)
+	_inventory_editor_plugin = preload("res://addons/inventory_editor/InventoryInspectorPluginItem.gd").new()
+	_inventory_editor_plugin.set_data(_inventory_editor.get_data())
+	add_inspector_plugin(_inventory_editor_plugin)
 
 func _exit_tree() -> void:
 	if _inventory_editor:

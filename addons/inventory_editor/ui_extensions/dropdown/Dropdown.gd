@@ -3,14 +3,14 @@
 tool
 extends LineEdit
 
-signal selection_changed
+signal selection_changed(item)
 
 var selected = -1
 export var popup_maxheight = 0
 
 var _group = ButtonGroup.new()
 var _filter: String = ""
-var _items = []
+var _items = [] # item {"text": null, "value": null, "icon": null }
 
 onready var _popup_panel: PopupPanel= $PopupPanel
 onready var _popup_panel_vbox: VBoxContainer= $PopupPanel/Scroll/VBox
@@ -23,8 +23,8 @@ func clear() -> void:
 func items() -> PoolStringArray:
 	return _items
 
-func add_item(value: String) -> void:
-	_items.append(value)
+func add_item(item: Dictionary) -> void:
+	_items.append(item)
 
 func get_selected() -> int:
 	return selected
@@ -73,13 +73,16 @@ func _update_items_view(filter = "") -> void:
 		if filter.empty():
 			_popup_panel_vbox.add_child(_init_check_box(index))
 		else:
-			if filter in _items[index]:
+			if filter in _items[index].text:
 				_popup_panel_vbox.add_child(_init_check_box(index))
 
 func _init_check_box(index: int) -> CheckBox:
 	var check_box = DropdownCheckBox.instance()
 	check_box.set_button_group(_group)
-	check_box.text = _items[index]
+	check_box.text = _items[index].text
+	var item_icon = load(_items[index].icon)
+	item_icon = resize_texture(item_icon, Vector2(16, 16))
+	check_box.icon = item_icon
 	if index == selected:
 		check_box.set_pressed(true)
 	check_box.connect("pressed", self, "_on_selection_changed", [index])
@@ -88,7 +91,17 @@ func _init_check_box(index: int) -> CheckBox:
 func _on_selection_changed(index: int) -> void:
 	if selected != index:
 		selected = index
-		_filter = _items[selected]
+		_filter = _items[selected].text
 		text = _filter
-		emit_signal("selection_changed")
+		emit_signal("selection_changed", _items[selected])
 	_popup_panel.hide()
+	
+func resize_texture(t: Texture, size: Vector2):
+	var itex = t
+	if itex:
+		var texture = t.get_data()
+		if size.x > 0 && size.y > 0:
+			texture.resize(size.x, size.y)
+		itex = ImageTexture.new()
+		itex.create_from_image(texture)
+	return itex

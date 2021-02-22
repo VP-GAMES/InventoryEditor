@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/inventory_editor/InventoryItem2D.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Item2D" type="Area2D" parent="."]
+script = ExtResource( 1 )
+inventory_uuid = "99418537-1b20-4d57-a5ce-6dde2d3b8328"
+item_uuid = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item2D"]
+shape = SubResource( 1 )

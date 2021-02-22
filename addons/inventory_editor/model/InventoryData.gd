@@ -136,6 +136,13 @@ signal item_icon_changed(item)
 func emit_item_icon_changed(item: InventoryItem) -> void:
 	emit_signal("item_icon_changed", item)
 
+func all_items() -> Array:
+	var items = []
+	for inventory in inventories:
+		for item in inventory.items:
+			items.append(item)
+	return items
+
 func add_item(sendSignal = true) -> void:
 	var item = _create_item()
 	if _undo_redo != null:

@@ -11,12 +11,12 @@ func can_handle(object):
 func parse_property(object, type, path, hint, hint_text, usage):
 	if type == TYPE_STRING:
 		match path:
-			"inventory_uuid":
+			"to_inventory":
 				var inspectorEditorInventory = InventoryInspectorEditorInventory.new()
 				inspectorEditorInventory.set_data(_data)
 				add_property_editor(path, inspectorEditorInventory)
 				return true
-			"item_uuid":
+			"item_put":
 				var inspectorEditorItem = InventoryInspectorEditorItem.new()
 				inspectorEditorItem.set_data(_data)
 				add_property_editor(path, inspectorEditorItem)

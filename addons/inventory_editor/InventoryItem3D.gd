@@ -8,8 +8,8 @@ var inside
 var _inventoryManager
 const InventoryManagerName = "InventoryManager"
 
-export(String) var inventory_uuid
-export(String) var item_uuid
+export(String) var item_put # item_uuid 
+export(String) var to_inventory # inventory_uuid
 export(int) var quantity = 1
 
 func _ready() -> void:
@@ -25,7 +25,7 @@ func _on_body_entered(body: Node) -> void:
 		if body == child:
 			return 
 	inside = true
-	_inventoryManager.add_item(inventory_uuid, item_uuid, quantity)
+	_inventoryManager.add_item(to_inventory, item_put, quantity)
 
 func _on_body_exited(body: Node) -> void:
 	inside = false

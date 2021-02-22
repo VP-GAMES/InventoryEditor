@@ -8,8 +8,8 @@
 
 [node name="Item2D" type="Area2D" parent="."]
 script = ExtResource( 1 )
-inventory_uuid = "99418537-1b20-4d57-a5ce-6dde2d3b8328"
-item_uuid = ""
+item_put = "b5e85867-eac2-4de8-b842-09aa934101e7"
+to_inventory = "b7495cf2-484a-4cc9-a4f7-1c7863c56fd6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item2D"]
 shape = SubResource( 1 )

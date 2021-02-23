@@ -54,8 +54,8 @@ func _process(delta: float) -> void:
 				if scene:
 					add_child(scene)
 					scene.set_owner(get_tree().edited_scene_root)
-					item_db_uuid = item_put
-			remove_child(manager)
+			item_db_uuid = item_put
+			root.remove_child(manager)
 			manager.queue_free()
 
 func remove_child_s() -> void:

@@ -19,6 +19,7 @@ const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")
 signal name_changed(name)
 signal stacksize_changed
 signal icon_changed
+signal scene_changed
 signal property_added
 signal property_removed
 signal property_name_changed(property)
@@ -29,6 +30,7 @@ export (String) var inventory_uuid # uuid from InventoryInventory
 export (String) var name
 export (int) var stacksize
 export (String) var icon
+export (String) var scene
 export (Array) var properties
 
 func change_name(new_name: String):
@@ -42,6 +44,10 @@ func set_stacksize(new_stacksize: int) -> void:
 func set_icon(new_icon_path: String) -> void:
 	icon = new_icon_path
 	emit_signal("icon_changed")
+
+func set_scene(new_scene_path: String) -> void:
+	scene = new_scene_path
+	emit_signal("scene_changed")
 
 func change_property_name(property, name, sendSignal = true) -> void:
 	var old_name = "" + property.name

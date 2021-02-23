@@ -12,6 +12,8 @@ onready var _stacksize_ui = $MarginData/VBox/HBoxStack/Stacksize as LineEdit
 onready var _put_ui = $MarginData/VBox/HBoxIcon/Put as TextureRect
 onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
 onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
+onready var _put_scene_ui = $MarginData/VBox/HBoxScene/PutScene as TextureRect
+onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
 onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
 onready var _preview_texture_ui = $MarginPreview/VBox/Texture as TextureRect
 
@@ -89,6 +91,8 @@ func check_view_visibility() -> void:
 func _update_view_data() -> void:
 	_put_ui.set_data(_item, _data)
 	_icon_ui.set_data(_item, _data)
+	_put_scene_ui.set_data(_item, _data)
+	_scene_ui.set_data(_item, _data)
 
 func _draw_view_stacksize_ui() -> void:
 	_stacksize_ui.text = str(_item.stacksize)

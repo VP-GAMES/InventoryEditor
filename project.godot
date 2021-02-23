@@ -66,6 +66,10 @@ config/name="InventoryEditor"
 run/main_scene="res://addons/inventory_example/2d/Level.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+InventoryManager="*res://addons/inventory_editor/InventoryManager.gd"
+
 [dialogue_editor]
 
 inventories_split_offset=183

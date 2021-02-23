@@ -1,15 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/inventory_editor/InventoryItem2D.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_example/textures/weapons/SwordDestroyer.png" type="Texture" id=2]
+[ext_resource path="res://addons/inventory_example/2d/items/SwordDestroyer.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Item2D" type="Area2D" parent="."]
+position = Vector2( 97.515, 88.0013 )
 script = ExtResource( 1 )
-item_put = "b5e85867-eac2-4de8-b842-09aa934101e7"
+item_put = "d454c7e9-c430-4dd0-b8c2-3e1dff62078c"
 to_inventory = "b7495cf2-484a-4cc9-a4f7-1c7863c56fd6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item2D"]
 shape = SubResource( 1 )
+
+[node name="SwordDestroyer" type="Sprite" parent="Item2D" instance=ExtResource( 3 )]
+texture = ExtResource( 2 )
+__meta__ = {
+"item_uuid": "d454c7e9-c430-4dd0-b8c2-3e1dff62078c"
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]

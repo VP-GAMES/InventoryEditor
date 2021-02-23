@@ -2,6 +2,7 @@
 # Please add this script to Project -> Project Settings -> AutoLoad
 # to use this manager as singleton
 # @author Vladimir Petrenko
+tool
 extends Node
 
 signal inventory_changed
@@ -16,9 +17,11 @@ func _ready() -> void:
 	load_data()
 
 func load_data() -> void:
-	var loaded_data = load(_path_to_inventory)
-	if loaded_data:
-		_data.items = loaded_data.items
+	var file = File.new()
+	if file.file_exists(_path_to_inventory):
+		var loaded_data = load(_path_to_inventory)
+		if loaded_data:
+			_data.items = loaded_data.items
 
 func save_inventory() -> void:
 	var state = ResourceSaver.save(_path_to_inventory, _data)

@@ -20,28 +20,10 @@ func set_editor(editor: EditorPlugin) -> void:
 const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")
 # ***** EDITOR_PLUGIN_END *****
 
-# ***** INVENTORY SINGLE *****
-export(bool) var inventory_single = true
-
-func set_inventory_single(value: bool) -> void:
-	var old_inventory_single = inventory_single
-	if _undo_redo != null:
-		_undo_redo.create_action("Inventory single")
-		_undo_redo.add_do_method(self, "_set_inventory_single", value)
-		_undo_redo.add_undo_method(self, "_set_inventory_single", old_inventory_single)
-		_undo_redo.commit_action()
-	else:
-		_set_inventory_single(value)
-	
-func _set_inventory_single(value: bool) -> void:
-	inventory_single = value
-	emit_signal("inventory_single_changed", inventory_single)
-
 # ***** INVENTORY *****
 signal inventory_added(inventory)
 signal inventory_removed(inventory)
 signal inventory_selection_changed(inventory)
-signal inventory_single_changed(value)
 signal inventory_icon_changed(item)
 
 func emit_inventory_icon_changed(inventory: InventoryInventory) -> void:
@@ -283,9 +265,6 @@ func init_data() -> void:
 		var resource = ResourceLoader.load(PATH_TO_SAVE) as InventoryData
 		if resource.inventories and not resource.inventories.empty():
 			inventories = resource.inventories
-		inventory_single = resource.inventory_single
-		if not resource.inventory_single:
-			resource.inventory_single = false
 
 func save() -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)

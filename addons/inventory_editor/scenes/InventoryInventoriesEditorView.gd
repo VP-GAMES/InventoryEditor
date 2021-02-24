@@ -17,16 +17,10 @@ func set_data(data: InventoryData) -> void:
 	_inventory_data_ui.set_data(data)
 	_inventory_items_ui.set_data(data)
 	_init_connections()
-	_draw_view()
 
 func _init_connections() -> void:
 	if not _split_ui.is_connected("dragged", self, "_on_split_dragged"):
 		assert(_split_ui.connect("dragged", self, "_on_split_dragged") == OK)
-	if not _data.is_connected("inventory_single_changed", self, "_on_inventory_single_changed"):
-		assert(_data.connect("inventory_single_changed", self, "_on_inventory_single_changed") == OK)
-
-func _on_inventory_single_changed(value: bool) -> void:
-	_draw_view()
 
 func _process(delta):
 	if _split_viewport_size != rect_size.x:
@@ -43,12 +37,3 @@ func _on_split_dragged(offset: int) -> void:
 	if _data != null:
 		var value = -(-rect_size.x / 2 - offset)
 		_data.setting_inventories_split_offset_put(value)
-
-func _draw_view() -> void:
-	_check_single_inventory_view()
-
-func _check_single_inventory_view() -> void:
-	if _data.inventory_single:
-		_inventories_ui.hide()
-	else:
-		_inventories_ui.show()

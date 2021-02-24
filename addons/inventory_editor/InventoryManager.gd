@@ -38,12 +38,14 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> v
 			var item = _data.items[index]
 			item.quantity = min(item.quantity + quantity, db_item.stacksize)
 	else:
-		var new_item = {
-			inventory_uuid = inventory_uuid,
-			item_uuid = db_item.uuid,
-			quantity = min(quantity, db_item.stacksize)
-		}
-		_data.items.append(new_item)
+		var inventory_db = get_inventory_db(inventory_uuid)
+		if get_inventory_items(inventory_uuid).size() < inventory_db.stacks:
+			var new_item = {
+				inventory_uuid = inventory_uuid,
+				item_uuid = db_item.uuid,
+				quantity = min(quantity, db_item.stacksize)
+			}
+			_data.items.append(new_item)
 	save_inventory()
 	emit_signal("inventory_changed", self)
 

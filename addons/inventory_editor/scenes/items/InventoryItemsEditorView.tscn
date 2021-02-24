@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://addons/inventory_editor/scenes/InventoryItemsEditorView.gd" type="Script" id=1]
-[ext_resource path="res://addons/inventory_editor/scenes/InventoryItems.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/inventory_editor/scenes/InventoryItemData.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemsEditorView.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItems.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemData.tscn" type="PackedScene" id=3]
 
 [node name="InventoryItemsEditorView" type="VBoxContainer"]
 anchor_right = 1.0

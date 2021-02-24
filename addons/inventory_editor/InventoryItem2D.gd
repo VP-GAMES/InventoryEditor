@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 			root.add_child(manager)
 			manager.set_owner(get_tree().edited_scene_root)
 			var item_db = manager.get_item_db(item_put)
-			remove_old_childs()
+			remove_old_childs(item_db)
 			if item_db and not item_db.scene.empty():
 				var scene = load(item_db.scene).instance()
 				scene.name = item_db.name
@@ -58,9 +58,9 @@ func _process(delta: float) -> void:
 			root.remove_child(manager)
 			manager.queue_free()
 
-func remove_old_childs() -> void:
+func remove_old_childs(item_db: InventoryItem) -> void:
 	for child in get_children():
-		if child.has_meta("item_uuid"):
+		if child.has_meta("item_uuid") or item_db.name in child.name:
 			if child.get_meta("item_uuid") != item_put:
 				remove_child(child)
 				child.queue_free()

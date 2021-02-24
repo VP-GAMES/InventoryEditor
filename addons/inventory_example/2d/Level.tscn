@@ -16,8 +16,8 @@ to_inventory = "b7495cf2-484a-4cc9-a4f7-1c7863c56fd6"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item2D"]
 shape = SubResource( 1 )
 
-[node name="SwordDestroyer" parent="Item2D" instance=ExtResource( 2 )]
+[node name="SwordDestroyer5" parent="Item2D" instance=ExtResource( 2 )]
 
-[node name="SwordDestroyer2" parent="Item2D" instance=ExtResource( 2 )]
+[node name="SwordDestroyer" parent="Item2D" instance=ExtResource( 2 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]

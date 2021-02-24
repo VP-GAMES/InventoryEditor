@@ -10,7 +10,7 @@ var _data: InventoryData
 
 var _path_ui_style_resource: StyleBoxFlat
 
-const InventoryItemDataResourceDialogFile = preload("res://addons/inventory_editor/scenes/InventoryItemDataResourceDialogFile.tscn")
+const InventoryItemDataResourceDialogFile = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataResourceDialogFile.tscn")
 
 func set_data(item: InventoryItem, data: InventoryData) -> void:
 	_item = item
@@ -24,8 +24,8 @@ func _init_styles() -> void:
 	_path_ui_style_resource.set_bg_color(Color("#192e59"))
 
 func _init_connections() -> void:
-	if not _item.is_connected("icon_changed", self, "_on_icon_changed"):
-		assert(_item.connect("icon_changed", self, "_on_icon_changed") == OK)
+	if not _item.is_connected("scene_changed", self, "_on_scene_changed"):
+		assert(_item.connect("scene_changed", self, "_on_scene_changed") == OK)
 	if not is_connected("focus_entered", self, "_on_focus_entered"):
 		assert(connect("focus_entered", self, "_on_focus_entered") == OK)
 	if not is_connected("focus_exited", self, "_on_focus_exited"):
@@ -35,16 +35,16 @@ func _init_connections() -> void:
 	if not is_connected("gui_input", self, "_on_gui_input"):
 		assert(connect("gui_input", self, "_on_gui_input") == OK)
 
-func _on_icon_changed() -> void:
+func _on_scene_changed() -> void:
 	_draw_view()
 
 func _draw_view() -> void:
 	text = ""
-	if _item.icon:
+	if _item.scene:
 		if has_focus():
-			 text = _item.icon
+			 text = _item.scene
 		else:
-			text = _data.filename(_item.icon)
+			text = _data.filename(_item.scene)
 		_check_path_ui()
 
 func _input(event) -> void:
@@ -53,13 +53,13 @@ func _input(event) -> void:
 			release_focus()
 
 func _on_focus_entered() -> void:
-	text = _item.icon
+	text = _item.scene
 
 func _on_focus_exited() -> void:
-	text = _data.filename(_item.icon)
+	text = _data.filename(_item.scene)
 
 func _path_value_changed(path_value) -> void:
-	_item.set_icon(path_value)
+	_item.set_scene(path_value)
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -67,9 +67,9 @@ func _on_gui_input(event: InputEvent) -> void:
 			if event.button_index == BUTTON_MIDDLE:
 				grab_focus()
 				var file_dialog = InventoryItemDataResourceDialogFile.instance()
-				if _data.resource_exists(_item.icon):
-					file_dialog.current_dir = _data.file_path(_item.icon)
-					file_dialog.current_file = _data.filename(_item.icon)
+				if _data.resource_exists(_item.scene):
+					file_dialog.current_dir = _data.file_path(_item.scene)
+					file_dialog.current_file = _data.filename(_item.scene)
 				for extension in _data.SUPPORTED_ACTOR_RESOURCES:
 					file_dialog.add_filter("*." + extension)
 				var root = get_tree().get_root()
@@ -95,9 +95,9 @@ func drop_data(position, data) -> void:
 	_path_value_changed(path_value)
 
 func _check_path_ui() -> void:
-	if _item.icon and not _data.resource_exists(_item.icon):
+	if _item.scene and not _data.resource_exists(_item.scene):
 		set("custom_styles/normal", _path_ui_style_resource)
-		hint_tooltip =  "Your resource path: \"" + _item.icon + "\" does not exists"
+		hint_tooltip =  "Your resource path: \"" + _item.scene + "\" does not exists"
 	else:
 		set("custom_styles/normal", null)
 		hint_tooltip =  ""

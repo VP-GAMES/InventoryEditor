@@ -1,21 +1,21 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://addons/inventory_editor/icons/Trash.png" type="Texture" id=1]
-[ext_resource path="res://addons/inventory_editor/scenes/InventoryItemDataPropertyPut.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/inventory_editor/scenes/InventoryItemDataProperty.gd" type="Script" id=3]
-[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_editor/icons/Trash.png" type="Texture" id=2]
+[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemDataPropertyPut.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [node name="InventoryItemDataProperty" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
-script = ExtResource( 3 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,7 +32,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 
-[node name="Put" parent="HBox" instance=ExtResource( 2 )]
+[node name="Put" parent="HBox" instance=ExtResource( 4 )]
 
 [node name="Value" type="LineEdit" parent="HBox"]
 margin_left = 24.0
@@ -46,4 +46,4 @@ margin_left = 488.0
 margin_right = 510.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 20, 20 )
-icon = ExtResource( 1 )
+icon = ExtResource( 2 )

@@ -17,7 +17,7 @@ onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
 onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
 onready var _preview_texture_ui = $MarginPreview/VBox/Texture as TextureRect
 
-const InventoryItemDataProperty = preload("res://addons/inventory_editor/scenes/InventoryItemDataProperty.tscn")
+const InventoryItemDataProperty = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn")
 
 func set_data(data: InventoryData) -> void:
 	_data = data

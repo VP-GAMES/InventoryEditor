@@ -8,7 +8,7 @@ var _data: InventoryData
 onready var _add_ui = $Margin/VBox/HBox/Add as Button
 onready var _items_ui = $Margin/VBox/Scroll/Items
 
-const InventoryItemUI = preload("res://addons/inventory_editor/scenes/InventoryItemUI.tscn")
+const InventoryItemUI = preload("res://addons/inventory_editor/scenes/items/InventoryItemUI.tscn")
 
 func set_data(data: InventoryData) -> void:
 	_data = data

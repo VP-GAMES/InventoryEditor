@@ -1,3 +1,5 @@
+# InspectorPlugin for InventoryEditor : MIT License
+# @author Vladimir Petrenko
 extends EditorInspectorPlugin
 
 var _data: InventoryData

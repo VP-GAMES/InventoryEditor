@@ -1,3 +1,5 @@
+# EditorProperty as Item for InventoryEditor : MIT License
+# @author Vladimir Petrenko
 extends EditorProperty
 class_name InventoryInspectorEditorItem
 

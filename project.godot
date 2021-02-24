@@ -25,11 +25,6 @@ _global_script_classes=[ {
 "path": "res://addons/inventory_editor/InventoryInspectorPluginEditorItem.gd"
 }, {
 "base": "Resource",
-"class": "InventoryInventory",
-"language": "GDScript",
-"path": "res://addons/inventory_editor/model/InventoryInventory.gd"
-}, {
-"base": "Resource",
 "class": "InventoryItem",
 "language": "GDScript",
 "path": "res://addons/inventory_editor/model/InventoryItem.gd"
@@ -38,6 +33,11 @@ _global_script_classes=[ {
 "class": "InventoryItemsData",
 "language": "GDScript",
 "path": "res://addons/inventory_editor/model/InventoryItems.gd"
+}, {
+"base": "Resource",
+"class": "InventoryType",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/model/InventoryType.gd"
 }, {
 "base": "Area2D",
 "class": "Item2D",
@@ -53,9 +53,9 @@ _global_script_class_icons={
 "InventoryData": "",
 "InventoryInspectorEditorInventory": "",
 "InventoryInspectorEditorItem": "",
-"InventoryInventory": "",
 "InventoryItem": "",
 "InventoryItemsData": "",
+"InventoryType": "",
 "Item2D": "",
 "Item3D": ""
 }

@@ -27,8 +27,8 @@ func set_data(data: InventoryData) -> void:
 	_draw_view()
 
 func _init_connections() -> void:
-	if not _data.is_connected("inventory_selection_changed", self, "_on_inventory_selection_changed"):
-		assert(_data.connect("inventory_selection_changed", self, "_on_inventory_selection_changed") == OK)
+	if not _data.is_connected("type_selection_changed", self, "_on_type_selection_changed"):
+		assert(_data.connect("type_selection_changed", self, "_on_type_selection_changed") == OK)
 	if not _data.is_connected("item_selection_changed", self, "_on_item_selection_changed"):
 		assert(_data.connect("item_selection_changed", self, "_on_item_selection_changed") == OK)
 	if not _stacksize_ui.is_connected("text_changed", self, "_on_stacksize_text_changed"):
@@ -36,7 +36,7 @@ func _init_connections() -> void:
 	if not _add_ui.is_connected("pressed", self, "_on_add_pressed"):
 		assert(_add_ui.connect("pressed", self, "_on_add_pressed") == OK)
 
-func _on_inventory_selection_changed(inventory: InventoryInventory) -> void:
+func _on_type_selection_changed(type: InventoryType) -> void:
 	_update_selection_view()
 
 func _on_item_selection_changed(item: InventoryItem) -> void:

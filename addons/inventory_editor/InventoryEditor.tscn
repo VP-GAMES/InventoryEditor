@@ -2,8 +2,9 @@
 
 [ext_resource path="res://addons/inventory_editor/InventoryEditor.gd" type="Script" id=1]
 [ext_resource path="res://addons/inventory_editor/icons/Save.png" type="Texture" id=2]
-[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryInventoriesEditorView.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypesEditorView.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/inventory_editor/icons/Inventory.png" type="Texture" id=4]
+
 
 
 [node name="Control" type="Control"]

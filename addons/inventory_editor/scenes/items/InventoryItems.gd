@@ -22,8 +22,8 @@ func _init_connections() -> void:
 		assert(_data.connect("item_added", self, "_on_item_added") == OK)
 	if not _data.is_connected("item_removed", self, "_on_item_removed"):
 		assert(_data.connect("item_removed", self, "_on_item_removed") == OK)
-	if not _data.is_connected("inventory_selection_changed", self, "_on_inventory_selection_changed"):
-		assert(_data.connect("inventory_selection_changed", self, "_on_inventory_selection_changed") == OK)
+	if not _data.is_connected("type_selection_changed", self, "_on_type_selection_changed"):
+		assert(_data.connect("type_selection_changed", self, "_on_type_selection_changed") == OK)
 
 func _on_add_pressed() -> void:
 	_data.add_item()
@@ -34,7 +34,7 @@ func _on_item_added(item: InventoryItem) -> void:
 func _on_item_removed(item: InventoryItem) -> void:
 	_update_view()
 
-func _on_inventory_selection_changed(inventory: InventoryInventory) -> void:
+func _on_type_selection_changed(type: InventoryType) -> void:
 	_update_view()
 
 func _update_view() -> void:
@@ -47,9 +47,9 @@ func _clear_view() -> void:
 		item_ui.queue_free()
 
 func _draw_view() -> void:
-	var inventory = _data.selected_inventory()
-	if inventory:
-		for item in inventory.items:
+	var type = _data.selected_type()
+	if type:
+		for item in type.items:
 			_draw_item(item)
 
 func _draw_item(item: InventoryItem) -> void:

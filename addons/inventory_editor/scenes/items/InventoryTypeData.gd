@@ -6,11 +6,11 @@ extends HBoxContainer
 var _type: InventoryType
 var _data: InventoryData
 
-onready var _data_ui = $MarginData
-onready var _preview_ui = $MarginPreview
+onready var _data_ui = $MarginData as MarginContainer
+onready var _preview_ui = $MarginPreview as MarginContainer
 onready var _put_ui = $MarginData/VBox/HBoxIcon/Put as TextureRect
 onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
-onready var _preview_texture_ui = $MarginPreview/VBox/Texture as TextureRect
+onready var _icon_preview_ui = $MarginData/VBox/HBoxContainer/Texture as TextureRect
 
 func set_data(data: InventoryData) -> void:
 	_data = data
@@ -34,28 +34,19 @@ func _init_connections_type() -> void:
 			assert(_type.connect("icon_changed", self, "_on_icon_changed") == OK)
 
 func _on_icon_changed() -> void:
-	_draw_view_preview_texture_ui()
+	_draw_view_icon_preview_ui()
 
 func _draw_view() -> void:
-	check_view_visibility()
-	if _type:
 		_update_view_data()
-		_draw_view_preview_texture_ui()
-
-func check_view_visibility() -> void:
-	if _type:
-		_data_ui.show()
-		_preview_ui.show()
-	else:
-		_data_ui.hide()
-		_preview_ui.hide()
+		_draw_view_icon_preview_ui()
 
 func _update_view_data() -> void:
 	_put_ui.set_data(_type, _data)
 	_icon_ui.set_data(_type, _data)
 
-func _draw_view_preview_texture_ui() -> void:
-	var t = load("res://addons/inventory_editor/icons/Inventory.png")
+func _draw_view_icon_preview_ui() -> void:
+	var t = load("res://addons/inventory_editor/icons/Type.png")
 	if _type and _type.icon and _data.resource_exists(_type.icon):
 		t = load(_type.icon)
-	_preview_texture_ui.texture = t
+		t = _data.resize_texture(t, Vector2(100, 100))
+	_icon_preview_ui.texture = t

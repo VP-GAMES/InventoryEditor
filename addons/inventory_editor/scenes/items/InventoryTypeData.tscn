@@ -1,14 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/inventory_editor/icons/Inventory.png" type="Texture" id=1]
+[ext_resource path="res://addons/inventory_editor/icons/Type.png" type="Texture" id=1]
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypeData.gd" type="Script" id=2]
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypeDataPath.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypeDataPut.tscn" type="PackedScene" id=4]
 
 [node name="InventoryTypeData" type="HBoxContainer"]
 margin_right = 803.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 30.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 __meta__ = {
@@ -17,13 +16,13 @@ __meta__ = {
 
 [node name="MarginData" type="MarginContainer" parent="."]
 margin_right = 399.0
-margin_bottom = 100.0
+margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="MarginData"]
 margin_right = 399.0
-margin_bottom = 100.0
+margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -51,31 +50,30 @@ margin_top = 0.0
 margin_right = 399.0
 margin_bottom = 30.0
 
-[node name="MarginPreview" type="MarginContainer" parent="."]
-margin_left = 403.0
-margin_right = 803.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 34.0
+margin_right = 399.0
+margin_bottom = 134.0
 
-[node name="VBox" type="VBoxContainer" parent="MarginPreview"]
-margin_right = 400.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxContainer"]
+margin_top = 43.0
+margin_right = 100.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 100, 0 )
 
-[node name="Label" type="Label" parent="MarginPreview/VBox"]
-margin_right = 400.0
-margin_bottom = 14.0
-text = "Preview"
-align = 1
-valign = 1
-
-[node name="Texture" type="TextureRect" parent="MarginPreview/VBox"]
-margin_top = 18.0
-margin_right = 400.0
+[node name="Texture" type="TextureRect" parent="MarginData/VBox/HBoxContainer"]
+margin_left = 104.0
+margin_right = 399.0
 margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 stretch_mode = 6
+
+[node name="MarginPreview" type="MarginContainer" parent="."]
+margin_left = 403.0
+margin_right = 803.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

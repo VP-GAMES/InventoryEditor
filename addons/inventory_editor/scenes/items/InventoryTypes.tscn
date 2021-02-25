@@ -4,7 +4,7 @@
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypeUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/inventory_editor/icons/Add.png" type="Texture" id=3]
 
-[node name="InventoryInventories" type="Panel"]
+[node name="InventoryTypes" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -55,9 +55,9 @@ icon = ExtResource( 3 )
 [node name="Label" type="Label" parent="Margin/VBox/HBox"]
 margin_left = 26.0
 margin_top = 3.0
-margin_right = 99.0
+margin_right = 63.0
 margin_bottom = 17.0
-text = "Inventories"
+text = "Types"
 
 [node name="HSeparator" type="HSeparator" parent="Margin/VBox"]
 margin_top = 24.0

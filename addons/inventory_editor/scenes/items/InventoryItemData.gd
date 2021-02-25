@@ -14,8 +14,9 @@ onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
 onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
 onready var _put_scene_ui = $MarginData/VBox/HBoxScene/PutScene as TextureRect
 onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
+onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
 onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
-onready var _preview_texture_ui = $MarginPreview/VBox/Texture as TextureRect
+onready var _icon_preview_ui = $MarginPreview/VBox/VBoxIcon/Texture as TextureRect
 
 const InventoryItemDataProperty = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn")
 
@@ -33,6 +34,8 @@ func _init_connections() -> void:
 		assert(_data.connect("item_selection_changed", self, "_on_item_selection_changed") == OK)
 	if not _stacksize_ui.is_connected("text_changed", self, "_on_stacksize_text_changed"):
 		assert(_stacksize_ui.connect("text_changed", self, "_on_stacksize_text_changed") == OK)
+	if not _open_ui.is_connected("pressed", self, "_on_open_pressed"):
+		assert(_open_ui.connect("pressed", self, "_on_open_pressed") == OK)
 	if not _add_ui.is_connected("pressed", self, "_on_add_pressed"):
 		assert(_add_ui.connect("pressed", self, "_on_add_pressed") == OK)
 
@@ -57,7 +60,7 @@ func _init_connections_item() -> void:
 			assert(_item.connect("property_removed", self, "_on_property_removed") == OK)
 
 func _on_icon_changed() -> void:
-	_draw_view_preview_texture_ui()
+	_draw_view_icon_preview_ui()
 
 func _on_property_added() -> void:
 	_draw_view_properties_ui()
@@ -67,6 +70,10 @@ func _on_property_removed() -> void:
 
 func _on_stacksize_text_changed(new_text: String) -> void:
 	_item.set_stacksize(int(new_text))
+
+func _on_open_pressed() -> void:
+	if _item and _item.scene:
+		_data.editor().get_editor_interface().open_scene_from_path(_item.scene)
 
 func _on_add_pressed() -> void:
 	_item.add_property()
@@ -78,7 +85,7 @@ func _draw_view() -> void:
 		_update_view_data()
 		_draw_view_stacksize_ui()
 		_draw_view_properties_ui()
-		_draw_view_preview_texture_ui()
+		_draw_view_icon_preview_ui()
 
 func check_view_visibility() -> void:
 	if _item:
@@ -115,8 +122,9 @@ func _clear_view_properties() -> void:
 		_properties_ui.remove_child(property_ui)
 		property_ui.queue_free()
 
-func _draw_view_preview_texture_ui() -> void:
+func _draw_view_icon_preview_ui() -> void:
 	var t = load("res://addons/inventory_editor/icons/Item.png")
 	if _item and _item.icon and _data.resource_exists(_item.icon):
 		t = load(_item.icon)
-	_preview_texture_ui.texture = t
+		t = _data.resize_texture(t, Vector2(100, 100))
+	_icon_preview_ui.texture = t

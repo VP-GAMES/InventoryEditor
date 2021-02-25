@@ -37,15 +37,23 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TypeData" parent="Split/VBoxData" instance=ExtResource( 4 )]
+margin_bottom = 134.0
 
 [node name="HSeparator" type="HSeparator" parent="Split/VBoxData"]
-margin_top = 104.0
+margin_top = 138.0
 margin_right = 803.0
-margin_bottom = 108.0
+margin_bottom = 142.0
 
 [node name="Items" parent="Split/VBoxData" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 112.0
+margin_top = 146.0
 margin_right = 803.0
 margin_bottom = 600.0
+
+[node name="VBoxEmpty" type="VBoxContainer" parent="Split"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

@@ -208,9 +208,9 @@ func _del_item(item) -> void:
 		select_item(item_selected)
 
 func selected_item() -> InventoryItem:
-	if not _type_selected.selected and not _type_selected.items.empty():
+	if _type_selected and not _type_selected.selected and not _type_selected.items.empty():
 		_type_selected.selected = _type_selected.items[0]
-	return _type_selected.selected
+	return _type_selected.selected if _type_selected else null
 
 func select_item(item: InventoryItem) -> void:
 	_type_selected.selected = item

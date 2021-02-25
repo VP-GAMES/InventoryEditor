@@ -24,7 +24,7 @@ func _init_styles() -> void:
 	_path_ui_style_resource.set_bg_color(Color("#192e59"))
 
 func _init_connections() -> void:
-	if not _type.is_connected("icon_changed", self, "_on_icon_changed"):
+	if _type and not _type.is_connected("icon_changed", self, "_on_icon_changed"):
 		assert(_type.connect("icon_changed", self, "_on_icon_changed") == OK)
 	if not is_connected("focus_entered", self, "_on_focus_entered"):
 		assert(connect("focus_entered", self, "_on_focus_entered") == OK)
@@ -40,7 +40,7 @@ func _on_icon_changed() -> void:
 
 func _draw_view() -> void:
 	text = ""
-	if _type.icon:
+	if _type and _type.icon:
 		if has_focus():
 			 text = _type.icon
 		else:

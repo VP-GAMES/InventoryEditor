@@ -89,7 +89,7 @@ func _draw_texture() -> void:
 		texture = load(_type.icon)
 		texture = _data.resize_texture(texture, Vector2(16, 16))
 	else:
-		texture = load("res://addons/inventory_editor/icons/Inventory.png")
+		texture = load("res://addons/inventory_editor/icons/Type.png")
 	_texture_ui.texture = texture
 
 func _draw_style() -> void:

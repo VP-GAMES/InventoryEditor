@@ -1,4 +1,4 @@
-# Dialogue types UI for DialogueEditor : MIT License
+# Inventory types UI for InventoryEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends Panel

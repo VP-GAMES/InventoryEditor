@@ -42,7 +42,7 @@ func _draw_view() -> void:
 	text = ""
 	if _item.icon:
 		if has_focus():
-			 text = _item.icon
+			text = _item.icon
 		else:
 			text = _data.filename(_item.icon)
 		_check_path_ui()

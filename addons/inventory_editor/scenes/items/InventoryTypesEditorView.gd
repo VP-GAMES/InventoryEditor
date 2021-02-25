@@ -8,6 +8,8 @@ var _split_viewport_size = 0
 
 onready var _split_ui = $Split
 onready var _types_ui = $Split/Types
+onready var _data_ui = $Split/VBoxData
+onready var _empty_ui = $Split/VBoxEmpty
 onready var _type_data_ui = $Split/VBoxData/TypeData
 onready var _type_items_ui = $Split/VBoxData/Items
 
@@ -17,10 +19,15 @@ func set_data(data: InventoryData) -> void:
 	_type_data_ui.set_data(data)
 	_type_items_ui.set_data(data)
 	_init_connections()
+	check_view_visibility()
 
 func _init_connections() -> void:
 	if not _split_ui.is_connected("dragged", self, "_on_split_dragged"):
 		assert(_split_ui.connect("dragged", self, "_on_split_dragged") == OK)
+	if not _data.is_connected("type_added", self, "_on_type_added"):
+		assert(_data.connect("type_added", self, "_on_type_added") == OK)
+	if not _data.is_connected("type_removed", self, "_on_type_removed"):
+		assert(_data.connect("type_removed", self, "_on_type_removed") == OK)
 
 func _process(delta):
 	if _split_viewport_size != rect_size.x:
@@ -37,3 +44,17 @@ func _on_split_dragged(offset: int) -> void:
 	if _data != null:
 		var value = -(-rect_size.x / 2 - offset)
 		_data.setting_types_split_offset_put(value)
+
+func _on_type_added(type) -> void:
+	check_view_visibility()
+
+func _on_type_removed(type) -> void:
+	check_view_visibility()
+
+func check_view_visibility() -> void:
+	if _data.types.size() > 0:
+		_data_ui.show()
+		_empty_ui.hide()
+	else:
+		_data_ui.hide()
+		_empty_ui.show()

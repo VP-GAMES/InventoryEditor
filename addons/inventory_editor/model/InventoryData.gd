@@ -324,11 +324,22 @@ const BACKGROUND_COLOR_SELECTED = Color("#868991")
 
 const PATH_TO_SAVE = "res://addons/inventory_editor/InventorySave.res"
 const AUTHOR = "# @author Vladimir Petrenko\n"
+const SETTINGS_INVENTORIES_SPLIT_OFFSET = "dialogue_editor/inventories_split_offset"
+const SETTINGS_INVENTORIES_SPLIT_OFFSET_DEFAULT = 215
 const SETTINGS_TYPES_SPLIT_OFFSET = "dialogue_editor/types_split_offset"
 const SETTINGS_TYPES_SPLIT_OFFSET_DEFAULT = 215
 const SETTINGS_ITEMS_SPLIT_OFFSET = "dialogue_editor/items_split_offset"
 const SETTINGS_ITEMS_SPLIT_OFFSET_DEFAULT = 215
 const SUPPORTED_IMAGE_RESOURCES = ["bmp", "jpg", "jpeg", "png", "svg", "svgz", "tres"]
+
+func setting_inventories_split_offset() -> int:
+	var offset = SETTINGS_INVENTORIES_SPLIT_OFFSET_DEFAULT
+	if ProjectSettings.has_setting(SETTINGS_INVENTORIES_SPLIT_OFFSET):
+		offset = ProjectSettings.get_setting(SETTINGS_INVENTORIES_SPLIT_OFFSET)
+	return offset
+
+func setting_inventories_split_offset_put(offset: int) -> void:
+	ProjectSettings.set_setting(SETTINGS_INVENTORIES_SPLIT_OFFSET, offset)
 
 func setting_types_split_offset() -> int:
 	var offset = SETTINGS_TYPES_SPLIT_OFFSET_DEFAULT

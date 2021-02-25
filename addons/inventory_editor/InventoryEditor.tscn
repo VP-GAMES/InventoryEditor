@@ -3,9 +3,7 @@
 [ext_resource path="res://addons/inventory_editor/InventoryEditor.gd" type="Script" id=1]
 [ext_resource path="res://addons/inventory_editor/icons/Save.png" type="Texture" id=2]
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypesEditorView.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/inventory_editor/icons/Inventory.png" type="Texture" id=4]
-
-
+[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoriesEditorView.tscn" type="PackedScene" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -60,14 +58,9 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Inventories" type="VBoxContainer" parent="VBox/Tabs"]
+[node name="Inventories" parent="VBox/Tabs" instance=ExtResource( 4 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
-__meta__ = {
-"_tab_icon": ExtResource( 4 )
-}

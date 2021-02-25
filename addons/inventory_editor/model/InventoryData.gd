@@ -13,12 +13,102 @@ func editor() -> EditorPlugin:
 
 func set_editor(editor: EditorPlugin) -> void:
 	_editor = editor
+	for inventory in inventories:
+		inventory.set_editor(_editor)
 	for type in types:
 		type.set_editor(_editor)
 	_undo_redo = _editor.get_undo_redo()
 
 const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")
 # ***** EDITOR_PLUGIN_END *****
+
+# ***** INVENTORY *****
+signal inventory_added(inventory)
+signal inventory_removed(inventory)
+signal inventory_selection_changed(inventory)
+signal inventory_icon_changed(item)
+
+func emit_inventory_icon_changed(inventory: InventoryInventory) -> void:
+	emit_signal("inventory_icon_changed", inventory)
+
+export(Array) var inventories = [_create_inventory()]
+var _inventory_selected: InventoryInventory
+
+func add_inventory(sendSignal = true) -> void:
+	var inventory = _create_inventory()
+	if _undo_redo != null:
+		_undo_redo.create_action("Add inventory")
+		_undo_redo.add_do_method(self, "_add_inventory", inventory)
+		_undo_redo.add_undo_method(self, "_del_inventory", inventory)
+		_undo_redo.commit_action()
+	else:
+		_add_inventory(inventory, sendSignal)
+
+func _create_inventory() -> InventoryInventory:
+	var inventory = InventoryInventory.new()
+	inventory.set_editor(_editor)
+	inventory.uuid = UUID.v4()
+	inventory.name = _next_inventory_name()
+	return inventory
+
+func _next_inventory_name() -> String:
+	var base_name = "Inventory"
+	var value = -9223372036854775807
+	var inventory_found = false
+	if inventories:
+		for inventory in inventories:
+			var name = inventory.name
+			if name.begins_with(base_name):
+				inventory_found = true
+				var behind = inventory.name.substr(base_name.length())
+				var regex = RegEx.new()
+				regex.compile("^[0-9]+$")
+				var result = regex.search(behind)
+				if result:
+					var new_value = int(behind)
+					if  value < new_value:
+						value = new_value
+	var next_name = base_name
+	if value != -9223372036854775807:
+		next_name += str(value + 1)
+	elif inventory_found:
+		next_name += "1"
+	return next_name
+
+func _add_inventory(inventory: InventoryInventory, sendSignal = true, position = inventories.size()) -> void:
+	if not inventories:
+		inventories = []
+	inventories.insert(position, inventory)
+	emit_signal("inventory_added", inventory)
+	select_inventory(inventory)
+
+func del_inventory(inventory) -> void:
+	if _undo_redo != null:
+		var index = inventories.find(inventory)
+		_undo_redo.create_action("Del inventory")
+		_undo_redo.add_do_method(self, "_del_inventory", inventory)
+		_undo_redo.add_undo_method(self, "_add_inventory", inventory, false, index)
+		_undo_redo.commit_action()
+	else:
+		_del_inventory(inventory)
+
+func _del_inventory(inventory) -> void:
+	var index = inventories.find(inventory)
+	if index > -1:
+		inventories.remove(index)
+		emit_signal("inventory_removed", inventory)
+		_inventory_selected = null
+		var inventory_selected = selected_inventory()
+		select_inventory(inventory_selected)
+
+func selected_inventory() -> InventoryInventory:
+	if not _inventory_selected and not inventories.empty():
+		_inventory_selected = inventories[0]
+	return _inventory_selected
+
+func select_inventory(inventory: InventoryInventory) -> void:
+	_inventory_selected = inventory
+	emit_signal("inventory_selection_changed", _inventory_selected)
 
 # ***** TYPE *****
 signal type_added(type)

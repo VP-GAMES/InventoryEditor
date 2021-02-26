@@ -11,7 +11,6 @@ onready var _preview_ui = $MarginPreview
 onready var _stacks_ui = $MarginData/VBox/HBoxStacks/Stacks as LineEdit
 onready var _put_ui = $MarginData/VBox/HBoxIcon/Put as TextureRect
 onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
-onready var _any_ui = $MarginData/VBox/HBoxAny/Any as CheckButton
 onready var _preview_texture_ui = $MarginPreview/VBox/Texture as TextureRect
 
 func set_data(data: InventoryData) -> void:
@@ -26,8 +25,6 @@ func _init_connections() -> void:
 		assert(_data.connect("inventory_selection_changed", self, "_on_inventory_selection_changed") == OK)
 	if not _stacks_ui.is_connected("text_changed", self, "_on_stacks_text_changed"):
 		assert(_stacks_ui.connect("text_changed", self, "_on_stacks_text_changed") == OK)
-	if not _any_ui.is_connected("pressed", self, "_on_any_ui_pressed"):
-		assert(_any_ui.connect("pressed", self, "_on_any_ui_pressed") == OK)
 
 func _on_inventory_selection_changed(inventory: InventoryInventory) -> void:
 	_inventory = _data.selected_inventory()
@@ -45,15 +42,11 @@ func _on_icon_changed() -> void:
 func _on_stacks_text_changed(new_text: String) -> void:
 	_inventory.set_stacks(int(new_text))
 
-func _on_any_ui_pressed() -> void:
-	_inventory.set_any(_any_ui.pressed)
-
 func _draw_view() -> void:
 	check_view_visibility()
 	if _inventory:
 		_update_view_data()
 		_draw_view_stacks_ui()
-		_draw_view_any_ui()
 		_draw_view_preview_texture_ui()
 
 func check_view_visibility() -> void:
@@ -71,11 +64,9 @@ func _update_view_data() -> void:
 func _draw_view_stacks_ui() -> void:
 	_stacks_ui.text = str(_inventory.stacks)
 
-func _draw_view_any_ui() -> void:
-	_any_ui.pressed = _inventory.any
-
 func _draw_view_preview_texture_ui() -> void:
 	var t = load("res://addons/inventory_editor/icons/Inventory.png")
 	if _inventory and _inventory.icon and _data.resource_exists(_inventory.icon):
 		t = load(_inventory.icon)
+		t = _data.resize_texture(t, Vector2(100, 100))
 	_preview_texture_ui.texture = t

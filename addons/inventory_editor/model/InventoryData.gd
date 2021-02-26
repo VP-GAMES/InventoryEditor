@@ -366,6 +366,8 @@ func init_data() -> void:
 		var resource = ResourceLoader.load(PATH_TO_SAVE) as InventoryData
 		if resource.types and not resource.types.empty():
 			types = resource.types
+		if resource.inventories and not resource.inventories.empty():
+			inventories = resource.inventories
 
 func save() -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)

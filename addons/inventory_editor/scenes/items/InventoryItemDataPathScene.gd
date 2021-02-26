@@ -70,8 +70,7 @@ func _on_gui_input(event: InputEvent) -> void:
 				if _data.resource_exists(_item.scene):
 					file_dialog.current_dir = _data.file_path(_item.scene)
 					file_dialog.current_file = _data.filename(_item.scene)
-				for extension in _data.SUPPORTED_ACTOR_RESOURCES:
-					file_dialog.add_filter("*." + extension)
+				file_dialog.add_filter("*.tscn")
 				var root = get_tree().get_root()
 				root.add_child(file_dialog)
 				assert(file_dialog.connect("file_selected", self, "_path_value_changed") == OK)
@@ -84,10 +83,9 @@ func _on_popup_hide(root, dialog) -> void:
 
 func can_drop_data(position, data) -> bool:
 	var path_value = data["files"][0]
-	var path_extension = _data.file_extension(path_value)
-	for extension in _data.supported_file_extensions():
-		if path_extension == extension:
-			return true
+	var resource_extension = _data.file_extension(path_value)
+	if resource_extension == "tscn":
+		return true
 	return false
 
 func drop_data(position, data) -> void:

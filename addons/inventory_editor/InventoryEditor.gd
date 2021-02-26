@@ -43,4 +43,4 @@ func _on_tab_changed(tab: int) -> void:
 
 func _data_to_childs() -> void:
 	_items_ui.set_data(_data)
-#	_inventories_ui.set_data(_data)
+	_inventories_ui.set_data(_data)

@@ -70,7 +70,7 @@ func _on_gui_input(event: InputEvent) -> void:
 				if _data.resource_exists(_type.icon):
 					file_dialog.current_dir = _data.file_path(_type.icon)
 					file_dialog.current_file = _data.filename(_type.icon)
-				for extension in _data.SUPPORTED_ACTOR_RESOURCES:
+				for extension in _data.SUPPORTED_IMAGE_RESOURCES:
 					file_dialog.add_filter("*." + extension)
 				var root = get_tree().get_root()
 				root.add_child(file_dialog)

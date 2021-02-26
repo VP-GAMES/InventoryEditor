@@ -9,8 +9,8 @@
 [node name="Item2D" type="Area2D" parent="."]
 position = Vector2( 269.899, 158.637 )
 script = ExtResource( 1 )
-item_put = "d454c7e9-c430-4dd0-b8c2-3e1dff62078c"
-to_inventory = "b7495cf2-484a-4cc9-a4f7-1c7863c56fd6"
+item_put = "af0ab25b-4add-4834-ad96-555efd2e629d"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item2D"]
 shape = SubResource( 1 )

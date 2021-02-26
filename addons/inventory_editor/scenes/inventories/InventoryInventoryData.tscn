@@ -69,6 +69,122 @@ margin_top = 0.0
 margin_right = 510.0
 margin_bottom = 30.0
 
+[node name="HBoxSwitch" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 62.0
+margin_right = 510.0
+margin_bottom = 102.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxSwitch"]
+margin_top = 13.0
+margin_right = 100.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 100, 0 )
+text = "Own scene"
+
+[node name="CheckButton" type="CheckButton" parent="MarginData/VBox/HBoxSwitch"]
+margin_left = 104.0
+margin_right = 180.0
+margin_bottom = 40.0
+
+[node name="HSeparator" type="HSeparator" parent="MarginData/VBox"]
+margin_top = 106.0
+margin_right = 510.0
+margin_bottom = 110.0
+
+[node name="VBoxBase" type="VBoxContainer" parent="MarginData/VBox"]
+margin_top = 114.0
+margin_right = 510.0
+margin_bottom = 206.0
+
+[node name="HBoxBackground" type="HBoxContainer" parent="MarginData/VBox/VBoxBase"]
+margin_right = 510.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/VBoxBase/HBoxBackground"]
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 76, 0 )
+text = "Back"
+
+[node name="Put" parent="MarginData/VBox/VBoxBase/HBoxBackground" instance=ExtResource( 2 )]
+margin_left = 80.0
+margin_right = 100.0
+margin_bottom = 30.0
+
+[node name="Icon" parent="MarginData/VBox/VBoxBase/HBoxBackground" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 0.0
+margin_right = 510.0
+margin_bottom = 30.0
+
+[node name="HBoxBackground2" type="HBoxContainer" parent="MarginData/VBox/VBoxBase"]
+margin_top = 34.0
+margin_right = 510.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/VBoxBase/HBoxBackground2"]
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 76, 0 )
+text = "Slot"
+
+[node name="Put" parent="MarginData/VBox/VBoxBase/HBoxBackground2" instance=ExtResource( 2 )]
+margin_left = 80.0
+margin_right = 100.0
+margin_bottom = 30.0
+
+[node name="Icon" parent="MarginData/VBox/VBoxBase/HBoxBackground2" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 0.0
+margin_right = 510.0
+margin_bottom = 30.0
+
+[node name="HBoxMatrix" type="HBoxContainer" parent="MarginData/VBox/VBoxBase"]
+margin_top = 68.0
+margin_right = 510.0
+margin_bottom = 92.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 100, 0 )
+text = "Matrix"
+
+[node name="LabelRows" type="Label" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
+margin_left = 104.0
+margin_top = 5.0
+margin_right = 164.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 0 )
+text = "Rows"
+
+[node name="LineEdit" type="LineEdit" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
+margin_left = 168.0
+margin_right = 305.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="LabelColumns" type="Label" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
+margin_left = 309.0
+margin_top = 5.0
+margin_right = 369.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 0 )
+text = "Columns"
+
+[node name="LineEdit2" type="LineEdit" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
+margin_left = 373.0
+margin_right = 510.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
 [node name="MarginPreview" type="MarginContainer" parent="."]
 margin_left = 514.0
 margin_right = 1024.0
@@ -85,7 +201,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="MarginPreview/VBox"]
 margin_right = 510.0
 margin_bottom = 14.0
-text = "Preview"
+text = "Icon"
 align = 1
 valign = 1
 

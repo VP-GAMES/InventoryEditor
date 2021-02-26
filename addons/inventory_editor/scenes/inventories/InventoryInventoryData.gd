@@ -43,19 +43,11 @@ func _on_stacks_text_changed(new_text: String) -> void:
 	_inventory.set_stacks(int(new_text))
 
 func _draw_view() -> void:
-	check_view_visibility()
 	if _inventory:
 		_update_view_data()
 		_draw_view_stacks_ui()
 		_draw_view_preview_texture_ui()
 
-func check_view_visibility() -> void:
-	if _inventory:
-		_data_ui.show()
-		_preview_ui.show()
-	else:
-		_data_ui.hide()
-		_preview_ui.hide()
 
 func _update_view_data() -> void:
 	_put_ui.set_data(_inventory, _data)

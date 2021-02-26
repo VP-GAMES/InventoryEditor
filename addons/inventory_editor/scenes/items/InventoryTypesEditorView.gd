@@ -8,9 +8,8 @@ var _split_viewport_size = 0
 
 onready var _split_ui = $Split
 onready var _types_ui = $Split/Types
-onready var _data_ui = $Split/VBoxData
-onready var _empty_ui = $Split/VBoxEmpty
 onready var _type_data_ui = $Split/VBoxData/TypeData
+onready var _separator_ui = $Split/VBoxData/HSeparator
 onready var _type_items_ui = $Split/VBoxData/Items
 
 func set_data(data: InventoryData) -> void:
@@ -53,8 +52,10 @@ func _on_type_removed(type) -> void:
 
 func check_view_visibility() -> void:
 	if _data.types.size() > 0:
-		_data_ui.show()
-		_empty_ui.hide()
+		_type_data_ui.show()
+		_separator_ui.show()
+		_type_items_ui.show()
 	else:
-		_data_ui.hide()
-		_empty_ui.show()
+		_type_data_ui.hide()
+		_separator_ui.hide()
+		_type_items_ui.hide()

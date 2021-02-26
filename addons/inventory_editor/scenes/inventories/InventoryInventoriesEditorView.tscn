@@ -39,9 +39,9 @@ size_flags_vertical = 3
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 803.0
-margin_bottom = 102.0
+margin_bottom = 100.0
 
 [node name="HSeparator" type="HSeparator" parent="Split/VBoxData"]
-margin_top = 106.0
+margin_top = 104.0
 margin_right = 803.0
-margin_bottom = 110.0
+margin_bottom = 108.0

@@ -27,9 +27,13 @@ signal inventory_added(inventory)
 signal inventory_removed(inventory)
 signal inventory_selection_changed(inventory)
 signal inventory_icon_changed(item)
+signal inventory_scene_changed(item)
 
 func emit_inventory_icon_changed(inventory: InventoryInventory) -> void:
 	emit_signal("inventory_icon_changed", inventory)
+
+func emit_inventory_scene_changed(inventory: InventoryInventory) -> void:
+	emit_signal("inventory_scene_changed", inventory)
 
 export(Array) var inventories = [_create_inventory()]
 var _inventory_selected: InventoryInventory

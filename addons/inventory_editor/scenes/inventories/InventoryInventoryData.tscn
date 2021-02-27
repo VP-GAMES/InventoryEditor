@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/inventory_editor/icons/Inventory.png" type="Texture" id=1]
 [ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPut.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPath.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryData.gd" type="Script" id=4]
+[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPutScene.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPathScene.tscn" type="PackedScene" id=6]
 
 [node name="InventoryInventoryData" type="HBoxContainer"]
 anchor_right = 1.0
@@ -65,125 +67,32 @@ margin_bottom = 30.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 104.0
-margin_top = 0.0
 margin_right = 510.0
 margin_bottom = 30.0
 
-[node name="HBoxSwitch" type="HBoxContainer" parent="MarginData/VBox"]
+[node name="HBoxScene" type="HBoxContainer" parent="MarginData/VBox"]
 margin_top = 62.0
-margin_right = 510.0
-margin_bottom = 102.0
-
-[node name="Label" type="Label" parent="MarginData/VBox/HBoxSwitch"]
-margin_top = 13.0
-margin_right = 100.0
-margin_bottom = 27.0
-rect_min_size = Vector2( 100, 0 )
-text = "Own scene"
-
-[node name="CheckButton" type="CheckButton" parent="MarginData/VBox/HBoxSwitch"]
-margin_left = 104.0
-margin_right = 180.0
-margin_bottom = 40.0
-
-[node name="HSeparator" type="HSeparator" parent="MarginData/VBox"]
-margin_top = 106.0
-margin_right = 510.0
-margin_bottom = 110.0
-
-[node name="VBoxBase" type="VBoxContainer" parent="MarginData/VBox"]
-margin_top = 114.0
-margin_right = 510.0
-margin_bottom = 206.0
-
-[node name="HBoxBackground" type="HBoxContainer" parent="MarginData/VBox/VBoxBase"]
-margin_right = 510.0
-margin_bottom = 30.0
-
-[node name="Label" type="Label" parent="MarginData/VBox/VBoxBase/HBoxBackground"]
-margin_top = 8.0
-margin_right = 76.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 76, 0 )
-text = "Back"
-
-[node name="Put" parent="MarginData/VBox/VBoxBase/HBoxBackground" instance=ExtResource( 2 )]
-margin_left = 80.0
-margin_right = 100.0
-margin_bottom = 30.0
-
-[node name="Icon" parent="MarginData/VBox/VBoxBase/HBoxBackground" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 104.0
-margin_top = 0.0
-margin_right = 510.0
-margin_bottom = 30.0
-
-[node name="HBoxBackground2" type="HBoxContainer" parent="MarginData/VBox/VBoxBase"]
-margin_top = 34.0
-margin_right = 510.0
-margin_bottom = 64.0
-
-[node name="Label" type="Label" parent="MarginData/VBox/VBoxBase/HBoxBackground2"]
-margin_top = 8.0
-margin_right = 76.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 76, 0 )
-text = "Slot"
-
-[node name="Put" parent="MarginData/VBox/VBoxBase/HBoxBackground2" instance=ExtResource( 2 )]
-margin_left = 80.0
-margin_right = 100.0
-margin_bottom = 30.0
-
-[node name="Icon" parent="MarginData/VBox/VBoxBase/HBoxBackground2" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 104.0
-margin_top = 0.0
-margin_right = 510.0
-margin_bottom = 30.0
-
-[node name="HBoxMatrix" type="HBoxContainer" parent="MarginData/VBox/VBoxBase"]
-margin_top = 68.0
 margin_right = 510.0
 margin_bottom = 92.0
 
-[node name="Label" type="Label" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
-margin_top = 5.0
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxScene"]
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 76, 0 )
+text = "Scene"
+
+[node name="PutScene" parent="MarginData/VBox/HBoxScene" instance=ExtResource( 5 )]
+margin_left = 80.0
 margin_right = 100.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 100, 0 )
-text = "Matrix"
+margin_bottom = 30.0
 
-[node name="LabelRows" type="Label" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
+[node name="DialogueActorDataPath" parent="MarginData/VBox/HBoxScene" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 104.0
-margin_top = 5.0
-margin_right = 164.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 60, 0 )
-text = "Rows"
-
-[node name="LineEdit" type="LineEdit" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
-margin_left = 168.0
-margin_right = 305.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-
-[node name="LabelColumns" type="Label" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
-margin_left = 309.0
-margin_top = 5.0
-margin_right = 369.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 60, 0 )
-text = "Columns"
-
-[node name="LineEdit2" type="LineEdit" parent="MarginData/VBox/VBoxBase/HBoxMatrix"]
-margin_left = 373.0
 margin_right = 510.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
+margin_bottom = 30.0
 
 [node name="MarginPreview" type="MarginContainer" parent="."]
 margin_left = 514.0

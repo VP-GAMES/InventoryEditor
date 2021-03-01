@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoriesEditorView.gd" type="Script" id=1]
 [ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventories.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryData.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/inventory_editor/icons/Add.png" type="Texture" id=5]
+[ext_resource path="res://addons/inventory_editor/icons/Del.png" type="Texture" id=6]
 
 [node name="InventoryInventoriesEditorView" type="VBoxContainer"]
 anchor_right = 1.0
@@ -45,3 +48,63 @@ margin_bottom = 100.0
 margin_top = 104.0
 margin_right = 803.0
 margin_bottom = 108.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Split/VBoxData"]
+margin_top = 112.0
+margin_right = 803.0
+margin_bottom = 140.0
+
+[node name="ItemHandler" type="HBoxContainer" parent="Split/VBoxData/VBoxContainer"]
+margin_right = 803.0
+margin_bottom = 24.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Split/VBoxData/VBoxContainer/ItemHandler"]
+margin_right = 399.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Split/VBoxData/VBoxContainer/ItemHandler/HBoxContainer"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 100, 0 )
+text = "Item"
+
+[node name="Dropdown" parent="Split/VBoxData/VBoxContainer/ItemHandler/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_right = 285.0
+margin_bottom = 24.0
+
+[node name="LineEdit" type="LineEdit" parent="Split/VBoxData/VBoxContainer/ItemHandler/HBoxContainer"]
+margin_left = 289.0
+margin_right = 347.0
+margin_bottom = 24.0
+
+[node name="Button" type="Button" parent="Split/VBoxData/VBoxContainer/ItemHandler/HBoxContainer"]
+margin_left = 351.0
+margin_right = 373.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+icon = ExtResource( 5 )
+
+[node name="Button2" type="Button" parent="Split/VBoxData/VBoxContainer/ItemHandler/HBoxContainer"]
+margin_left = 377.0
+margin_right = 399.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+icon = ExtResource( 6 )
+
+[node name="HBoxFill" type="HBoxContainer" parent="Split/VBoxData/VBoxContainer/ItemHandler"]
+margin_left = 403.0
+margin_right = 803.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Split/VBoxData/VBoxContainer"]
+margin_top = 28.0
+margin_right = 803.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

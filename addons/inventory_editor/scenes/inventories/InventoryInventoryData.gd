@@ -11,6 +11,9 @@ onready var _preview_ui = $MarginPreview
 onready var _stacks_ui = $MarginData/VBox/HBoxStacks/Stacks as LineEdit
 onready var _put_ui = $MarginData/VBox/HBoxIcon/Put as TextureRect
 onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
+onready var _put_scene_ui = $MarginData/VBox/HBoxScene/PutScene as TextureRect
+onready var _path_scene_ui = $MarginData/VBox/HBoxScene/PathScene as LineEdit
+onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
 onready var _preview_texture_ui = $MarginPreview/VBox/Texture as TextureRect
 
 func set_data(data: InventoryData) -> void:
@@ -25,6 +28,8 @@ func _init_connections() -> void:
 		assert(_data.connect("inventory_selection_changed", self, "_on_inventory_selection_changed") == OK)
 	if not _stacks_ui.is_connected("text_changed", self, "_on_stacks_text_changed"):
 		assert(_stacks_ui.connect("text_changed", self, "_on_stacks_text_changed") == OK)
+	if not _open_ui.is_connected("pressed", self, "_on_open_pressed"):
+		assert(_open_ui.connect("pressed", self, "_on_open_pressed") == OK)
 
 func _on_inventory_selection_changed(inventory: InventoryInventory) -> void:
 	_inventory = _data.selected_inventory()
@@ -42,6 +47,10 @@ func _on_icon_changed() -> void:
 func _on_stacks_text_changed(new_text: String) -> void:
 	_inventory.set_stacks(int(new_text))
 
+func _on_open_pressed() -> void:
+	if _inventory and _inventory.scene:
+		_data.editor().get_editor_interface().open_scene_from_path(_inventory.scene)
+
 func _draw_view() -> void:
 	if _inventory:
 		_update_view_data()
@@ -52,6 +61,8 @@ func _draw_view() -> void:
 func _update_view_data() -> void:
 	_put_ui.set_data(_inventory, _data)
 	_icon_ui.set_data(_inventory, _data)
+	_put_scene_ui.set_data(_inventory, _data)
+	_path_scene_ui.set_data(_inventory, _data)
 
 func _draw_view_stacks_ui() -> void:
 	_stacks_ui.text = str(_inventory.stacks)

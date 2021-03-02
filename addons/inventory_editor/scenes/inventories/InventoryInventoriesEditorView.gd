@@ -10,6 +10,8 @@ onready var _split_ui = $Split
 onready var _inventories_ui = $Split/Inventories
 onready var _inventory_data_ui = $Split/VBoxData/InventoryData
 onready var _hseparator_ui = $Split/VBoxData/HSeparator
+onready var _preview_data_ui = $Split/VBoxData/PreviewData
+onready var _preview_ui = $Split/VBoxData/PreviewData/ScrollPreview/Preview
 
 func set_data(data: InventoryData) -> void:
 	_data = data
@@ -17,6 +19,7 @@ func set_data(data: InventoryData) -> void:
 	_inventory_data_ui.set_data(data)
 	_init_connections()
 	check_view_visibility()
+	_update_preview()
 
 func _init_connections() -> void:
 	if not _split_ui.is_connected("dragged", self, "_on_split_dragged"):
@@ -52,6 +55,23 @@ func check_view_visibility() -> void:
 	if _data.inventories and _data.inventories.size() > 0:
 		_inventory_data_ui.show()
 		_hseparator_ui.show()
+		_preview_data_ui.show()
 	else:
 		_inventory_data_ui.hide()
 		_hseparator_ui.hide()
+		_preview_data_ui.hide()
+
+func _update_preview() -> void:
+	_clear_preview()
+	_draw_preview()
+
+func _clear_preview() -> void:
+	for child in _preview_ui.get_children():
+		_preview_ui.remove_child(child)
+		child.queue_free()
+
+func _draw_preview() -> void:
+	var inventory = _data.selected_inventory()
+	if inventory.scene:
+		var inventory_scene = load(inventory.scene).instance()
+		_preview_ui.add_child(inventory_scene)

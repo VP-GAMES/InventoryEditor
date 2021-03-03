@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItem.png" type="Texture" id=1]
 [ext_resource path="res://addons/inventory_example/inventories/ItemUIIcon.gd" type="Script" id=2]
+[ext_resource path="res://addons/inventory_example/inventories/ItemUI.gd" type="Script" id=3]
 
 [node name="ItemBg" type="TextureRect"]
 margin_right = 119.0
@@ -10,6 +11,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 stretch_mode = 6
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

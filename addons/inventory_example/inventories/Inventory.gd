@@ -1,10 +1,22 @@
+tool
 extends Control
+
+var _inventoryManager
+const InventoryManagerName = "InventoryManager"
+
+export(String) var _inventory # inventory_uuid
 
 onready var _grid_ui = $NinePatchRect/Margin/Grid as GridContainer
 
 const Item = preload("res://addons/inventory_example/inventories/ItemUI.tscn")
 
+func set_inventory_manager(inventory, manager) -> void:
+	_inventory = inventory
+	_inventoryManager = manager
+
 func _ready() -> void:
+	if get_tree().get_root().has_node(InventoryManagerName):
+		_inventoryManager = get_tree().get_root().get_node(InventoryManagerName)
 	update_view()
 
 func update_view() -> void:

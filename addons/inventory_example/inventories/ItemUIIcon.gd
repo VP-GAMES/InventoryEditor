@@ -1,3 +1,4 @@
+tool
 extends TextureRect
 
 func get_drag_data(position: Vector2):

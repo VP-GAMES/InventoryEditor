@@ -1,6 +1,11 @@
 tool
 extends TextureRect
 
+var _item
+
+func set_item(item) -> void:
+	_item = item
+
 func get_drag_data(position: Vector2):
 	var drag_texture = TextureRect.new()
 	drag_texture.expand = true

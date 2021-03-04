@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItem.png" type="Texture" id=1]
 [ext_resource path="res://addons/inventory_example/inventories/ItemUIIcon.gd" type="Script" id=2]
 [ext_resource path="res://addons/inventory_example/inventories/ItemUI.gd" type="Script" id=3]
+[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
 
 [node name="ItemBg" type="TextureRect"]
 margin_right = 119.0
@@ -10,7 +15,7 @@ margin_bottom = 478.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
-stretch_mode = 6
+stretch_mode = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,8 +30,21 @@ margin_right = -10.0
 margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-stretch_mode = 6
+stretch_mode = 1
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Size" type="Label" parent="Icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 1 )
+text = "100"
+align = 2
+valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

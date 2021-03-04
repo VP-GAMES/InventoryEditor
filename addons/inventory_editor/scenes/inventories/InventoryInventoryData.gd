@@ -46,6 +46,7 @@ func _on_icon_changed() -> void:
 
 func _on_stacks_text_changed(new_text: String) -> void:
 	_inventory.set_stacks(int(new_text))
+	_data.emit_inventory_stacks_changed(_inventory)
 
 func _on_open_pressed() -> void:
 	if _inventory and _inventory.scene:

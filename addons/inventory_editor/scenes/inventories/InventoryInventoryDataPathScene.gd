@@ -60,6 +60,7 @@ func _on_focus_exited() -> void:
 
 func _path_value_changed(path_value) -> void:
 	_inventory.set_scene(path_value)
+	_data.emit_inventory_scene_changed(_inventory)
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

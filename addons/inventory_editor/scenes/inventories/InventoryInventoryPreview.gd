@@ -8,6 +8,8 @@ var _item_selected
 var _items: Array
 
 onready var _dropdown_ui = $ItemHandler/HBoxContainer/Dropdown
+onready var _icon_ui = $ItemHandler/HBoxContainer/Icon as TextureRect
+onready var _quantity_ui = $ItemHandler/HBoxContainer/Quantity as LineEdit
 onready var _add_ui = $ItemHandler/HBoxContainer/Add as Button
 onready var _del_ui = $ItemHandler/HBoxContainer/Del as Button
 onready var _preview_ui = $ScrollPreview/Preview
@@ -24,6 +26,7 @@ func set_data(data: InventoryData) -> void:
 func _init_manger() -> void:
 	if not _manager:
 		_manager = InventoryManager.new()
+		_manager.ready(_data)
 
 func _init_connections() -> void:
 	if not _data.is_connected("item_added", self, "_on_item_added"):
@@ -45,10 +48,14 @@ func _on_item_removed(item: InventoryItem) -> void:
 
 func _on_selection_changed(item: Dictionary):
 	_item_selected = item
+	var item_icon
+	if _item_selected:
+		if _item_selected.icon:
+			item_icon = load(_item_selected.icon)
+			_icon_ui.texture = _data.resize_texture(item_icon, Vector2(16, 16))
 
 func _on_add_pressed() -> void:
-	pass
-	#_manager.add_item(_inventory.uuid, _item_selected.uuid, quantity: int = 1)
+	_manager.add_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text))
 
 func _on_del_pressed() -> void:
 	pass
@@ -74,5 +81,6 @@ func _draw_preview() -> void:
 	var inventory = _data.selected_inventory()
 	if inventory.scene:
 		var inventory_scene = load(inventory.scene).instance()
+		if inventory_scene.has_method("set_inventory_manager"):
+			inventory_scene.set_inventory_manager(_inventory.uuid, _manager)
 		_preview_ui.add_child(inventory_scene)
-		#inventory_scene.update_view()

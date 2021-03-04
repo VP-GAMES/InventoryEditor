@@ -12,9 +12,20 @@ var _db = InventoryData.new()
 var _path_to_type = "user://type.tres"
 var _data = InventoryInventories.new()
 
+func ready(db: InventoryData) -> void:
+	_db = db
+	_init_db()
+
 func _ready() -> void:
 	_db.init_data()
 	load_data()
+
+func _init_db() -> void:
+	if not _db.is_connected("inventory_stacks_changed", self, "_on_inventory_stacks_changed"):
+		_db.connect("inventory_stacks_changed", self, "_on_inventory_stacks_changed")
+
+func _on_inventory_stacks_changed(inventory) -> void:
+	emit_signal("inventory_changed", inventory.uuid)
 
 func load_data() -> void:
 	var file = File.new()
@@ -28,6 +39,12 @@ func save() -> void:
 	if state != OK:
 		printerr("Can't save inventories data")
 
+func get_inventory_items(inventory_uuid: String) -> Array:
+	var items
+	if _data.inventories.has(inventory_uuid):
+		items = _data.inventories[inventory_uuid]
+	return items
+
 func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> int:
 	var remainder = 0 
 	if(quantity < 0):
@@ -36,10 +53,11 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> i
 	var db_item = _db.get_item_by_uuid(item_uuid)
 	if _data.inventories.has(inventory_uuid) and _data.inventories[inventory_uuid].size() > 0:
 		var items = _data.inventories[inventory_uuid]
+		print(items)
 		var item
-		for index in range(items):
-			if _data.items[index].item_uuid == item_uuid:
-				item = _data.items[index]
+		for index in range(items.size()):
+			if items[index].item_uuid == item_uuid:
+				item = items[index]
 				break
 		if item.quantity + quantity > db_item.stacksize:
 			remainder = quantity - db_item.stacksize
@@ -62,6 +80,9 @@ func get_item_db(item_uuid: String) -> InventoryItem:
 
 func get_type_db(type_uuid: String) -> InventoryType:
 	return _db.get_type_by_uuid(type_uuid)
+
+func get_inventory_db(inventory_uuid: String) -> InventoryInventory:
+	return _db.get_inventory_by_uuid(inventory_uuid)
 #
 #func remove_item(type_uuid: String, item_uuid: String, quantity: int = 1) -> void:
 #	if item_collected(type_uuid, item_uuid):

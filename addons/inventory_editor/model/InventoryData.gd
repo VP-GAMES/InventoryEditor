@@ -26,8 +26,12 @@ const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")
 signal inventory_added(inventory)
 signal inventory_removed(inventory)
 signal inventory_selection_changed(inventory)
-signal inventory_icon_changed(item)
-signal inventory_scene_changed(item)
+signal inventory_stacks_changed(inventory)
+signal inventory_icon_changed(inventory)
+signal inventory_scene_changed(inventory)
+
+func emit_inventory_stacks_changed(inventory: InventoryInventory) -> void:
+	emit_signal("inventory_stacks_changed", inventory)
 
 func emit_inventory_icon_changed(inventory: InventoryInventory) -> void:
 	emit_signal("inventory_icon_changed", inventory)
@@ -113,6 +117,12 @@ func selected_inventory() -> InventoryInventory:
 func select_inventory(inventory: InventoryInventory) -> void:
 	_inventory_selected = inventory
 	emit_signal("inventory_selection_changed", _inventory_selected)
+
+func get_inventory_by_uuid(uuid: String) -> InventoryItem:
+	for inventory in inventories:
+		if inventory.uuid == uuid:
+			return inventory
+	return null
 
 # ***** TYPE *****
 signal type_added(type)
@@ -202,6 +212,12 @@ func selected_type() -> InventoryType:
 func select_type(type: InventoryType) -> void:
 	_type_selected = type
 	emit_signal("type_selection_changed", _type_selected)
+
+func get_type_by_uuid(uuid: String) -> InventoryItem:
+	for type in types:
+		if type.uuid == uuid:
+			return type
+	return null
 
 # ***** ITEM *****
 signal item_added(item)
@@ -315,12 +331,6 @@ func get_item_by_uuid(uuid: String) -> InventoryItem:
 		for item in type.items:
 			if item.uuid == uuid:
 				return item
-	return null
-
-func get_type_by_uuid(uuid: String) -> InventoryItem:
-	for type in types:
-		if type.uuid == uuid:
-			return type
 	return null
 
 # ***** EDITOR SETTINGS *****

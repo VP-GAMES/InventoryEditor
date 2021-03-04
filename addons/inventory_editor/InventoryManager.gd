@@ -85,18 +85,22 @@ func get_type_db(type_uuid: String) -> InventoryType:
 
 func get_inventory_db(inventory_uuid: String) -> InventoryInventory:
 	return _db.get_inventory_by_uuid(inventory_uuid)
-#
-#func remove_item(type_uuid: String, item_uuid: String, quantity: int = 1) -> void:
-#	if item_collected(type_uuid, item_uuid):
-#		for index in range(_data.items.size()):
-#			var item = _data.items[index]
-#			if item.type_uuid == type_uuid and item.item_uuid == item_uuid:
-#				if item.quantity > quantity:
-#					item.quantity -= quantity
-#				else:
-#					_data.items.remove(index)
-#				save_type()
-#				emit_signal("type_changed", self)
+
+func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> void:
+	if(quantity < 0):
+		printerr("Can't remove negative number of items")
+	if _data.inventories.has(inventory_uuid) and _data.inventories[inventory_uuid].size() > 0:
+		var items = _data.inventories[inventory_uuid]
+		for index in range(items.size()):
+			var item = items[index]
+			if item.item_uuid == item_uuid:
+				if item.quantity > quantity:
+					item.quantity -= quantity
+				else:
+					items.remove(index)
+				save()
+				emit_signal("inventory_changed", inventory_uuid)
+
 #
 #func item_collected(inventory_uuid: String, item_uuid: String) -> bool:
 #	var items = _data.inventories[]

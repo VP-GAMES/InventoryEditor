@@ -58,7 +58,7 @@ func _on_add_pressed() -> void:
 	_manager.add_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text))
 
 func _on_del_pressed() -> void:
-	pass
+	_manager.remove_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text))
 
 func _draw_view() -> void:
 	_update_items_ui()

@@ -36,7 +36,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Count" type="Label" parent="."]
+[node name="Quantity" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -46,7 +46,7 @@ margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 1 )
-text = "100"
+text = "0"
 align = 2
 valign = 2
 __meta__ = {

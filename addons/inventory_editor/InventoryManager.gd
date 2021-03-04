@@ -53,18 +53,20 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> i
 	var db_item = _db.get_item_by_uuid(item_uuid)
 	if _data.inventories.has(inventory_uuid) and _data.inventories[inventory_uuid].size() > 0:
 		var items = _data.inventories[inventory_uuid]
-		print(items)
 		var item
 		for index in range(items.size()):
 			if items[index].item_uuid == item_uuid:
 				item = items[index]
 				break
-		if item.quantity + quantity > db_item.stacksize:
-			remainder = quantity - db_item.stacksize
-		var quantity_calc = min(item.quantity + quantity, db_item.stacksize)
 		if item:
+			if item.quantity + quantity > db_item.stacksize:
+				remainder = item.quantity + quantity - db_item.stacksize
+			var quantity_calc = min(item.quantity + quantity, db_item.stacksize)
 			item.quantity = quantity_calc
 		else:
+			if quantity > db_item.stacksize:
+				remainder = quantity - db_item.stacksize
+			var quantity_calc = min(quantity, db_item.stacksize)
 			items.append({"item_uuid": item_uuid, "quantity": quantity_calc})
 	else:
 		if quantity > db_item.stacksize:

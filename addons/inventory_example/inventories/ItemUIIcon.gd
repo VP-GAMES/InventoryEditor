@@ -1,23 +1,29 @@
 tool
 extends TextureRect
 
-var _item
 
-func set_item(item) -> void:
+var _item
+var _item_db: InventoryItem
+
+func set_item(item, item_db) -> void:
 	_item = item
+	_item_db = item_db
 
 func get_drag_data(position: Vector2):
 	var drag_texture = TextureRect.new()
 	drag_texture.expand = true
 	drag_texture.rect_size = Vector2(100, 100)
-	drag_texture.texture = load("res://addons/inventory_example/textures/weapons/SwordDestroyer.png")
+	drag_texture.texture = texture
 
 	var control = Control.new()
 	control.add_child(drag_texture)
 	drag_texture.rect_position = -0.5 * drag_texture.rect_size
 	set_drag_preview(control)
 	
-	var data = {} 
+	var data = {
+		"item": _item,
+		"item_db": _item_db
+	} 
 	return data
 
 

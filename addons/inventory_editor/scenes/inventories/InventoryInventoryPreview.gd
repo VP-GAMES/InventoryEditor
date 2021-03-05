@@ -22,6 +22,7 @@ func set_data(data: InventoryData) -> void:
 	_inventory = _data.selected_inventory()
 	_init_connections()
 	_draw_view()
+	_check_view()
 
 func _init_manger() -> void:
 	if not _manager:
@@ -35,6 +36,8 @@ func _init_connections() -> void:
 		_dropdown_ui.connect("selection_changed", self, "_on_selection_changed")
 	if not _data.is_connected("item_removed", self, "_on_item_removed"):
 		_data.connect("item_removed", self, "_on_item_removed")
+	if not _quantity_ui.is_connected("text_changed", self, "_on_text_changed"):
+		_quantity_ui.connect("text_changed", self, "_on_text_changed")
 	if not _add_ui.is_connected("pressed", self, "_on_add_pressed"):
 		_add_ui.connect("pressed", self, "_on_add_pressed")
 	if not _del_ui.is_connected("pressed", self, "_on_del_pressed"):
@@ -46,6 +49,9 @@ func _on_item_added(item: InventoryItem) -> void:
 func _on_item_removed(item: InventoryItem) -> void:
 	_update_items_ui()
 
+func _on_text_changed(new_text: String) -> void:
+	_check_view()
+
 func _on_selection_changed(item: Dictionary):
 	_item_selected = item
 	var item_icon
@@ -53,6 +59,7 @@ func _on_selection_changed(item: Dictionary):
 		if _item_selected.icon:
 			item_icon = load(_item_selected.icon)
 			_icon_ui.texture = _data.resize_texture(item_icon, Vector2(16, 16))
+			_check_view()
 
 func _on_add_pressed() -> void:
 	_manager.add_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text))
@@ -84,3 +91,11 @@ func _draw_preview() -> void:
 		if inventory_scene.has_method("set_inventory_manager"):
 			inventory_scene.set_inventory_manager(_inventory.uuid, _manager)
 		_preview_ui.add_child(inventory_scene)
+
+func _check_view() -> void:
+	if _item_selected and int(_quantity_ui.text) > 0:
+		_add_ui.disabled = false
+		_del_ui.disabled = false
+	else:
+		_add_ui.disabled = true
+		_del_ui.disabled = true

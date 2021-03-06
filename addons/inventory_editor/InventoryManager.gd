@@ -51,11 +51,11 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> i
 		printerr("Can't add negative number of items")
 		return remainder
 	var db_item = _db.get_item_by_uuid(item_uuid)
-	if _data.inventories.has(inventory_uuid) and _data.inventories[inventory_uuid].size() > 0:
+	if _data.inventories.has(inventory_uuid):
 		var items = _data.inventories[inventory_uuid]
 		var item
 		for index in range(items.size()):
-			if items[index].item_uuid == item_uuid:
+			if items[index].has("item_uuid") and items[index].item_uuid == item_uuid:
 				item = items[index]
 				break
 		if item:
@@ -67,12 +67,21 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> i
 			if quantity > db_item.stacksize:
 				remainder = quantity - db_item.stacksize
 			var quantity_calc = min(quantity, db_item.stacksize)
-			items.append({"item_uuid": item_uuid, "quantity": quantity_calc})
+			var inventory_db = get_inventory_db(inventory_uuid) as InventoryInventory
+			for index in range(inventory_db.stacks):
+				if not items[index].has("item_uuid"):
+					items[index] = {"item_uuid": item_uuid, "quantity": quantity_calc}
+					break
 	else:
+		var inventory_db = get_inventory_db(inventory_uuid) as InventoryInventory
+		var items = []
+		for index in range(inventory_db.stacks):
+			items.append({})
+		_data.inventories[inventory_uuid] = items
 		if quantity > db_item.stacksize:
 			remainder = quantity - db_item.stacksize
 		var quantity_calc = min(quantity, db_item.stacksize)
-		_data.inventories[inventory_uuid] = [{"item_uuid": item_uuid, "quantity": quantity_calc}]
+		_data.inventories[inventory_uuid][0] = {"item_uuid": item_uuid, "quantity": quantity_calc}
 	save()
 	emit_signal("inventory_changed", inventory_uuid)
 	return remainder
@@ -93,11 +102,11 @@ func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -
 		var items = _data.inventories[inventory_uuid]
 		for index in range(items.size()):
 			var item = items[index]
-			if item.item_uuid == item_uuid:
+			if item.has("item_uuid") and item.item_uuid == item_uuid:
 				if item.quantity > quantity:
 					item.quantity -= quantity
 				else:
-					items.remove(index)
+					items[index] = {}
 				save()
 				emit_signal("inventory_changed", inventory_uuid)
 

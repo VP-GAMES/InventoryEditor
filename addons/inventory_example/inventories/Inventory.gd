@@ -44,6 +44,6 @@ func _draw_view() -> void:
 	var items = _inventoryManager.get_inventory_items(inventory)
 	for index in range(inventory_db.stacks):
 		var item = Item.instance()
-		if items and index < items.size():
+		if items and items[index].has("item_uuid") and index < items.size():
 			item.set_item(items[index], _inventoryManager.get_item_db(items[index].item_uuid))
 		_grid_ui.add_child(item)

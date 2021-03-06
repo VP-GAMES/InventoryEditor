@@ -98,7 +98,7 @@ func get_inventory_db(inventory_uuid: String) -> InventoryInventory:
 func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> void:
 	if(quantity < 0):
 		printerr("Can't remove negative number of items")
-	if _data.inventories.has(inventory_uuid) and _data.inventories[inventory_uuid].size() > 0:
+	if _data.inventories.has(inventory_uuid):
 		var items = _data.inventories[inventory_uuid]
 		for index in range(items.size()):
 			var item = items[index]
@@ -110,37 +110,12 @@ func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -
 				save()
 				emit_signal("inventory_changed", inventory_uuid)
 
-#
-#func item_collected(inventory_uuid: String, item_uuid: String) -> bool:
-#	var items = _data.inventories[]
-#	for item in _data.items:
-#		if item.type_uuid == type_uuid and item.item_uuid == item_uuid:
-#			return true
-#	return false
-#
-#func get_item(item_uuid: String) -> Dictionary:
-#	var item_collected
-#	for item in _data.items:
-#		if item.item_uuid == item_uuid:
-#			item_collected = item
-#			break
-#	return {
-#		type_uuid = item_collected.type_uuid if item_collected else null,
-#		item_uuid = item_uuid,
-#		quantity = item_collected.quantity if item_collected else 0,
-#		item = _db.get_item_by_uuid(item_uuid)
-#	}
-#
-#
-#func get_type_items(type_uuid: String) -> Array:
-#	var items = []
-#	for item in _data.items:
-#		if item.type_uuid == type_uuid:
-#			items.append({
-#				type_uuid = type_uuid,
-#				item_uuid = item.item_uuid,
-#				quantity = item.quantity,
-#				item = _db.get_item_by_uuid(item.item_uuid)
-#			})
-#	return items
-#
+func move_item(inventory_uuid: String, from_index, to_index) -> void:
+	# TODO Add support to move from one inventory to other
+	if _data.inventories.has(inventory_uuid):
+		var items = _data.inventories[inventory_uuid]
+		var from = items[from_index]
+		var to = items[to_index]
+		items[from_index] = to
+		items[to_index] = from
+		emit_signal("inventory_changed", inventory_uuid)

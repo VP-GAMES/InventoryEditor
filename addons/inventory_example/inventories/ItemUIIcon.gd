@@ -38,4 +38,4 @@ func can_drop_data(position: Vector2, data) -> bool:
 
 func drop_data(position: Vector2, data) -> void:
 	if _inventoryManager and data.has("index"):
-		_inventoryManager.move_item(_inventory_uuid, data["index"], _index)
+		_inventoryManager.move_item(_inventory_uuid, data["index"], _inventory_uuid, _index)

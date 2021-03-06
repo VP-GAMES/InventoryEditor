@@ -110,12 +110,43 @@ func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -
 				save()
 				emit_signal("inventory_changed", inventory_uuid)
 
-func move_item(inventory_uuid: String, from_index, to_index) -> void:
-	# TODO Add support to move from one inventory to other
-	if _data.inventories.has(inventory_uuid):
+func move_item(inventory_uuid_from: String, from_index: int, inventory_uuid_to: String, to_index: int) -> void:
+	if _data.inventories.has(inventory_uuid_from) and _data.inventories.has(inventory_uuid_to):
+		if inventory_uuid_from == inventory_uuid_to:
+			_move_in_same_inventory(inventory_uuid_from, from_index, to_index)
+		else:
+			_move_to_other_inventory(inventory_uuid_from, from_index, inventory_uuid_to, to_index)
+
+func _move_in_same_inventory(inventory_uuid: String, from_index: int, to_index: int) -> void:
 		var items = _data.inventories[inventory_uuid]
 		var from = items[from_index]
 		var to = items[to_index]
-		items[from_index] = to
 		items[to_index] = from
+		items[from_index] = to
 		emit_signal("inventory_changed", inventory_uuid)
+
+func _move_to_other_inventory(inventory_uuid_from: String, from_index: int, inventory_uuid_to: String, to_index: int) -> void:
+	var items_from = _data.inventories[inventory_uuid_from]
+	var items_to = _data.inventories[inventory_uuid_to]
+	var item_from = items_from[from_index]
+	var item_to = items_to[to_index]
+		
+	if items_to[to_index].has("item_uuid"):
+		var has_place = false
+		var index = 0
+		for item in items_to:
+			if not item.has("item_uuid"):
+				has_place = true
+				break
+			index += 1
+		if has_place:
+			items_to[index] = items_to[to_index]
+			items_to[to_index] = item_from
+			items_from[from_index] = {}
+			emit_signal("inventory_changed", inventory_uuid_from)
+			emit_signal("inventory_changed", inventory_uuid_to)
+	else:
+		items_to[to_index] = item_from
+		items_from[from_index] = {}
+		emit_signal("inventory_changed", inventory_uuid_from)
+		emit_signal("inventory_changed", inventory_uuid_to)

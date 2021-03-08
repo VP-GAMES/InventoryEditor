@@ -79,7 +79,7 @@ InventoryManager="*res://addons/inventory_editor/InventoryManager.gd"
 [dialogue_editor]
 
 inventories_split_offset=183
-items_split_offset=213
+items_split_offset=274
 
 [editor_plugins]
 

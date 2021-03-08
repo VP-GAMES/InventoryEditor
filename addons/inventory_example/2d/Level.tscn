@@ -1,18 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/inventory_editor/InventoryItem2D.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_example/textures/weapons/Weapons.png" type="Texture" id=2]
+[ext_resource path="res://addons/inventory_example/2d/items/ManaNormal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/inventory_example/textures/potions/ManaNormal.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Weapons" type="Sprite" parent="."]
+position = Vector2( 120, 79.75 )
+texture = ExtResource( 2 )
+
 [node name="Item2D" type="Area2D" parent="."]
-position = Vector2( 269.899, 158.637 )
+position = Vector2( 208.339, 108.663 )
 script = ExtResource( 1 )
 item_put = "af0ab25b-4add-4834-ad96-555efd2e629d"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item2D"]
 shape = SubResource( 1 )
+
+[node name="InventoryItemTexture_af0ab25b-4add-4834-ad96-555efd2e629d" type="Sprite" parent="Item2D" instance=ExtResource( 3 )]
+texture = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

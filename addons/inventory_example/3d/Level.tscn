@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/inventory_editor/InventoryItem3D.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_example/3d/items/ManaBig.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 1.07287
+height = 0.449216
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Item3D" type="Area" parent="."]
+script = ExtResource( 1 )
+item_put = "5e7ebf21-abad-4c18-bce7-915ae9e57a31"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="CollisionShape" type="CollisionShape" parent="Item3D"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 1.20203, 0 )
+shape = SubResource( 1 )
+
+[node name="InventoryItemTexture_5e7ebf21-abad-4c18-bce7-915ae9e57a31" type="Spatial" parent="Item3D" instance=ExtResource( 2 )]

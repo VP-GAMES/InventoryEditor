@@ -20,14 +20,6 @@ func _ready() -> void:
 	if not is_connected("body_exited", self, "_on_body_exited"):
 		assert(connect("body_exited", self, "_on_body_exited") == OK)
 
-"""
-func check_item_put_on_ready() -> void:
-	for child in get_children():
-		if child.has_meta("item_uuid"):
-			if child.get_meta("item_uuid") == item_put:
-				item_db_uuid = item_put
-"""
-
 func _on_body_entered(body: Node) -> void:
 	inside = true
 	_inventoryManager.add_item(to_inventory, item_put, quantity)

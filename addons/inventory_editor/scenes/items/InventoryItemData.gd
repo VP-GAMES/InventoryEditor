@@ -73,6 +73,15 @@ func _on_stacksize_text_changed(new_text: String) -> void:
 
 func _on_open_pressed() -> void:
 	if _item and _item.scene:
+		var scene = load(_item.scene).instance()
+		if scene:
+			var mainscreen
+			if scene.is_class("Spatial"):
+				mainscreen = "3D"
+			elif scene.is_class("Control") or scene.is_class("Node2D"):
+				mainscreen = "2D"
+			if mainscreen: 
+				_data.editor().get_editor_interface().set_main_screen_editor(mainscreen)
 		_data.editor().get_editor_interface().open_scene_from_path(_item.scene)
 
 func _on_add_pressed() -> void:

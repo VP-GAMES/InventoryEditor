@@ -17,5 +17,6 @@ to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 shape = SubResource( 1 )
 
 [node name="InventoryItemTexture_a9f24ca6-b213-4f07-a690-2185ffd6ec1d" parent="Item2D" instance=ExtResource( 2 )]
+position = Vector2( 0.629944, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

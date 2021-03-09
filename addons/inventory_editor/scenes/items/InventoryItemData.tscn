@@ -211,9 +211,3 @@ margin_right = 400.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="MarginPreview/VBox/VBoxPreview"]
-margin_right = 400.0
-margin_bottom = 14.0
-text = "Preview"
-align = 1

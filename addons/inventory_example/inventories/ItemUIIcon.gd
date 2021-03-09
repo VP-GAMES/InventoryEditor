@@ -39,3 +39,31 @@ func can_drop_data(position: Vector2, data) -> bool:
 func drop_data(position: Vector2, data) -> void:
 	if _inventoryManager and data.has("index"):
 		_inventoryManager.move_item(_inventory_uuid, data["index"], _inventory_uuid, _index)
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT and event.pressed:
+			if _item_db and _item_db.properties and _item_db.properties.size() > 0:
+				_create_properties_popup()
+
+func _create_properties_popup() -> void:
+	var popup = $Popup
+	for property in _item_db.properties:
+		popup.add_child(_create_properties_hbox(property))
+	var transform =  get_global_transform_with_canvas()
+	popup.popup(Rect2(transform.origin.x + rect_size.x + margin_left + margin_right, transform.origin.y, 100, 100))
+	popup.set_as_minsize()
+
+
+func _create_properties_hbox(property:Dictionary) -> HBoxContainer:
+	var hBox = HBoxContainer.new()
+	hBox.anchor_right = 1
+	var labelName = Label.new()
+	labelName.set_h_size_flags(SIZE_EXPAND_FILL)
+	labelName.text = property.name
+	var labelValue = Label.new()
+	labelValue.set_h_size_flags(SIZE_EXPAND_FILL)
+	labelValue.text = property.value
+	hBox.add_child(labelName)
+	hBox.add_child(labelValue)
+	return hBox

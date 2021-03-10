@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://addons/inventory_example/textures/potions/HealthBig.png" type="Texture" id=1]
-
-[node name="HealthBig" type="Sprite"]
-texture = ExtResource( 1 )

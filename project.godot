@@ -44,12 +44,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/inventory_editor/model/InventoryType.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "Item2D",
 "language": "GDScript",
 "path": "res://addons/inventory_editor/InventoryItem2D.gd"
 }, {
-"base": "Area",
+"base": "Node",
 "class": "Item3D",
 "language": "GDScript",
 "path": "res://addons/inventory_editor/InventoryItem3D.gd"

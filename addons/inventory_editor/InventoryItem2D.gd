@@ -1,7 +1,7 @@
 # Item2D as custom type for InventoryEditor : MIT License
 # @author Vladimir Petrenko
 tool
-extends Area2D
+extends Node2D
 class_name Item2D
 
 var inside 
@@ -15,21 +15,10 @@ export(int) var quantity = 1
 func _ready() -> void:
 	if get_tree().get_root().has_node(InventoryManagerName):
 		_inventoryManager = get_tree().get_root().get_node(InventoryManagerName)
-	if not is_connected("body_entered", self, "_on_body_entered"):
-		assert(connect("body_entered", self, "_on_body_entered") == OK)
-	if not is_connected("body_exited", self, "_on_body_exited"):
-		assert(connect("body_exited", self, "_on_body_exited") == OK)
-
-func _on_body_entered(body: Node) -> void:
-	inside = true
-	_inventoryManager.add_item(to_inventory, item_put, quantity)
-
-func _on_body_exited(body: Node) -> void:
-	inside = false
 
 func _process(delta: float) -> void:
 	if Engine.editor_hint and item_put and not item_put.empty():
-		if not has_node("InventoryItemTexture_" + item_put):
+		if not has_node("InventoryItem_" + item_put):
 			_remove_old_childs()
 			if not get_tree().edited_scene_root.has_node(InventoryManagerName):
 				var root = get_tree().edited_scene_root
@@ -41,7 +30,14 @@ func _process(delta: float) -> void:
 				var item_db = manager.get_item_db(item_put)
 				if item_db and not item_db.scene.empty():
 					var scene = load(item_db.scene).instance()
-					scene.name = "InventoryItemTexture_" + item_db.uuid
+					scene.name = "InventoryItem_" + item_db.uuid
+					for child in scene.get_children():
+						if child is Area2D:
+							if not child.is_connected("body_entered", self, "_on_body_entered"):
+								assert(child.connect("body_entered", self, "_on_body_entered") == OK)
+							if not child.is_connected("body_exited", self, "_on_body_exited"):
+								assert(child.connect("body_exited", self, "_on_body_exited") == OK)
+							break
 					if scene:
 						add_child(scene)
 						scene.set_owner(get_tree().edited_scene_root)
@@ -50,6 +46,14 @@ func _process(delta: float) -> void:
 
 func _remove_old_childs() -> void:
 	for child in get_children():
-		if child.name.begins_with("InventoryItemTexture_"):
+		if child.name.begins_with("InventoryItem_"):
 			remove_child(child)
 			child.queue_free()
+
+
+func _on_body_entered(body: Node) -> void:
+	inside = true
+	_inventoryManager.add_item(to_inventory, item_put, quantity)
+
+func _on_body_exited(body: Node) -> void:
+	inside = false

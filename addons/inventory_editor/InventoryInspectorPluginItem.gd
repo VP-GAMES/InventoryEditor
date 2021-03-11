@@ -20,7 +20,7 @@ func parse_property(object, type, path, hint, hint_text, usage):
 				return true
 			"item_put":
 				var inspectorEditorItem = InventoryInspectorEditorItem.new()
-				inspectorEditorItem.set_data(_data)
+				inspectorEditorItem.set_data(_data, object)
 				add_property_editor(path, inspectorEditorItem)
 				return true
 	return false

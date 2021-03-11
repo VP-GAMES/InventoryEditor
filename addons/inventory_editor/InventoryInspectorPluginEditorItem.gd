@@ -11,10 +11,22 @@ var textureRect = TextureRect.new()
 var dropdown = Dropdown.instance()
 var _data: InventoryData
 var _items: Array
+var _object
 
-func set_data(data: InventoryData) -> void:
+func set_data(data: InventoryData, object) -> void:
 	_data = data
-	_items = _data.all_items()
+	_object = object
+	_update_items()
+
+func _update_items() -> void:
+	_items = []
+	for item in _data.all_items():
+		if item and item.scene:
+			var scene = load(item.scene).instance()
+			if _object is Item2D and scene is Node2D:
+				_items.append(item)
+			if _object is Item3D and scene is Area:
+				_items.append(item)
 	
 func _init():
 	textureRect.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
@@ -26,6 +38,7 @@ func _init():
 	dropdown.connect("selection_changed", self, "_on_selection_changed")
 
 func _on_gui_input(event: InputEvent) -> void:
+	_update_items()
 	dropdown.clear()
 	for item in _items:
 		var item_d = {"text": item.name, "value": item.uuid, "icon": item.icon }

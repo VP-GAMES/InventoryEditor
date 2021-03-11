@@ -26,6 +26,7 @@ func _init():
 	dropdown.connect("selection_changed", self, "_on_selection_changed")
 
 func _on_gui_input(event: InputEvent) -> void:
+	_items = _data.inventories
 	dropdown.clear()
 	for item in _items:
 		var item_d = {"text": item.name, "value": item.uuid, "icon": item.icon }

@@ -11,5 +11,6 @@
 script = ExtResource( 1 )
 item_put = "cf240703-26ac-4a2a-88a7-1441ff6c6a0c"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
 
-[node name="InventoryItem_cf240703-26ac-4a2a-88a7-1441ff6c6a0c" type="Node2D" parent="Item2D" instance=ExtResource( 2 )]
+[node name="InventoryItem_cf240703-26ac-4a2a-88a7-1441ff6c6a0c" parent="Item2D" instance=ExtResource( 2 )]

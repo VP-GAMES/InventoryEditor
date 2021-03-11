@@ -1,17 +1,17 @@
 tool
 extends Control
 
+export(String) var inventory_uuid # inventory_uuid
+
 var _inventoryManager
 const InventoryManagerName = "InventoryManager"
-
-export(String) var inventory # inventory_uuid
 
 onready var _grid_ui = $NinePatchRect/Margin/Grid as GridContainer
 
 const Item = preload("res://addons/inventory_example/inventories/ItemUI.tscn")
 
-func set_inventory_manager(inventory_uuid, manager) -> void:
-	inventory = inventory_uuid
+func set_inventory_manager(inv_uuid, manager) -> void:
+	inventory_uuid = inv_uuid
 	_inventoryManager = manager
 
 func _ready() -> void:
@@ -25,8 +25,8 @@ func _init_connections() -> void:
 		if not _inventoryManager.is_connected("inventory_changed", self, "_on_inventory_changed"):
 			_inventoryManager.connect("inventory_changed", self, "_on_inventory_changed")
 
-func _on_inventory_changed(inventory_uuid: String) -> void:
-	if inventory == inventory_uuid:
+func _on_inventory_changed(inv_uuid: String) -> void:
+	if inventory_uuid == inv_uuid:
 		_update_view()
 
 func _update_view() -> void:
@@ -40,14 +40,15 @@ func _clear_view() -> void:
 		child.queue_free()
 
 func _draw_view() -> void:
-	var inventory_db = _inventoryManager.get_inventory_db(inventory) as InventoryInventory
-	var items = _inventoryManager.get_inventory_items(inventory)
-	for index in range(inventory_db.stacks):
-		var item_ui = Item.instance()
-		var item
-		var item_db
-		if items and items[index].has("item_uuid"):
-			item = items[index]
-			item_db = _inventoryManager.get_item_db(items[index].item_uuid)
-		item_ui.set_data(_inventoryManager, inventory,  index, item, item_db)
-		_grid_ui.add_child(item_ui)
+	var inventory_db = _inventoryManager.get_inventory_db(inventory_uuid) as InventoryInventory
+	if inventory_db:
+		var items = _inventoryManager.get_inventory_items(inventory_uuid)
+		for index in range(inventory_db.stacks):
+			var item_ui = Item.instance()
+			var item
+			var item_db
+			if items and items[index].has("item_uuid"):
+				item = items[index]
+				item_db = _inventoryManager.get_item_db(items[index].item_uuid)
+			item_ui.set_data(_inventoryManager, inventory_uuid,  index, item, item_db)
+			_grid_ui.add_child(item_ui)

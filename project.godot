@@ -44,12 +44,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/inventory_editor/model/InventoryType.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "Item2D",
 "language": "GDScript",
 "path": "res://addons/inventory_editor/InventoryItem2D.gd"
 }, {
-"base": "Node",
+"base": "Spatial",
 "class": "Item3D",
 "language": "GDScript",
 "path": "res://addons/inventory_editor/InventoryItem3D.gd"
@@ -69,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="InventoryEditor"
-run/main_scene="res://addons/inventory_example/2d/Level.tscn"
+run/main_scene="res://addons/inventory_example/2d/Level1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -80,6 +80,11 @@ InventoryManager="*res://addons/inventory_editor/InventoryManager.gd"
 
 inventories_split_offset=183
 items_split_offset=274
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 

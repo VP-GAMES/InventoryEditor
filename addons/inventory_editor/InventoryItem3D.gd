@@ -1,7 +1,7 @@
 # Item3D as custom type for InventoryEditor : MIT License
 # @author Vladimir Petrenko
 tool
-extends Node
+extends Spatial
 class_name Item3D
 
 var inside 

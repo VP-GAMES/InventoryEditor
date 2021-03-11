@@ -1,7 +1,7 @@
 # Item2D as custom type for InventoryEditor : MIT License
 # @author Vladimir Petrenko
 tool
-extends Node
+extends Node2D
 class_name Item2D
 
 var inside 

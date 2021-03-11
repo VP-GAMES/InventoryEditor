@@ -5,19 +5,20 @@
 [ext_resource path="res://addons/inventory_example/inventories/ItemUI.gd" type="Script" id=3]
 [ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.396078, 0.180392, 0.0901961, 1 )
 
-[sub_resource type="DynamicFont" id=1]
-size = 20
+[sub_resource type="DynamicFont" id=2]
+size = 15
 font_data = ExtResource( 4 )
 
 [node name="ItemBg" type="TextureRect"]
-margin_right = 119.0
-margin_bottom = 478.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
+expand = true
 stretch_mode = 1
 script = ExtResource( 3 )
 __meta__ = {
@@ -27,12 +28,9 @@ __meta__ = {
 [node name="Icon" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+expand = true
 stretch_mode = 1
 script = ExtResource( 2 )
 __meta__ = {
@@ -46,19 +44,20 @@ margin_bottom = 40.0
 [node name="Panel" type="Panel" parent="Icon/Popup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="Quantity" type="Label" parent="."]
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -35.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = -105.0
+margin_top = -25.0
+margin_right = -5.5199
+margin_bottom = -5.0
 size_flags_horizontal = 3
-size_flags_vertical = 7
-custom_fonts/font = SubResource( 1 )
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 2
 valign = 2

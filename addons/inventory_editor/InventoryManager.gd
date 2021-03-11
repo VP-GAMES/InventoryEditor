@@ -9,7 +9,7 @@ signal inventory_changed(inventory_uuid)
 
 var _db = InventoryData.new()
 
-var _path_to_type = "user://type.tres"
+var _path_to_type = "user://inventory.tres"
 var _data = InventoryInventories.new()
 
 func ready(db: InventoryData) -> void:

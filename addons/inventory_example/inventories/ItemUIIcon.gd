@@ -17,7 +17,7 @@ func set_data(inventoryManager, inventory_uuid, index, item, item_db) -> void:
 func get_drag_data(position: Vector2):
 	var drag_texture = TextureRect.new()
 	drag_texture.expand = true
-	drag_texture.rect_size = Vector2(100, 100)
+	drag_texture.rect_size = Vector2(rect_size)
 	drag_texture.texture = texture
 
 	var control = Control.new()

@@ -13,6 +13,7 @@ func _ready() -> void:
 		_inventory_button_ui.connect("pressed", self, "_on_inventory_button_pressed")
 
 func _on_inventory_button_pressed() -> void:
+	print("GOGO")
 	if _inventory.visible:
 		_inventory.hide()
 	else:

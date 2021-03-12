@@ -17,6 +17,10 @@ onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
 onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
 onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
 onready var _icon_preview_ui = $MarginPreview/VBox/VBoxIcon/Texture as TextureRect
+onready var _item2D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D
+onready var _item2D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D/Viewport/Viewport2D
+onready var _item3D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D
+onready var _item3D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport/Viewport3D
 
 const InventoryItemDataProperty = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn")
 
@@ -95,6 +99,7 @@ func _draw_view() -> void:
 		_draw_view_stacksize_ui()
 		_draw_view_properties_ui()
 		_draw_view_icon_preview_ui()
+		_update_previews()
 
 func check_view_visibility() -> void:
 	if _item:
@@ -137,3 +142,22 @@ func _draw_view_icon_preview_ui() -> void:
 		t = load(_item.icon)
 		t = _data.resize_texture(t, Vector2(100, 100))
 	_icon_preview_ui.texture = t
+
+func _update_previews() -> void:
+	if _item and _item.scene:
+		_item2D_preview_ui.hide()
+		_item3D_preview_ui.hide()
+		var scene = load(_item.scene).instance()
+		if scene is Node2D:
+			_item2D_preview_ui.show()
+		if scene is Area:
+			_item3D_preview_ui.show()
+			_update_preview3D()
+
+func _update_preview3D() -> void:
+	for child in _item3D_viewport_ui.get_children():
+		_item3D_viewport_ui.remove_child(child)
+		child.queue_free()
+		if _item and _item.scene:
+			var scene = load(_item.scene).instance()
+			_item3D_viewport_ui.add_child(scene)

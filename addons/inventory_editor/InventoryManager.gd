@@ -45,6 +45,14 @@ func get_inventory_items(inventory_uuid: String) -> Array:
 		items = _data.inventories[inventory_uuid]
 	return items
 
+func clear_inventory(inventory_uuid: String) -> void:
+	var items
+	if _data.inventories.has(inventory_uuid):
+		items = _data.inventories[inventory_uuid]
+		for index in range(items.size()):
+			items[index] = {}
+		emit_signal("inventory_changed", inventory_uuid)
+
 func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> int:
 	var remainder = 0 
 	if(quantity < 0):

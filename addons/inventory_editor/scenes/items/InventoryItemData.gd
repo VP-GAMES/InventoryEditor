@@ -17,10 +17,11 @@ onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
 onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
 onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
 onready var _icon_preview_ui = $MarginPreview/VBox/VBoxIcon/Texture as TextureRect
-onready var _item2D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D
-onready var _item2D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D/Viewport/Viewport2D
-onready var _item3D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D
-onready var _item3D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport/Viewport3D
+onready var _item_preview_ui = $MarginPreview/VBox/VBoxPreview as VBoxContainer
+onready var _item2D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D as ViewportContainer
+onready var _item2D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D/Viewport/Viewport2D as Node
+onready var _item3D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D as ViewportContainer
+onready var _item3D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport/Viewport3D as Node
 
 const InventoryItemDataProperty = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn")
 
@@ -42,6 +43,8 @@ func _init_connections() -> void:
 		assert(_open_ui.connect("pressed", self, "_on_open_pressed") == OK)
 	if not _add_ui.is_connected("pressed", self, "_on_add_pressed"):
 		assert(_add_ui.connect("pressed", self, "_on_add_pressed") == OK)
+	if not _item_preview_ui.is_connected("resized", self, "_on_item_preview_ui_resized"):
+		assert(_item_preview_ui.connect("resized", self, "_on_item_preview_ui_resized") == OK)
 
 func _on_type_selection_changed(type: InventoryType) -> void:
 	_update_selection_view()
@@ -53,6 +56,9 @@ func _update_selection_view() -> void:
 	_item = _data.selected_item()
 	_init_connections_item()
 	_draw_view()
+
+func _on_item_preview_ui_resized() -> void:
+	_update_previews()
 
 func _init_connections_item() -> void:
 	if _item:
@@ -150,9 +156,19 @@ func _update_previews() -> void:
 		var scene = load(_item.scene).instance()
 		if scene is Node2D:
 			_item2D_preview_ui.show()
+			_update_preview2D()
 		if scene is Area:
 			_item3D_preview_ui.show()
 			_update_preview3D()
+
+func _update_preview2D() -> void:
+	for child in _item2D_viewport_ui.get_children():
+		_item2D_viewport_ui.remove_child(child)
+		child.queue_free()
+		if _item and _item.scene:
+			var scene = load(_item.scene).instance()
+			scene.position = Vector2(_item_preview_ui.rect_size.x / 2, _item_preview_ui.rect_size.y / 2)
+			_item2D_viewport_ui.add_child(scene)
 
 func _update_preview3D() -> void:
 	for child in _item3D_viewport_ui.get_children():

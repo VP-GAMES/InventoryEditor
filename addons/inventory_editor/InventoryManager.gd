@@ -8,6 +8,7 @@ extends Node
 signal inventory_changed(inventory_uuid)
 
 var _db = InventoryData.new()
+var player
 
 var _path_to_type = "user://inventory.tres"
 var _data = InventoryInventories.new()

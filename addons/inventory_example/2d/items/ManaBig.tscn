@@ -7,12 +7,12 @@ radius = 35.5069
 
 [node name="ManaBig" type="Node2D"]
 
-[node name="ManaBig" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -5.15906, 13.8898 )
 rotation = 0.507891
 shape = SubResource( 1 )
+
+[node name="ManaBig" type="Sprite" parent="."]
+texture = ExtResource( 1 )

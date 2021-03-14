@@ -23,6 +23,8 @@ func _ready() -> void:
 			assert(area.connect("body_exited", self, "_on_body_exited") == OK)
 
 func _on_body_entered(body: Node) -> void:
+	if _inventoryManager.player != body:
+		return
 	inside = true
 	var remainder = _inventoryManager.add_item(to_inventory, item_put, quantity)
 	if remove_collected and remainder == 0:

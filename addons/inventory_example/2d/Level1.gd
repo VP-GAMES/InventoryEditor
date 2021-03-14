@@ -12,6 +12,7 @@ func _ready() -> void:
 	if get_tree().get_root().has_node("InventoryManager"):
 		_error_ui.queue_free()
 		inventoryManager = get_tree().get_root().get_node("InventoryManager")
+		inventoryManager.player = $Player
 		if clear_inventory:
 			inventoryManager.clear_inventory(_inventory.inventory_uuid)
 		_inventory_button_ui.connect("pressed", self, "_on_inventory_button_pressed")

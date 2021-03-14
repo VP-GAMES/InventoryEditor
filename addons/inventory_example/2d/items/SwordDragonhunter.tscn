@@ -7,11 +7,11 @@ extents = Vector2( 11.9156, 63.6396 )
 
 [node name="SwordDragonhunter" type="Node2D"]
 
-[node name="SwordDragonhunter" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 0.785398
 shape = SubResource( 1 )
+
+[node name="SwordDragonhunter" type="Sprite" parent="."]
+texture = ExtResource( 1 )

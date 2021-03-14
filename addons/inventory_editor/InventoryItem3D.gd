@@ -50,9 +50,8 @@ func _remove_old_childs() -> void:
 			child.queue_free()
 
 func _on_body_entered(body: Node) -> void:
-	for child in get_children():
-		if body == child:
-			return 
+	if _inventoryManager.player != body:
+		return
 	inside = true
 	var remainder = _inventoryManager.add_item(to_inventory, item_put, quantity)
 	if remove_collected and remainder == 0:

@@ -1,3 +1,5 @@
+# 2D Level player to demonstrate functionality of InventoryEditor : MIT License
+# @author Vladimir Petrenko
 extends KinematicBody2D
 
 const FLOOR_NORMAL: = Vector2.UP

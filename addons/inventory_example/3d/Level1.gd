@@ -1,3 +1,5 @@
+# 3D Level to demonstrate functionality of InventoryEditor : MIT License
+# @author Vladimir Petrenko
 extends Spatial
 
 var inventoryManager

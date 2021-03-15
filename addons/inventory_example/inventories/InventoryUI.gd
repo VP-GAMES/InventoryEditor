@@ -1,3 +1,5 @@
+# Example implementation for inventory to demonstrate functionality of InventoryEditor : MIT License
+# @author Vladimir Petrenko
 tool
 extends Control
 

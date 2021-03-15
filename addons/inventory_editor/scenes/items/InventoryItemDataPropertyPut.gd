@@ -1,3 +1,5 @@
+# Item put texture for InventoryEditor : MIT License
+# @author Vladimir Petrenko
 tool
 extends TextureRect
 

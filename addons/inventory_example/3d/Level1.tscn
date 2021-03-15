@@ -117,30 +117,38 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 15 )
 script = ExtResource( 6 )
 item_put = "5a340c0a-19f0-4827-ad81-d0cfbab5c575"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
 
-[node name="InventoryItem_5a340c0a-19f0-4827-ad81-d0cfbab5c575" type="Area" parent="Items/Item3D" instance=ExtResource( 8 )]
+[node name="InventoryItem_5a340c0a-19f0-4827-ad81-d0cfbab5c575" parent="Items/Item3D" instance=ExtResource( 8 )]
 
 [node name="Item3D7" type="Spatial" parent="Items"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0 )
 script = ExtResource( 6 )
 item_put = "5e7ebf21-abad-4c18-bce7-915ae9e57a31"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
 
-[node name="InventoryItem_5e7ebf21-abad-4c18-bce7-915ae9e57a31" type="Area" parent="Items/Item3D7" instance=ExtResource( 12 )]
+[node name="InventoryItem_5e7ebf21-abad-4c18-bce7-915ae9e57a31" parent="Items/Item3D7" instance=ExtResource( 12 )]
 
 [node name="Item3D2" type="Spatial" parent="Items"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -15 )
 script = ExtResource( 6 )
 item_put = "5a340c0a-19f0-4827-ad81-d0cfbab5c575"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
 
-[node name="InventoryItem_5a340c0a-19f0-4827-ad81-d0cfbab5c575" type="Area" parent="Items/Item3D2" instance=ExtResource( 8 )]
+[node name="InventoryItem_5a340c0a-19f0-4827-ad81-d0cfbab5c575" parent="Items/Item3D2" instance=ExtResource( 8 )]
 
 [node name="Item3D3" type="Spatial" parent="Items"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -15 )
 script = ExtResource( 6 )
 item_put = "84993f8a-a25d-48f2-8a90-975f79f8995d"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
 
 [node name="InventoryItem_84993f8a-a25d-48f2-8a90-975f79f8995d" parent="Items/Item3D3" instance=ExtResource( 7 )]
 
@@ -149,6 +157,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 15 )
 script = ExtResource( 6 )
 item_put = "84993f8a-a25d-48f2-8a90-975f79f8995d"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
 
 [node name="InventoryItem_84993f8a-a25d-48f2-8a90-975f79f8995d" parent="Items/Item3D4" instance=ExtResource( 7 )]
 
@@ -157,21 +167,27 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0 )
 script = ExtResource( 6 )
 item_put = "f2d2172d-9c78-4b5a-bd50-710cb914e578"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
 
-[node name="InventoryItem_f2d2172d-9c78-4b5a-bd50-710cb914e578" type="Area" parent="Items/Item3D8" instance=ExtResource( 11 )]
+[node name="InventoryItem_f2d2172d-9c78-4b5a-bd50-710cb914e578" parent="Items/Item3D8" instance=ExtResource( 11 )]
 
 [node name="Item3D5" type="Spatial" parent="Items"]
 transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 3.5, 25 )
 script = ExtResource( 6 )
 item_put = "52d0a7fa-b133-45f1-9b75-b9818c8599d2"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
 
-[node name="InventoryItem_52d0a7fa-b133-45f1-9b75-b9818c8599d2" type="Area" parent="Items/Item3D5" instance=ExtResource( 9 )]
+[node name="InventoryItem_52d0a7fa-b133-45f1-9b75-b9818c8599d2" parent="Items/Item3D5" instance=ExtResource( 9 )]
 
 [node name="Item3D6" type="Spatial" parent="Items"]
 transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 3.5, -25 )
 script = ExtResource( 6 )
 item_put = "38a142cc-57cb-4f07-8e61-3b7c6601f3b8"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
 
-[node name="InventoryItem_38a142cc-57cb-4f07-8e61-3b7c6601f3b8" type="Area" parent="Items/Item3D6" instance=ExtResource( 10 )]
+[node name="InventoryItem_38a142cc-57cb-4f07-8e61-3b7c6601f3b8" parent="Items/Item3D6" instance=ExtResource( 10 )]

@@ -1,3 +1,5 @@
+# 2D Level to demonstrate functionality of InventoryEditor : MIT License
+# @author Vladimir Petrenko
 extends Node2D
 
 var inventoryManager

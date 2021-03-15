@@ -1,4 +1,4 @@
-# Inventories view for InventoryEditor : MIT License
+# Inventories editor view for InventoryEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends VBoxContainer

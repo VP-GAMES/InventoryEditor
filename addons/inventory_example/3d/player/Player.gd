@@ -1,3 +1,5 @@
+# 3D Level player to demonstrate functionality of InventoryEditor : MIT License
+# @author Vladimir Petrenko
 extends KinematicBody
 
 export var speed : float = 30

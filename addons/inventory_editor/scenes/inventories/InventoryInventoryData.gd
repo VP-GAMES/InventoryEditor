@@ -1,4 +1,4 @@
-# Inventory inventory data UI for InventoryEditor : MIT License
+# Inventory data UI for InventoryEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends HBoxContainer

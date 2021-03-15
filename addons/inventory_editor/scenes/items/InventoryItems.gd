@@ -1,4 +1,4 @@
-# Dialogue inventories UI for InventoryEditor : MIT License
+# Items UI for InventoryEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends Panel

@@ -1,4 +1,4 @@
-# Inventory data for DialogueEditor : MIT License
+# Inventory data for InventoryEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends Resource
@@ -338,11 +338,11 @@ const BACKGROUND_COLOR_SELECTED = Color("#868991")
 
 const PATH_TO_SAVE = "res://addons/inventory_editor/InventorySave.res"
 const AUTHOR = "# @author Vladimir Petrenko\n"
-const SETTINGS_INVENTORIES_SPLIT_OFFSET = "dialogue_editor/inventories_split_offset"
+const SETTINGS_INVENTORIES_SPLIT_OFFSET = "inventory_editor/inventories_split_offset"
 const SETTINGS_INVENTORIES_SPLIT_OFFSET_DEFAULT = 215
-const SETTINGS_TYPES_SPLIT_OFFSET = "dialogue_editor/types_split_offset"
+const SETTINGS_TYPES_SPLIT_OFFSET = "inventory_editor/types_split_offset"
 const SETTINGS_TYPES_SPLIT_OFFSET_DEFAULT = 215
-const SETTINGS_ITEMS_SPLIT_OFFSET = "dialogue_editor/items_split_offset"
+const SETTINGS_ITEMS_SPLIT_OFFSET = "inventory_editor/items_split_offset"
 const SETTINGS_ITEMS_SPLIT_OFFSET_DEFAULT = 215
 const SUPPORTED_IMAGE_RESOURCES = ["bmp", "jpg", "jpeg", "png", "svg", "svgz", "tres"]
 

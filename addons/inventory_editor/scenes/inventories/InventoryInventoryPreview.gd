@@ -32,6 +32,8 @@ func _init_manger() -> void:
 		_manager.ready(_data)
 
 func _init_connections() -> void:
+	if not _data.is_connected("inventory_selection_changed", self, "_on_inventory_selection_changed"):
+		assert(_data.connect("inventory_selection_changed", self, "_on_inventory_selection_changed") == OK)
 	if not _data.is_connected("item_added", self, "_on_item_added"):
 		_data.connect("item_added", self, "_on_item_added")
 	if not _dropdown_ui.is_connected("selection_changed", self, "_on_selection_changed"):
@@ -44,6 +46,10 @@ func _init_connections() -> void:
 		_add_ui.connect("pressed", self, "_on_add_pressed")
 	if not _del_ui.is_connected("pressed", self, "_on_del_pressed"):
 		_del_ui.connect("pressed", self, "_on_del_pressed")
+
+func _on_inventory_selection_changed(inventory: InventoryInventory) -> void:
+	_inventory = _data.selected_inventory()
+	_draw_view()
 
 func _on_item_added(item: InventoryItem) -> void:
 	_update_items_ui()

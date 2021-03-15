@@ -60,6 +60,9 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> i
 		printerr("Can't add negative number of items")
 		return remainder
 	var db_item = _db.get_item_by_uuid(item_uuid)
+	if not db_item:
+		printerr("Can't find item in itemlist")
+		return remainder
 	if _data.inventories.has(inventory_uuid):
 		var items = _data.inventories[inventory_uuid]
 		var item

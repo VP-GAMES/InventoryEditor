@@ -40,11 +40,19 @@ func save() -> void:
 	if state != OK:
 		printerr("Can't save inventories data")
 
+func get_inventory_by_name_items(inventory_name: String) -> Array:
+	var inventory = _db.get_inventory_by_name(inventory_name)
+	return get_inventory_items(inventory.uuid)
+
 func get_inventory_items(inventory_uuid: String) -> Array:
 	var items
 	if _data.inventories.has(inventory_uuid):
 		items = _data.inventories[inventory_uuid]
 	return items
+
+func clear_inventory_by_name(inventory_name: String) -> void:
+	var inventory = _db.get_inventory_by_name(inventory_name)
+	clear_inventory(inventory.uuid)
 
 func clear_inventory(inventory_uuid: String) -> void:
 	var items
@@ -53,6 +61,11 @@ func clear_inventory(inventory_uuid: String) -> void:
 		for index in range(items.size()):
 			items[index] = {}
 		emit_signal("inventory_changed", inventory_uuid)
+
+func add_item_by_name(inventory_name: String, item_name: String, quantity: int = 1) -> int:
+	var inventory = _db.get_inventory_by_name(inventory_name)
+	var item = _db.get_inventory_by_name(item_name)
+	return add_item(inventory.uuid, item.uuid, quantity)
 
 func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> int:
 	var remainder = 0 
@@ -107,6 +120,11 @@ func get_type_db(type_uuid: String) -> InventoryType:
 func get_inventory_db(inventory_uuid: String) -> InventoryInventory:
 	return _db.get_inventory_by_uuid(inventory_uuid)
 
+func remove_item_by_name(inventory_name: String, item_name: String, quantity: int = 1) -> void:
+	var inventory = _db.get_inventory_by_name(inventory_name)
+	var item = _db.get_inventory_by_name(item_name)
+	remove_item(inventory.uuid, item.uuid, quantity)
+
 func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> void:
 	if(quantity < 0):
 		printerr("Can't remove negative number of items")
@@ -121,6 +139,11 @@ func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -
 					items[index] = {}
 				save()
 				emit_signal("inventory_changed", inventory_uuid)
+
+func move_item_by_names(inventory_name_from: String, from_index: int, inventory_name_to: String, to_index: int) -> void:
+	var inventory_from = _db.get_inventory_by_name(inventory_name_from)
+	var inventory_to = _db.get_inventory_by_name(inventory_name_to)
+	move_item(inventory_from.uuid, from_index, inventory_to.uuid, to_index)
 
 func move_item(inventory_uuid_from: String, from_index: int, inventory_uuid_to: String, to_index: int) -> void:
 	if _data.inventories.has(inventory_uuid_from) and _data.inventories.has(inventory_uuid_to):

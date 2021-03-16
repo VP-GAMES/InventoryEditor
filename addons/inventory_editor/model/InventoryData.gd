@@ -118,9 +118,15 @@ func select_inventory(inventory: InventoryInventory) -> void:
 	_inventory_selected = inventory
 	emit_signal("inventory_selection_changed", _inventory_selected)
 
-func get_inventory_by_uuid(uuid: String) -> InventoryItem:
+func get_inventory_by_uuid(uuid: String) -> InventoryInventory:
 	for inventory in inventories:
 		if inventory.uuid == uuid:
+			return inventory
+	return null
+
+func get_inventory_by_name(inventory_name: String) -> InventoryInventory:
+	for inventory in inventories:
+		if inventory.name == inventory_name:
 			return inventory
 	return null
 
@@ -213,9 +219,15 @@ func select_type(type: InventoryType) -> void:
 	_type_selected = type
 	emit_signal("type_selection_changed", _type_selected)
 
-func get_type_by_uuid(uuid: String) -> InventoryItem:
+func get_type_by_uuid(uuid: String) -> InventoryType:
 	for type in types:
 		if type.uuid == uuid:
+			return type
+	return null
+
+func get_type_by_name(type_name: String) -> InventoryType:
+	for type in types:
+		if type.name == type_name:
 			return type
 	return null
 
@@ -330,6 +342,13 @@ func get_item_by_uuid(uuid: String) -> InventoryItem:
 	for type in types:
 		for item in type.items:
 			if item.uuid == uuid:
+				return item
+	return null
+
+func get_item_by_name(item_name: String) -> InventoryItem:
+	for type in types:
+		for item in type.items:
+			if item.name == item_name:
 				return item
 	return null
 

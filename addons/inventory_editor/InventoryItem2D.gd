@@ -17,10 +17,11 @@ func _ready() -> void:
 	if get_tree().get_root().has_node(InventoryManagerName):
 		_inventoryManager = get_tree().get_root().get_node(InventoryManagerName)
 		var area = get_node("InventoryItem_" + item_put + "/Area2D")
-		if not area.is_connected("body_entered", self, "_on_body_entered"):
-			assert(area.connect("body_entered", self, "_on_body_entered") == OK)
-		if not area.is_connected("body_exited", self, "_on_body_exited"):
-			assert(area.connect("body_exited", self, "_on_body_exited") == OK)
+		if area:
+			if not area.is_connected("body_entered", self, "_on_body_entered"):
+				assert(area.connect("body_entered", self, "_on_body_entered") == OK)
+			if not area.is_connected("body_exited", self, "_on_body_exited"):
+				assert(area.connect("body_exited", self, "_on_body_exited") == OK)
 
 func _on_body_entered(body: Node) -> void:
 	if _inventoryManager.player != body:

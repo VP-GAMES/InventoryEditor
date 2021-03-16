@@ -150,9 +150,9 @@ func _draw_view_icon_preview_ui() -> void:
 	_icon_preview_ui.texture = t
 
 func _update_previews() -> void:
-	if _item and _item.scene:
-		_item2D_preview_ui.hide()
-		_item3D_preview_ui.hide()
+	_item2D_preview_ui.hide()
+	_item3D_preview_ui.hide()
+	if _item and _item.scene and not _item.scene.empty():
 		var scene = load(_item.scene).instance()
 		if scene is Node2D:
 			_item2D_preview_ui.show()

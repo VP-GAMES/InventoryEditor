@@ -185,3 +185,50 @@ func _move_to_other_inventory(inventory_uuid_from: String, from_index: int, inve
 		items_from[from_index] = {}
 		emit_signal("inventory_changed", inventory_uuid_from)
 		emit_signal("inventory_changed", inventory_uuid_to)
+
+func inventory_has_item_by_name(inventory_name: String, item_name: String) -> bool:
+	return inventory_item_quantity_by_name(inventory_name, item_name) > 0
+
+func inventory_has_item(inventory_uuid: String, item_uuid: String) -> bool:
+	return inventory_item_quantity(inventory_uuid, item_uuid) > 0
+
+func inventory_item_quantity_by_name(inventory_name: String, item_name: String) -> int:
+	var inventory = _db.get_inventory_by_name(inventory_name)
+	var item = _db.get_inventory_by_name(item_name)
+	return inventory_item_quantity(inventory.uuid, item.uuid)
+
+func inventory_item_quantity(inventory_uuid: String, item_uuid: String) -> int:
+	var quantity = 0
+	if _data.inventories.has(inventory_uuid):
+		var items = _data.inventories[inventory_uuid]
+		var item
+		for index in range(items.size()):
+			if items[index].has("item_uuid") and items[index].item_uuid == item_uuid:
+				item = items[index]
+				break
+		if item and item.quantity:
+			quantity = item.quantity
+	return quantity
+
+func has_item_by_name(item_name: String) -> bool:
+	var item = _db.get_inventory_by_name(item_name)
+	return has_item_quantity(item.uuid) > 0
+
+func has_item(item_uuid: String) -> bool:
+	return has_item_quantity(item_uuid) > 0
+
+func has_item_quantity_by_name(item_name: String) -> int:
+	var item = _db.get_inventory_by_name(item_name)
+	return has_item_quantity(item.uuid)
+
+func has_item_quantity(item_uuid: String) -> int:
+	var quantity = 0
+	for items in _data.inventories.values():
+		var item
+		for index in range(items.size()):
+			if items[index].has("item_uuid") and items[index].item_uuid == item_uuid:
+				item = items[index]
+				break
+		if item and item.quantity:
+			quantity = item.quantity
+	return quantity

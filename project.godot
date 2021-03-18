@@ -53,6 +53,11 @@ _global_script_classes=[ {
 "class": "Item3D",
 "language": "GDScript",
 "path": "res://addons/inventory_editor/InventoryItem3D.gd"
+}, {
+"base": "TextureRect",
+"class": "ItemControl",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/InventoryItemControl.gd"
 } ]
 _global_script_class_icons={
 "InventoryData": "",
@@ -63,7 +68,8 @@ _global_script_class_icons={
 "InventoryItem": "",
 "InventoryType": "",
 "Item2D": "",
-"Item3D": ""
+"Item3D": "",
+"ItemControl": ""
 }
 
 [application]

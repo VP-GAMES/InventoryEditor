@@ -100,6 +100,7 @@ margin_left = 488.0
 margin_right = 510.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Open scene"
 icon = ExtResource( 7 )
 
 [node name="MarginPreview" type="MarginContainer" parent="."]

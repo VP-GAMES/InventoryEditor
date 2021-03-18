@@ -42,6 +42,7 @@ margin_bottom = 23.0
 margin_right = 22.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Save"
 icon = ExtResource( 2 )
 
 [node name="Tabs" type="TabContainer" parent="VBox"]

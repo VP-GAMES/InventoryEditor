@@ -46,4 +46,5 @@ margin_left = 488.0
 margin_right = 510.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Delete property"
 icon = ExtResource( 2 )

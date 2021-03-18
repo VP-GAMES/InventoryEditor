@@ -57,7 +57,7 @@ margin_left = 976.0
 margin_right = 998.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 20, 20 )
-hint_tooltip = "Delete actor"
+hint_tooltip = "Copy item"
 icon = ExtResource( 5 )
 
 [node name="Del" type="Button" parent="HBox"]
@@ -65,5 +65,5 @@ margin_left = 1002.0
 margin_right = 1024.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 20, 20 )
-hint_tooltip = "Delete actor"
+hint_tooltip = "Delete item"
 icon = ExtResource( 1 )

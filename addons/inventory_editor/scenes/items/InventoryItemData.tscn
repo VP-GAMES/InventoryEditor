@@ -113,6 +113,7 @@ margin_left = 377.0
 margin_right = 399.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Open scene"
 icon = ExtResource( 9 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
@@ -130,6 +131,7 @@ margin_bottom = 125.0
 margin_right = 22.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Add property"
 icon = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBoxAdd"]

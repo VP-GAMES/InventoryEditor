@@ -16,8 +16,8 @@ export(bool) var remove_collected = true
 func _ready() -> void:
 	if get_tree().get_root().has_node(InventoryManagerName):
 		_inventoryManager = get_tree().get_root().get_node(InventoryManagerName)
-		var area = get_node("InventoryItem_" + item_put + "/Area2D")
-		if area:
+		if has_node("InventoryItem_" + item_put + "/Area2D"):
+			var area = get_node("InventoryItem_" + item_put + "/Area2D")
 			if not area.is_connected("body_entered", self, "_on_body_entered"):
 				assert(area.connect("body_entered", self, "_on_body_entered") == OK)
 			if not area.is_connected("body_exited", self, "_on_body_exited"):

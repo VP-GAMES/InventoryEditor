@@ -4,6 +4,7 @@ extends EditorProperty
 class_name InventoryInspectorEditorItem
 
 const Dropdown = preload("res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn")
+const ItemIcon = preload("res://addons/inventory_editor/icons/Item.png")
 
 var updating = false
 var hBox = HBoxContainer.new()
@@ -53,13 +54,13 @@ func update_property():
 	var new_value = get_edited_object()[get_edited_property()]
 	updating = true
 	var item = item_by_uuid(new_value)
-	var item_icon
+	var item_icon = ItemIcon
 	if item:
 		if item.icon:
 			item_icon = load(item.icon)
-			item_icon = _data.resize_texture(item_icon, Vector2(16, 16))
 		if item.text:
 			dropdown.text = item.text
+	item_icon = _data.resize_texture(item_icon, Vector2(16, 16))
 	textureRect.texture = item_icon
 	updating = false
 

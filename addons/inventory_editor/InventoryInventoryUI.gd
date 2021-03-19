@@ -19,7 +19,7 @@ func _ready() -> void:
 		if _inventoryManager:
 			_set_inventory_manager_to_stacks(self)
 
-func _set_manager_to_stacks(node: Node) -> void:
+func _set_inventory_manager_to_stacks(node: Node) -> void:
 	pass
 #	TODO
 #	for child in node.get_children():

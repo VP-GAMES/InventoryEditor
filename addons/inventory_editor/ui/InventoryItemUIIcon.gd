@@ -36,7 +36,6 @@ func _init_connections() -> void:
 			_inventoryManager.connect("inventory_changed", self, "_on_inventory_changed")
 
 func _on_inventory_changed(inv_uuid: String) -> void:
-	print(inv_uuid)
 	if inventory == inv_uuid:
 		_update_item()
 

@@ -12,7 +12,7 @@
 [ext_resource path="res://addons/inventory_example/2d/items/ManaBig.tscn" type="PackedScene" id=10]
 [ext_resource path="res://addons/inventory_example/2d/items/SwordDestroyer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://addons/inventory_example/2d/items/SwordDragonhunter.tscn" type="PackedScene" id=12]
-[ext_resource path="res://addons/inventory_example/inventories/InventoryUI.tscn" type="PackedScene" id=13]
+[ext_resource path="res://addons/inventory_example/inventories/simple/InventoryUI.tscn" type="PackedScene" id=13]
 [ext_resource path="res://addons/inventory_example/textures/inventories/Chest.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]

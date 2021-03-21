@@ -5,7 +5,7 @@ extends InventoryUI
 
 onready var _grid_ui = $NinePatchRect/Margin/Grid as GridContainer
 
-const Item = preload("res://addons/inventory_example/inventories/ItemUI.tscn")
+export(PackedScene) var Item
 
 func _ready() -> void:
 	if get_tree().get_root().has_node(InventoryManagerName):

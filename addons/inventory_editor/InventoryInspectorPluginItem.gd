@@ -8,7 +8,7 @@ func set_data(data: InventoryData) -> void:
 	_data = data
 
 func can_handle(object):
-	return object is Item2D or object is Item3D or object is Control or object is ItemControl
+	return object is Item2D or object is Item3D or object is Control or object is ItemUI
 
 func parse_property(object, type, path, hint, hint_text, usage):
 	if type == TYPE_STRING:

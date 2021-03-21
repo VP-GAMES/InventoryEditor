@@ -3,18 +3,59 @@
 tool
 extends TextureRect
 
+const InventoryManagerName = "InventoryManager"
 var _inventoryManager
-var _inventory_uuid
+
 var _index: int
 var _item
 var _item_db: InventoryItem
 
-func set_data(inventoryManager, inventory_uuid, index, item, item_db) -> void:
-	_inventoryManager = inventoryManager
-	_inventory_uuid = inventory_uuid
-	_index = index
-	_item = item
-	_item_db = item_db
+export(String) var inventory # inventory_uuid
+export(String) var type # type_uuid
+export(int) var index = -1
+export(bool) var has_popup = true
+export(bool) var show_quantity = true
+
+onready var _quantity_ui = $Quantity as Label
+
+func set_inventory_manager(inv_uuid, manager) -> void:
+	inventory = inv_uuid
+	_inventoryManager = manager
+	_init_connections()
+	_update_item()
+
+func _ready() -> void:
+	if get_tree().get_root().has_node(InventoryManagerName):
+		_inventoryManager = get_tree().get_root().get_node(InventoryManagerName)
+		_init_connections()
+		_update_item()
+
+func _init_connections() -> void:
+	if _inventoryManager:
+		if not _inventoryManager.is_connected("inventory_changed", self, "_on_inventory_changed"):
+			_inventoryManager.connect("inventory_changed", self, "_on_inventory_changed")
+
+func _on_inventory_changed(inv_uuid: String) -> void:
+	print(inv_uuid)
+	if inventory == inv_uuid:
+		_update_item()
+
+func _update_item() -> void:
+	if _inventoryManager and index >= 0:
+		var items = _inventoryManager.get_inventory_items(inventory)
+		if items and index < items.size():
+			_item = items[index]
+			if items[index].has("item_uuid"):
+				_item_db = _inventoryManager.get_item_db(items[index].item_uuid)
+				if _item_db.icon:
+					texture = load(_item_db.icon)
+				if _item.quantity:
+					_quantity_ui.text = str(_item.quantity)
+			else:
+				_item = null
+				_item_db = null
+				texture = null
+				_quantity_ui.text = "0"
 
 func get_drag_data(position: Vector2):
 	var drag_texture = TextureRect.new()
@@ -40,10 +81,10 @@ func can_drop_data(position: Vector2, data) -> bool:
 
 func drop_data(position: Vector2, data) -> void:
 	if _inventoryManager and data.has("index"):
-		_inventoryManager.move_item(_inventory_uuid, data["index"], _inventory_uuid, _index)
+		_inventoryManager.move_item(inventory, data["index"], inventory, index)
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if has_popup and event is InputEventMouseButton:
 		if event.button_index == BUTTON_RIGHT and event.pressed:
 			if _item_db and _item_db.properties and _item_db.properties.size() > 0:
 				_create_properties_popup()
@@ -55,7 +96,6 @@ func _create_properties_popup() -> void:
 	var transform =  get_global_transform_with_canvas()
 	popup.popup(Rect2(transform.origin.x + rect_size.x + margin_left + margin_right, transform.origin.y, 100, 100))
 	popup.set_as_minsize()
-
 
 func _create_properties_hbox(property:Dictionary) -> HBoxContainer:
 	var hBox = HBoxContainer.new()

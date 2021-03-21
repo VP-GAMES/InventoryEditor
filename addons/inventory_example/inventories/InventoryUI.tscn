@@ -1,15 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackground.png" type="Texture" id=1]
-[ext_resource path="res://addons/inventory_example/inventories/InventoryUI.gd" type="Script" id=3]
+[ext_resource path="res://addons/inventory_example/inventories/InventoryUI.gd" type="Script" id=2]
 
 [node name="Inventory" type="Control"]
 margin_right = 300.0
 margin_bottom = 300.0
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 300.0

@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "InventoryUI",
 "language": "GDScript",
-"path": "res://addons/inventory_editor/InventoryInventoryUI.gd"
+"path": "res://addons/inventory_editor/ui/InventoryInventoryUI.gd"
 }, {
 "base": "Node2D",
 "class": "Item2D",
@@ -65,9 +65,9 @@ _global_script_classes=[ {
 "path": "res://addons/inventory_editor/InventoryItem3D.gd"
 }, {
 "base": "TextureRect",
-"class": "ItemControl",
+"class": "ItemUI",
 "language": "GDScript",
-"path": "res://addons/inventory_editor/InventoryItemControl.gd"
+"path": "res://addons/inventory_editor/ui/InventoryItemUI.gd"
 } ]
 _global_script_class_icons={
 "InventoryData": "",
@@ -81,7 +81,7 @@ _global_script_class_icons={
 "InventoryUI": "",
 "Item2D": "",
 "Item3D": "",
-"ItemControl": ""
+"ItemUI": ""
 }
 
 [application]

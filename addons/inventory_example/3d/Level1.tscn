@@ -96,7 +96,6 @@ margin_left = 720.0
 margin_top = 110.0
 margin_right = 1020.0
 margin_bottom = 410.0
-inventory_uuid = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
 [node name="CanvasButton" type="CanvasLayer" parent="."]
 

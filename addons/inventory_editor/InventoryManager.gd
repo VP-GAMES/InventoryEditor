@@ -98,11 +98,7 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save
 					items[index] = {"item_uuid": item_uuid, "quantity": quantity_calc}
 					break
 	else:
-		var inventory_db = get_inventory_db(inventory_uuid) as InventoryInventory
-		var items = []
-		for index in range(inventory_db.stacks):
-			items.append({})
-		_data.inventories[inventory_uuid] = items
+		create_inventory(inventory_uuid)
 		if quantity > db_item.stacksize:
 			remainder = quantity - db_item.stacksize
 		var quantity_calc = min(quantity, db_item.stacksize)
@@ -111,6 +107,13 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save
 		save()
 	emit_signal("inventory_changed", inventory_uuid)
 	return remainder
+
+func create_inventory(inventory_uuid:String) -> void:
+	var inventory_db = get_inventory_db(inventory_uuid) as InventoryInventory
+	var items = []
+	for index in range(inventory_db.stacks):
+		items.append({})
+	_data.inventories[inventory_uuid] = items
 
 func get_item_db(item_uuid: String) -> InventoryItem:
 	return _db.get_item_by_uuid(item_uuid)
@@ -148,6 +151,8 @@ func move_item_by_names(inventory_name_from: String, from_index: int, inventory_
 	move_item(inventory_from.uuid, from_index, inventory_to.uuid, to_index)
 
 func move_item(inventory_uuid_from: String, from_index: int, inventory_uuid_to: String, to_index: int) -> void:
+	if not _data.inventories.has(inventory_uuid_to):
+		create_inventory(inventory_uuid_to)
 	if _data.inventories.has(inventory_uuid_from) and _data.inventories.has(inventory_uuid_to):
 		if inventory_uuid_from == inventory_uuid_to:
 			_move_in_same_inventory(inventory_uuid_from, from_index, to_index)
@@ -167,7 +172,7 @@ func _move_to_other_inventory(inventory_uuid_from: String, from_index: int, inve
 	var items_to = _data.inventories[inventory_uuid_to]
 	var item_from = items_from[from_index]
 	var item_to = items_to[to_index]
-		
+
 	if items_to[to_index].has("item_uuid"):
 		var has_place = false
 		var index = 0

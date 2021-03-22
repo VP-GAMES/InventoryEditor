@@ -81,11 +81,15 @@ func get_drag_data(position: Vector2):
 	return data
 
 func can_drop_data(position: Vector2, data) -> bool:
-	return data.has("type") and data["type"] == "InventoryItem"
+	if data.has("type") and data["type"] == "InventoryItem":
+		if not type:
+			return true
+		else:
+			return type == data["item_db"].type_uuid
+	return false
 
 func drop_data(position: Vector2, data) -> void:
 	if _inventoryManager and data.has("index"):
-		print(data["inventory"], " : ", data["index"], " -> ", inventory, " : ", index)
 		_inventoryManager.move_item(data["inventory"], data["index"], inventory, index)
 
 func _gui_input(event: InputEvent) -> void:

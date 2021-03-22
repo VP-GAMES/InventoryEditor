@@ -13,9 +13,9 @@
 [ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemShield.png" type="Texture" id=11]
 
 [node name="Control" type="Control"]
-margin_right = 300.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 300, 300 )
+margin_right = 225.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 225, 225 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -44,20 +44,20 @@ __meta__ = {
 }
 
 [node name="Grid" type="GridContainer" parent="NinePatchRect/Margin"]
-margin_right = 280.0
-margin_bottom = 280.0
+margin_right = 205.0
+margin_bottom = 205.0
 columns = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Margin/Grid"]
-margin_right = 90.0
-margin_bottom = 90.0
+margin_right = 65.0
+margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Helmet" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-margin_left = 94.0
-margin_right = 184.0
-margin_bottom = 90.0
+margin_left = 69.0
+margin_right = 134.0
+margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 7 )
@@ -75,16 +75,16 @@ index = 0
 show_quantity = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/Margin/Grid"]
-margin_left = 188.0
-margin_right = 278.0
-margin_bottom = 90.0
+margin_left = 138.0
+margin_right = 203.0
+margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GlovesLeft" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-margin_top = 94.0
-margin_right = 90.0
-margin_bottom = 184.0
+margin_top = 69.0
+margin_right = 65.0
+margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 9 )
@@ -102,10 +102,10 @@ index = 1
 show_quantity = false
 
 [node name="Armor" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-margin_left = 94.0
-margin_top = 94.0
-margin_right = 184.0
-margin_bottom = 184.0
+margin_left = 69.0
+margin_top = 69.0
+margin_right = 134.0
+margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
@@ -126,10 +126,10 @@ index = 2
 show_quantity = false
 
 [node name="GlovesRight" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-margin_left = 188.0
-margin_top = 94.0
-margin_right = 278.0
-margin_bottom = 184.0
+margin_left = 138.0
+margin_top = 69.0
+margin_right = 203.0
+margin_bottom = 134.0
 texture = ExtResource( 8 )
 expand = true
 script = ExtResource( 4 )
@@ -145,9 +145,9 @@ index = 3
 show_quantity = false
 
 [node name="Weapon" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-margin_top = 188.0
-margin_right = 90.0
-margin_bottom = 278.0
+margin_top = 138.0
+margin_right = 65.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 10 )
@@ -165,10 +165,10 @@ index = 4
 show_quantity = false
 
 [node name="Boots" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-margin_left = 94.0
-margin_top = 188.0
-margin_right = 184.0
-margin_bottom = 278.0
+margin_left = 69.0
+margin_top = 138.0
+margin_right = 134.0
+margin_bottom = 203.0
 texture = ExtResource( 6 )
 expand = true
 script = ExtResource( 4 )
@@ -184,10 +184,10 @@ index = 5
 show_quantity = false
 
 [node name="Shield" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-margin_left = 188.0
-margin_top = 188.0
-margin_right = 278.0
-margin_bottom = 278.0
+margin_left = 138.0
+margin_top = 138.0
+margin_right = 203.0
+margin_bottom = 203.0
 texture = ExtResource( 11 )
 expand = true
 script = ExtResource( 4 )

@@ -245,8 +245,8 @@ remove_collected = true
 [node name="InventoryClothes" parent="CanvasInventory" instance=ExtResource( 23 )]
 margin_left = 5.0
 margin_top = 110.0
-margin_right = 305.0
-margin_bottom = 410.0
+margin_right = 230.0
+margin_bottom = 335.0
 
 [node name="InventoryAny" parent="CanvasInventory" instance=ExtResource( 13 )]
 margin_left = 720.0

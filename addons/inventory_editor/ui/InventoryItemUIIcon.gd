@@ -6,7 +6,6 @@ extends TextureRect
 const InventoryManagerName = "InventoryManager"
 var _inventoryManager
 
-var _index: int
 var _item
 var _item_db: InventoryItem
 
@@ -74,10 +73,11 @@ func get_drag_data(position: Vector2):
 	
 	var data = {
 		"type": "InventoryItem",
-		"index": _index,
+		"inventory": inventory,
+		"index": index,
 		"item": _item,
 		"item_db": _item_db
-	} 
+	}
 	return data
 
 func can_drop_data(position: Vector2, data) -> bool:
@@ -85,7 +85,8 @@ func can_drop_data(position: Vector2, data) -> bool:
 
 func drop_data(position: Vector2, data) -> void:
 	if _inventoryManager and data.has("index"):
-		_inventoryManager.move_item(inventory, data["index"], inventory, index)
+		print(data["inventory"], " : ", data["index"], " -> ", inventory, " : ", index)
+		_inventoryManager.move_item(data["inventory"], data["index"], inventory, index)
 
 func _gui_input(event: InputEvent) -> void:
 	if has_popup and event is InputEventMouseButton:

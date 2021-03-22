@@ -66,10 +66,11 @@ func get_drag_data(position: Vector2):
 	drag_texture.rect_size = Vector2(rect_size)
 	drag_texture.texture = texture
 
-	var control = Control.new()
-	control.add_child(drag_texture)
+	var preview = Control.new()
+	preview.add_child(drag_texture)
 	drag_texture.rect_position = -0.5 * drag_texture.rect_size
-	set_drag_preview(control)
+	# https://godotengine.org/qa/30298/drag_preview-get-hide-under-canvaslayer
+	set_drag_preview(preview)
 	
 	var data = {
 		"type": "InventoryItem",

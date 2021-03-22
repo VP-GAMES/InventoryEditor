@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Axe.png-2f86936a862ae96e5b9d9f59aa52c531.stex"
+path="res://.import/GlovesRightViking.png-c8471fbedf73f9910c7c5f6400865cef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_example/textures/weapons/Axe.png"
-dest_files=[ "res://.import/Axe.png-2f86936a862ae96e5b9d9f59aa52c531.stex" ]
+source_file="res://addons/inventory_example/textures/glovesright/GlovesRightViking.png"
+dest_files=[ "res://.import/GlovesRightViking.png-c8471fbedf73f9910c7c5f6400865cef.stex" ]
 
 [params]
 

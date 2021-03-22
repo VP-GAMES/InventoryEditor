@@ -154,6 +154,10 @@ cancel={
  ]
 }
 
+[inventory_editor]
+
+inventories_split_offset=321
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

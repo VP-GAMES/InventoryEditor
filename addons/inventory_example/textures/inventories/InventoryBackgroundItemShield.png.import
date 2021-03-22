@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ShildViking.png-a7307048cc5bc661597eccef523cb778.stex"
+path="res://.import/InventoryBackgroundItemShield.png-a543057226dbdd0e161af7d32ac81e53.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_example/textures/shilds/ShildViking.png"
-dest_files=[ "res://.import/ShildViking.png-a7307048cc5bc661597eccef523cb778.stex" ]
+source_file="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemShield.png"
+dest_files=[ "res://.import/InventoryBackgroundItemShield.png-a543057226dbdd0e161af7d32ac81e53.stex" ]
 
 [params]
 

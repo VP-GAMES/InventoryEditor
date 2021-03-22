@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Shilds.png-8ed358bc1712a9f59aa64212465c96ca.stex"
+path="res://.import/InventoryBackgroundItemGlovesLeft.png-bcf00945054f4d714a4b3f15129c7680.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_example/textures/shilds/Shilds.png"
-dest_files=[ "res://.import/Shilds.png-8ed358bc1712a9f59aa64212465c96ca.stex" ]
+source_file="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemGlovesLeft.png"
+dest_files=[ "res://.import/InventoryBackgroundItemGlovesLeft.png-bcf00945054f4d714a4b3f15129c7680.stex" ]
 
 [params]
 

@@ -40,6 +40,11 @@ func _on_inventory_changed(inv_uuid: String) -> void:
 		_update_item()
 
 func _update_item() -> void:
+	if show_quantity:
+		_quantity_ui.show()
+	else:
+		_quantity_ui.hide()
+	
 	if _inventoryManager and index >= 0:
 		var items = _inventoryManager.get_inventory_items(inventory)
 		if items and index < items.size():

@@ -108,9 +108,9 @@ func _draw_preview() -> void:
 	var inventory = _data.selected_inventory()
 	if inventory.scene:
 		var inventory_scene = load(inventory.scene).instance()
+		_preview_ui.add_child(inventory_scene)
 		if inventory_scene.has_method("set_inventory_manager"):
 			inventory_scene.set_inventory_manager(_inventory.uuid, _manager)
-		_preview_ui.add_child(inventory_scene)
 
 func _check_view() -> void:
 	if _item_selected and int(_quantity_ui.text) > 0:

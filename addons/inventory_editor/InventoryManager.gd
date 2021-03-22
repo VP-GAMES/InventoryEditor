@@ -67,7 +67,7 @@ func add_item_by_name(inventory_name: String, item_name: String, quantity: int =
 	var item = _db.get_inventory_by_name(item_name)
 	return add_item(inventory.uuid, item.uuid, quantity)
 
-func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> int:
+func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save = true) -> int:
 	var remainder = 0 
 	if(quantity < 0):
 		printerr("Can't add negative number of items")
@@ -107,7 +107,8 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> i
 			remainder = quantity - db_item.stacksize
 		var quantity_calc = min(quantity, db_item.stacksize)
 		_data.inventories[inventory_uuid][0] = {"item_uuid": item_uuid, "quantity": quantity_calc}
-	save()
+	if save:
+		save()
 	emit_signal("inventory_changed", inventory_uuid)
 	return remainder
 
@@ -125,7 +126,7 @@ func remove_item_by_name(inventory_name: String, item_name: String, quantity: in
 	var item = _db.get_inventory_by_name(item_name)
 	remove_item(inventory.uuid, item.uuid, quantity)
 
-func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -> void:
+func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save = true) -> void:
 	if(quantity < 0):
 		printerr("Can't remove negative number of items")
 	if _data.inventories.has(inventory_uuid):
@@ -137,7 +138,8 @@ func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1) -
 					item.quantity -= quantity
 				else:
 					items[index] = {}
-				save()
+				if save:
+					save()
 				emit_signal("inventory_changed", inventory_uuid)
 
 func move_item_by_names(inventory_name_from: String, from_index: int, inventory_name_to: String, to_index: int) -> void:

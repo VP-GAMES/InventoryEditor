@@ -82,10 +82,10 @@ func _on_selection_changed(item: Dictionary):
 			_check_view()
 
 func _on_add_pressed() -> void:
-	_manager.add_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text))
+	_manager.add_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text), false)
 
 func _on_del_pressed() -> void:
-	_manager.remove_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text))
+	_manager.remove_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text), false)
 
 func _draw_view() -> void:
 	_update_items_ui()

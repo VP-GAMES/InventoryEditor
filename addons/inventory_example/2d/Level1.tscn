@@ -172,7 +172,7 @@ remove_collected = true
 
 [node name="CanvasInventory" type="CanvasLayer" parent="."]
 
-[node name="Inventory" parent="CanvasInventory" instance=ExtResource( 13 )]
+[node name="InventoryAny" parent="CanvasInventory" instance=ExtResource( 13 )]
 margin_left = 720.0
 margin_top = 110.0
 margin_right = 1020.0

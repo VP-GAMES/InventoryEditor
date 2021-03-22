@@ -87,7 +87,7 @@ _global_script_class_icons={
 [application]
 
 config/name="InventoryEditor"
-run/main_scene="res://addons/inventory_example/2d/Level1.tscn"
+run/main_scene="res://addons/inventory_example/2d/Level.tscn"
 config/icon="res://icon.png"
 
 [autoload]

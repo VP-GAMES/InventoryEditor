@@ -174,24 +174,13 @@ func _move_to_other_inventory(inventory_uuid_from: String, from_index: int, inve
 	var item_to = items_to[to_index]
 
 	if items_to[to_index].has("item_uuid"):
-		var has_place = false
-		var index = 0
-		for item in items_to:
-			if not item.has("item_uuid"):
-				has_place = true
-				break
-			index += 1
-		if has_place:
-			items_to[index] = items_to[to_index]
-			items_to[to_index] = item_from
-			items_from[from_index] = {}
-			emit_signal("inventory_changed", inventory_uuid_from)
-			emit_signal("inventory_changed", inventory_uuid_to)
+		items_to[to_index] = item_from
+		items_from[from_index] = item_to
 	else:
 		items_to[to_index] = item_from
 		items_from[from_index] = {}
-		emit_signal("inventory_changed", inventory_uuid_from)
-		emit_signal("inventory_changed", inventory_uuid_to)
+	emit_signal("inventory_changed", inventory_uuid_from)
+	emit_signal("inventory_changed", inventory_uuid_to)
 
 func inventory_has_item_by_name(inventory_name: String, item_name: String) -> bool:
 	return inventory_item_quantity_by_name(inventory_name, item_name) > 0

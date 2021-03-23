@@ -7,8 +7,8 @@ var inventoryManager
 export(bool) var clear_inventory = true
 
 onready var _error_ui = $CanvasError as CanvasLayer
-onready var _inventory_any = $CanvasInventory/InventoryAny
-onready var _inventory_clothes = $CanvasInventory/InventoryClothes
+onready var _inventory_any = $CanvasInventory/Inventories/InventoryAny
+onready var _inventory_clothes = $CanvasInventory/Inventories/InventoryClothes
 onready var _inventory_button_ui = $CanvasButton/TextureButton as TextureButton
 onready var _inventory_clothes_button_ui = $CanvasButton/TextureButtonClouthes as TextureButton
 
@@ -19,6 +19,7 @@ func _ready() -> void:
 		inventoryManager.player = $Player
 		if clear_inventory:
 			inventoryManager.clear_inventory(_inventory_any.inventory)
+			inventoryManager.clear_inventory(_inventory_clothes.inventory)
 		_inventory_button_ui.connect("pressed", self, "_on_inventory_button_pressed")
 		_inventory_clothes_button_ui.connect("pressed", self, "_on_inventory_clothes_button_pressed")
 		

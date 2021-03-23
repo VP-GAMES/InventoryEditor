@@ -242,17 +242,24 @@ remove_collected = true
 
 [node name="CanvasInventory" type="CanvasLayer" parent="."]
 
-[node name="InventoryClothes" parent="CanvasInventory" instance=ExtResource( 23 )]
-margin_left = 5.0
-margin_top = 110.0
-margin_right = 230.0
-margin_bottom = 335.0
+[node name="Inventories" type="Control" parent="CanvasInventory"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="InventoryAny" parent="CanvasInventory" instance=ExtResource( 13 )]
+[node name="InventoryAny" parent="CanvasInventory/Inventories" instance=ExtResource( 13 )]
 margin_left = 720.0
 margin_top = 110.0
 margin_right = 1020.0
 margin_bottom = 410.0
+
+[node name="InventoryClothes" parent="CanvasInventory/Inventories" instance=ExtResource( 23 )]
+margin_left = 6.12247
+margin_top = 108.878
+margin_right = 231.122
+margin_bottom = 333.878
 
 [node name="CanvasButton" type="CanvasLayer" parent="."]
 

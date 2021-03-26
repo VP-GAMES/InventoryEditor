@@ -44,6 +44,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/inventory_editor/model/InventoryItem.gd"
 }, {
+"base": "Reference",
+"class": "InventoryManagerInventory",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/InventoryManagerInventory.gd"
+}, {
+"base": "Reference",
+"class": "InventoryManagerItem",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/InventoryManagerItem.gd"
+}, {
 "base": "Resource",
 "class": "InventoryType",
 "language": "GDScript",
@@ -77,6 +87,8 @@ _global_script_class_icons={
 "InventoryInventories": "",
 "InventoryInventory": "",
 "InventoryItem": "",
+"InventoryManagerInventory": "",
+"InventoryManagerItem": "",
 "InventoryType": "",
 "InventoryUI": "",
 "Item2D": "",
@@ -157,6 +169,7 @@ cancel={
 [inventory_editor]
 
 inventories_split_offset=321
+items_split_offset=382
 
 [rendering]
 

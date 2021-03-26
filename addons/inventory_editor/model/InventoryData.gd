@@ -404,6 +404,50 @@ func init_data() -> void:
 
 func save() -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)
+	_save_data_inventories()
+	_save_data_items()
+	_editor.get_editor_interface().get_resource_filesystem().scan()
+
+func _save_data_inventories() -> void:
+	var file = File.new()
+	file.open("res://addons/inventory_editor/InventoryManagerInventory.gd", File.WRITE)
+	var source_code = "# List of creted inventories for InventoryManger to use in source code: MIT License\n"
+	source_code += AUTHOR
+	source_code += "tool\n"
+	source_code += "class_name InventoryManagerInventory\n\n"
+	for inventory in inventories:
+		var namePrepared = inventory.name.replace(" ", "")
+		namePrepared = namePrepared.to_upper()
+		source_code += "const " + namePrepared + " = \"" + inventory.uuid +"\"\n"
+	source_code += "\nconst INVENTORIES = [\n"
+	for index in range(inventories.size()):
+		source_code += " \"" + inventories[index].name + "\""
+		if index != inventories.size() - 1:
+			source_code += ",\n"
+	source_code += "\n]"
+	file.store_string(source_code)
+	file.close()
+
+func _save_data_items() -> void:
+	var file = File.new()
+	file.open("res://addons/inventory_editor/InventoryManagerItem.gd", File.WRITE)
+	var source_code = "# List of creted items for InventoryManger to use in source code: MIT License\n"
+	source_code += AUTHOR
+	source_code += "tool\n"
+	source_code += "class_name InventoryManagerItem\n\n"
+	var items = all_items()
+	for item in items:
+		var namePrepared = item.name.replace(" ", "")
+		namePrepared = namePrepared.to_upper()
+		source_code += "const " + namePrepared + " = \"" + item.uuid +"\"\n"
+	source_code += "\nconst ITEMS = [\n"
+	for index in range(items.size()):
+		source_code += " \"" + items[index].name + "\""
+		if index != items.size() - 1:
+			source_code += ",\n"
+	source_code += "\n]"
+	file.store_string(source_code)
+	file.close()
 
 # ***** UTILS *****
 func filename(value: String) -> String:

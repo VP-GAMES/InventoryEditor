@@ -72,6 +72,7 @@ margin_bottom = -5.0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "ea7090ff-4387-4787-ba15-7c84da7490b7"
 index = 0
+has_popup = true
 show_quantity = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/Margin/Grid"]
@@ -99,6 +100,7 @@ margin_bottom = -5.0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "98c9bfd3-e544-4ccc-b683-5f587a245822"
 index = 1
+has_popup = true
 show_quantity = false
 
 [node name="Armor" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
@@ -123,6 +125,7 @@ margin_bottom = -5.0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "4afbc41f-004c-4386-84d6-5432aaec720b"
 index = 2
+has_popup = true
 show_quantity = false
 
 [node name="GlovesRight" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
@@ -142,6 +145,7 @@ margin_bottom = -5.0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "dec3fedd-91f4-4dd0-9aed-9c52bc25da81"
 index = 3
+has_popup = true
 show_quantity = false
 
 [node name="Weapon" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
@@ -162,6 +166,7 @@ margin_bottom = -5.0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "947b1cbf-7c4f-4eaa-8853-058ef1784615"
 index = 4
+has_popup = true
 show_quantity = false
 
 [node name="Boots" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
@@ -181,6 +186,7 @@ margin_bottom = -5.0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "8ed9b27f-3026-4b4a-847e-2f2e4253e656"
 index = 5
+has_popup = true
 show_quantity = false
 
 [node name="Shield" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
@@ -200,4 +206,5 @@ margin_bottom = -5.0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "8a5228fe-9585-48be-87bf-77575b061b45"
 index = 6
+has_popup = true
 show_quantity = false

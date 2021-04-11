@@ -50,6 +50,15 @@ func _on_stacks_text_changed(new_text: String) -> void:
 
 func _on_open_pressed() -> void:
 	if _inventory and _inventory.scene:
+		var scene = load(_inventory.scene).instance()
+		if scene:
+			var mainscreen
+			if scene.is_class("Spatial"):
+				mainscreen = "3D"
+			elif scene.is_class("Control") or scene.is_class("Node2D"):
+				mainscreen = "2D"
+			if mainscreen: 
+				_data.editor().get_editor_interface().set_main_screen_editor(mainscreen)
 		_data.editor().get_editor_interface().open_scene_from_path(_inventory.scene)
 
 func _draw_view() -> void:

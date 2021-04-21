@@ -165,15 +165,15 @@ func _update_preview2D() -> void:
 	for child in _item2D_viewport_ui.get_children():
 		_item2D_viewport_ui.remove_child(child)
 		child.queue_free()
-		if _item and _item.scene:
-			var scene = load(_item.scene).instance()
-			scene.position = Vector2(_item_preview_ui.rect_size.x / 2, _item_preview_ui.rect_size.y / 2)
-			_item2D_viewport_ui.add_child(scene)
+	if _item and _item.scene:
+		var scene = load(_item.scene).instance()
+		scene.position = Vector2(_item_preview_ui.rect_size.x / 2, _item_preview_ui.rect_size.y / 2)
+		_item2D_viewport_ui.add_child(scene)
 
 func _update_preview3D() -> void:
 	for child in _item3D_viewport_ui.get_children():
 		_item3D_viewport_ui.remove_child(child)
 		child.queue_free()
-		if _item and _item.scene:
-			var scene = load(_item.scene).instance()
-			_item3D_viewport_ui.add_child(scene)
+	if _item and _item.scene:
+		var scene = load(_item.scene).instance()
+		_item3D_viewport_ui.add_child(scene)

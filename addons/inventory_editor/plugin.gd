@@ -17,6 +17,7 @@ var _inventory_editor_plugin_item
 
 func _enter_tree() -> void:
 	_inventory_editor = InventoryEditor.instance()
+	_inventory_editor.name = "InventoryEditor"
 	get_editor_interface().get_editor_viewport().add_child(_inventory_editor)
 	_inventory_editor.set_editor(self)
 	make_visible(false)

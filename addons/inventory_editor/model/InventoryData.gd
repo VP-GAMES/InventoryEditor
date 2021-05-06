@@ -375,6 +375,7 @@ func setting_inventories_split_offset() -> int:
 
 func setting_inventories_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_INVENTORIES_SPLIT_OFFSET, offset)
+	ProjectSettings.save()
 
 func setting_types_split_offset() -> int:
 	var offset = SETTINGS_TYPES_SPLIT_OFFSET_DEFAULT
@@ -384,6 +385,7 @@ func setting_types_split_offset() -> int:
 
 func setting_types_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_TYPES_SPLIT_OFFSET, offset)
+	ProjectSettings.save()
 
 func setting_items_split_offset() -> int:
 	var offset = SETTINGS_ITEMS_SPLIT_OFFSET_DEFAULT
@@ -393,6 +395,7 @@ func setting_items_split_offset() -> int:
 
 func setting_items_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_ITEMS_SPLIT_OFFSET, offset)
+	ProjectSettings.save()
 
 # ***** LOAD SAVE *****
 func init_data() -> void:

@@ -114,16 +114,36 @@ rect_min_size = Vector2( 20, 20 )
 hint_tooltip = "Open scene"
 icon = ExtResource( 9 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
+[node name="HBoxDescription" type="HBoxContainer" parent="MarginData/VBox"]
 margin_top = 96.0
 margin_right = 399.0
-margin_bottom = 101.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxDescription"]
+margin_right = 100.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 5
+text = "Description"
+
+[node name="Description" type="TextEdit" parent="MarginData/VBox/HBoxDescription"]
+margin_left = 104.0
+margin_right = 399.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 220.0
+margin_right = 399.0
+margin_bottom = 225.0
 rect_min_size = Vector2( 0, 5 )
 
 [node name="HBoxAdd" type="HBoxContainer" parent="MarginData/VBox"]
-margin_top = 105.0
+margin_top = 229.0
 margin_right = 399.0
-margin_bottom = 125.0
+margin_bottom = 249.0
 
 [node name="Add" type="Button" parent="MarginData/VBox/HBoxAdd"]
 margin_right = 22.0
@@ -140,9 +160,9 @@ margin_bottom = 17.0
 text = "Properties"
 
 [node name="HBoxNames" type="HBoxContainer" parent="MarginData/VBox"]
-margin_top = 129.0
+margin_top = 253.0
 margin_right = 399.0
-margin_bottom = 143.0
+margin_bottom = 267.0
 
 [node name="Name" type="Label" parent="MarginData/VBox/HBoxNames"]
 margin_right = 197.0
@@ -158,14 +178,14 @@ size_flags_horizontal = 3
 text = "Value"
 
 [node name="HSeparator" type="HSeparator" parent="MarginData/VBox"]
-margin_top = 147.0
+margin_top = 271.0
 margin_right = 399.0
-margin_bottom = 151.0
+margin_bottom = 275.0
 
 [node name="VBoxProperties" type="VBoxContainer" parent="MarginData/VBox"]
-margin_top = 155.0
+margin_top = 279.0
 margin_right = 399.0
-margin_bottom = 185.0
+margin_bottom = 309.0
 
 [node name="InventoryItemDataProperty" parent="MarginData/VBox/VBoxProperties" instance=ExtResource( 6 )]
 anchor_right = 0.0

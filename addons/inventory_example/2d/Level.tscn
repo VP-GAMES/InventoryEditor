@@ -105,8 +105,6 @@ position = Vector2( 500, 500 )
 script = ExtResource( 5 )
 item_put = "cf240703-26ac-4a2a-88a7-1441ff6c6a0c"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_cf240703-26ac-4a2a-88a7-1441ff6c6a0c" parent="Items/Item2D" instance=ExtResource( 11 )]
 
@@ -115,8 +113,6 @@ position = Vector2( 400, 500 )
 script = ExtResource( 5 )
 item_put = "5fa70d8d-c0d0-43d9-8260-6efa4fde008b"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_5fa70d8d-c0d0-43d9-8260-6efa4fde008b" parent="Items/Item2D2" instance=ExtResource( 12 )]
 
@@ -125,8 +121,6 @@ position = Vector2( 600, 400 )
 script = ExtResource( 5 )
 item_put = "8274191e-eaac-4605-9f3e-f55492b5a4b9"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_8274191e-eaac-4605-9f3e-f55492b5a4b9" parent="Items/Item2D3" instance=ExtResource( 8 )]
 
@@ -135,8 +129,6 @@ position = Vector2( 700, 400 )
 script = ExtResource( 5 )
 item_put = "a20c35ce-bcc8-4344-9840-dc0783ebb2e4"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_a20c35ce-bcc8-4344-9840-dc0783ebb2e4" parent="Items/Item2D4" instance=ExtResource( 7 )]
 
@@ -145,8 +137,6 @@ position = Vector2( 800, 500 )
 script = ExtResource( 5 )
 item_put = "677586f9-55cc-40c2-bd87-7c54430c629d"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_677586f9-55cc-40c2-bd87-7c54430c629d" parent="Items/Item2D5" instance=ExtResource( 10 )]
 
@@ -155,8 +145,6 @@ position = Vector2( 900, 500 )
 script = ExtResource( 5 )
 item_put = "3b6f1acc-6616-4af8-aba3-0fe78c57da13"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_3b6f1acc-6616-4af8-aba3-0fe78c57da13" parent="Items/Item2D6" instance=ExtResource( 16 )]
 
@@ -165,8 +153,6 @@ position = Vector2( 1000, 400 )
 script = ExtResource( 5 )
 item_put = "8d1e1f40-99d4-4054-9891-af6342dab146"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_8d1e1f40-99d4-4054-9891-af6342dab146" parent="Items/Item2D7" instance=ExtResource( 15 )]
 
@@ -175,8 +161,6 @@ position = Vector2( 1100, 400 )
 script = ExtResource( 5 )
 item_put = "4f73839a-9671-4ff0-94f7-8db09d3566a2"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_4f73839a-9671-4ff0-94f7-8db09d3566a2" parent="Items/Item2D8" instance=ExtResource( 9 )]
 
@@ -185,8 +169,6 @@ position = Vector2( 1200, 500 )
 script = ExtResource( 5 )
 item_put = "a71930cb-0732-4420-a182-7bbfd93b3d21"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_a71930cb-0732-4420-a182-7bbfd93b3d21" parent="Items/Item2D9" instance=ExtResource( 17 )]
 
@@ -195,8 +177,6 @@ position = Vector2( 1300, 500 )
 script = ExtResource( 5 )
 item_put = "bf6722f3-fbeb-4929-904c-511daa8b120b"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_bf6722f3-fbeb-4929-904c-511daa8b120b" parent="Items/Item2D10" instance=ExtResource( 22 )]
 
@@ -205,8 +185,6 @@ position = Vector2( 1400, 400 )
 script = ExtResource( 5 )
 item_put = "e4b10f53-f1ef-437d-9d19-f877e7a7075c"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_e4b10f53-f1ef-437d-9d19-f877e7a7075c" parent="Items/Item2D11" instance=ExtResource( 18 )]
 
@@ -215,8 +193,6 @@ position = Vector2( 1500, 400 )
 script = ExtResource( 5 )
 item_put = "04c54b13-060a-452b-a5df-96b49d276cb1"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_04c54b13-060a-452b-a5df-96b49d276cb1" parent="Items/Item2D12" instance=ExtResource( 19 )]
 
@@ -225,8 +201,6 @@ position = Vector2( 1600, 500 )
 script = ExtResource( 5 )
 item_put = "9802268f-f635-4469-8c6a-b12f0720da6a"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_9802268f-f635-4469-8c6a-b12f0720da6a" parent="Items/Item2D13" instance=ExtResource( 20 )]
 
@@ -235,8 +209,6 @@ position = Vector2( 1700, 500 )
 script = ExtResource( 5 )
 item_put = "921213e4-4daf-4221-809b-2bfe4a69ccf1"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-quantity = 1
-remove_collected = true
 
 [node name="InventoryItem_921213e4-4daf-4221-809b-2bfe4a69ccf1" parent="Items/Item2D14" instance=ExtResource( 21 )]
 

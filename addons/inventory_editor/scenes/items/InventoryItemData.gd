@@ -15,6 +15,7 @@ onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
 onready var _put_scene_ui = $MarginData/VBox/HBoxScene/PutScene as TextureRect
 onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
 onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
+onready var _description_ui =$MarginData/VBox/HBoxDescription/Description as TextEdit
 onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
 onready var _icon_preview_ui = $MarginPreview/VBox/VBoxIcon/Texture as TextureRect
 onready var _item_preview_ui = $MarginPreview/VBox/VBoxPreview as VBoxContainer
@@ -41,6 +42,8 @@ func _init_connections() -> void:
 		assert(_stacksize_ui.connect("text_changed", self, "_on_stacksize_text_changed") == OK)
 	if not _open_ui.is_connected("pressed", self, "_on_open_pressed"):
 		assert(_open_ui.connect("pressed", self, "_on_open_pressed") == OK)
+	if not _description_ui.is_connected("text_changed", self, "_on_description_text_changed"):
+		assert(_description_ui.connect("text_changed", self, "_on_description_text_changed") == OK)
 	if not _add_ui.is_connected("pressed", self, "_on_add_pressed"):
 		assert(_add_ui.connect("pressed", self, "_on_add_pressed") == OK)
 	if not _item_preview_ui.is_connected("resized", self, "_on_item_preview_ui_resized"):
@@ -94,6 +97,9 @@ func _on_open_pressed() -> void:
 				_data.editor().get_editor_interface().set_main_screen_editor(mainscreen)
 		_data.editor().get_editor_interface().open_scene_from_path(_item.scene)
 
+func _on_description_text_changed() -> void:
+	_item.change_description(_description_ui.text)
+
 func _on_add_pressed() -> void:
 	_item.add_property()
 	_draw_view_properties_ui()
@@ -103,6 +109,7 @@ func _draw_view() -> void:
 	if _item:
 		_update_view_data()
 		_draw_view_stacksize_ui()
+		_draw_view_description_ui()
 		_draw_view_properties_ui()
 		_draw_view_icon_preview_ui()
 		_update_previews()
@@ -123,6 +130,9 @@ func _update_view_data() -> void:
 
 func _draw_view_stacksize_ui() -> void:
 	_stacksize_ui.text = str(_item.stacksize)
+
+func _draw_view_description_ui() -> void:
+	_description_ui.text = _item.description
 
 func _draw_view_properties_ui() -> void:
 	_clear_view_properties()

@@ -22,7 +22,6 @@ func _ready() -> void:
 			inventoryManager.clear_inventory(_inventory_clothes.inventory)
 		_inventory_button_ui.connect("pressed", self, "_on_inventory_button_pressed")
 		_inventory_clothes_button_ui.connect("pressed", self, "_on_inventory_clothes_button_pressed")
-		
 
 func _on_inventory_button_pressed() -> void:
 	if _inventory_any.visible:

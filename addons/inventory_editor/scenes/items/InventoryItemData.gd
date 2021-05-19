@@ -142,8 +142,10 @@ func _on_add_pressed() -> void:
 
 func _update_view_visibility() -> void:
 	if _data.setting_localization_editor_enabled():
+		_description_ui.hide()
 		_dropdown_description_ui.show()
 	else:
+		_description_ui.show()
 		_dropdown_description_ui.hide()
 
 func _draw_view() -> void:

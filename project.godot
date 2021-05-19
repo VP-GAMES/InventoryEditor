@@ -118,7 +118,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "inventory_editor" )
+enabled=PoolStringArray( "res://addons/inventory_editor/plugin.cfg" )
 
 [input]
 

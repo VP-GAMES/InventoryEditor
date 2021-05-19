@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/inventory_editor/icons/Add.png" type="Texture" id=1]
 [ext_resource path="res://addons/inventory_editor/icons/Item.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemDataPutScene.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemDataPathScene.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/inventory_editor/icons/File.png" type="Texture" id=9]
+[ext_resource path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -129,10 +130,17 @@ text = "Description"
 
 [node name="Description" type="TextEdit" parent="MarginData/VBox/HBoxDescription"]
 margin_left = 104.0
-margin_right = 399.0
+margin_right = 249.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 0, 120 )
 size_flags_horizontal = 3
+
+[node name="Dropdown" parent="MarginData/VBox/HBoxDescription" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 253.0
+margin_right = 399.0
+margin_bottom = 120.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
 margin_top = 220.0

@@ -397,6 +397,12 @@ func setting_items_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_ITEMS_SPLIT_OFFSET, offset)
 	ProjectSettings.save()
 
+func setting_localization_editor_enabled() -> bool:
+	if ProjectSettings.has_setting("editor_plugins/enabled"):
+		var enabled_plugins = ProjectSettings.get_setting("editor_plugins/enabled") as Array
+		return enabled_plugins.has("localization_editor")
+	return false
+
 # ***** LOAD SAVE *****
 func init_data() -> void:
 	var file = File.new()

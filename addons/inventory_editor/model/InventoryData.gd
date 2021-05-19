@@ -415,11 +415,12 @@ func init_data() -> void:
 		if resource.inventories and not resource.inventories.empty():
 			inventories = resource.inventories
 
-func save() -> void:
+func save(update_script_classes = false) -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)
 	_save_data_inventories()
 	_save_data_items()
-	_editor.get_editor_interface().get_resource_filesystem().scan()
+	if update_script_classes:
+		_editor.get_editor_interface().get_resource_filesystem().update_script_classes()
 
 func _save_data_inventories() -> void:
 	var directory = Directory.new()

@@ -29,11 +29,14 @@ func get_data() -> InventoryData:
 	return _data
 
 func _init_connections() -> void:
-	if not _save_ui.is_connected("pressed", self, "save_data"):
-		assert(_save_ui.connect("pressed", self, "save_data") == OK)
+	if not _save_ui.is_connected("pressed", self, "_on_save_data"):
+		assert(_save_ui.connect("pressed", self, "_on_save_data") == OK)
 
-func save_data() -> void:
-	_data.save()
+func _on_save_data() -> void:
+	save_data(true)
+
+func save_data(update_script_classes = false) -> void:
+	_data.save(update_script_classes)
 
 func _load_data() -> void:
 	_data.init_data()

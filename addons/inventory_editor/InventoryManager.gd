@@ -115,6 +115,12 @@ func create_inventory(inventory_uuid:String) -> void:
 		items.append({})
 	_data.inventories[inventory_uuid] = items
 
+func get_item_properties_by_name(item_name: String) -> Array:
+	return _db.get_item_by_name(item_name).properties
+
+func get_item_properties(item_uuid: String) -> Array:
+	return _db.get_item_by_uuid(item_uuid).properties
+
 func get_item_db(item_uuid: String) -> InventoryItem:
 	return _db.get_item_by_uuid(item_uuid)
 

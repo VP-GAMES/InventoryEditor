@@ -527,6 +527,8 @@ func init_data() -> void:
 			types = resource.types
 		if resource.inventories and not resource.inventories.empty():
 			inventories = resource.inventories
+		if resource.recipes and not resource.recipes.empty():
+			recipes = resource.recipes
 
 func save(update_script_classes = false) -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)

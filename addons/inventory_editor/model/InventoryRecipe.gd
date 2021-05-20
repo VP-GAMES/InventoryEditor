@@ -74,7 +74,7 @@ func add_ingredient() -> void:
 		_add_ingredient(ingredient)
 
 func _create_ingredient() -> Dictionary:
-	return {"uuid": UUID.v4(), "value": ""}
+	return {"uuid": UUID.v4(), "value": "", "quantity": 1}
 
 func _add_ingredient(ingredient, position = ingredients.size()) -> void:
 	ingredients.insert(position, ingredient)

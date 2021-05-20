@@ -16,7 +16,7 @@ onready var _dropdown_description_ui = $MarginData/VBox/HBoxTop/VBox/HBoxDescrip
 onready var _texture_item_ui = $MarginData/VBox/HBoxItem/Texture as TextureRect
 onready var _dropdown_item_ui = $MarginData/VBox/HBoxItem/Item as LineEdit
 onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
-onready var _ingredients_ui = $MarginData/VBox/VBoxIngredients/HBoxIngredients as HBoxContainer
+onready var _ingredients_ui = $MarginData/VBox/VBoxIngredients as VBoxContainer
 onready var _icon_preview_ui = $MarginData/VBox/HBoxTop/VBoxPreview/Texture as TextureRect
 
 const InventoryCraftDataIngredient = preload("res://addons/inventory_editor/scenes/craft/InventoryCraftDataIngredient.tscn")
@@ -116,7 +116,7 @@ func _init_connections_recipe() -> void:
 			assert(_recipe.connect("ingredient_removed", self, "_on_ingredient_removed") == OK)
 
 func _on_add_pressed() -> void:
-	_recipe.add_()
+	_recipe.add_ingredient()
 	_draw_view_ingredients_ui()
 
 func _on_icon_changed() -> void:

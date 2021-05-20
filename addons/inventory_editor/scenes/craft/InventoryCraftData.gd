@@ -13,7 +13,8 @@ onready var _put_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Put as TextureRect
 onready var _icon_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Icon as LineEdit
 onready var _description_ui =$MarginData/VBox/HBoxTop/VBox/HBoxDescription/Description as TextEdit
 onready var _dropdown_description_ui = $MarginData/VBox/HBoxTop/VBox/HBoxDescription/Dropdown as LineEdit
-onready var _recipe_ui = $MarginData/VBox/HBoxItem/Item as LineEdit
+onready var _texture_item_ui = $MarginData/VBox/HBoxItem/Texture as TextureRect
+onready var _dropdown_item_ui = $MarginData/VBox/HBoxItem/Item as LineEdit
 onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
 onready var _ingredients_ui = $MarginData/VBox/VBoxIngredients/HBoxIngredients as HBoxContainer
 onready var _icon_preview_ui = $MarginData/VBox/HBoxTop/VBoxPreview/Texture as TextureRect
@@ -23,6 +24,7 @@ const InventoryCraftDataIngredient = preload("res://addons/inventory_editor/scen
 func set_data(data: InventoryData) -> void:
 	_data = data
 	_recipe = _data.selected_recipe()
+	_dropdown_item_ui_init()
 	_init_connections()
 	_init_connections_recipe()
 	_draw_view()
@@ -30,9 +32,9 @@ func set_data(data: InventoryData) -> void:
 
 func _process(delta: float) -> void:
 	if not localization_editor:
-		_dropdown_ui_init()
+		_dropdown_description_ui_init()
 
-func _dropdown_ui_init() -> void:
+func _dropdown_description_ui_init() -> void:
 	if not localization_editor:
 		localization_editor = get_tree().get_root().find_node("LocalizationEditor", true, false)
 	if localization_editor:
@@ -54,6 +56,25 @@ func _fill_dropdown_description_ui() -> void:
 			var item = {"text": key.value, "value": key.value}
 			_dropdown_description_ui.add_recipe(item)
 		_dropdown_description_ui.set_selected_by_value(_recipe.description)
+
+func _dropdown_item_ui_init() -> void:	
+	_dropdown_item_ui.connect("gui_input", self, "_on_dropdown_item_input")
+	_dropdown_item_ui.connect("selection_changed", self, "_on_dropdown_item_selection_changed")
+
+func _on_dropdown_item_input(event: InputEvent) -> void:
+	_dropdown_item_update()
+
+func _dropdown_item_update() -> void:
+	if _dropdown_item_ui:
+		_dropdown_item_ui.clear()
+		for item in _data.all_items():
+			var item_d = {"text": item.name, "value": item.uuid, "icon": item.icon }
+			_dropdown_item_ui.add_item(item_d)
+		_dropdown_item_ui.set_selected_by_value(_recipe.item)
+
+func _on_dropdown_item_selection_changed(item: Dictionary):
+	_recipe.item = item.value
+	_draw_view_texture_item_ui()
 
 func _init_connections() -> void:
 	if not _data.is_connected("recipe_selection_changed", self, "_on_recipe_selection_changed"):
@@ -121,6 +142,7 @@ func _draw_view() -> void:
 		_update_view_data()
 		_draw_view_stacksize_ui()
 		_draw_view_description_ui()
+		_draw_view_texture_item_ui()
 		_draw_view_ingredients_ui()
 		_draw_view_icon_preview_ui()
 
@@ -133,12 +155,23 @@ func check_view_visibility() -> void:
 func _update_view_data() -> void:
 	_put_ui.set_data(_recipe, _data)
 	_icon_ui.set_data(_recipe, _data)
+	_dropdown_item_update()
 
 func _draw_view_stacksize_ui() -> void:
 	_stacksize_ui.text = str(_recipe.stacksize)
 
 func _draw_view_description_ui() -> void:
 	_description_ui.text = _recipe.description
+
+func _draw_view_texture_item_ui() -> void:
+	if _recipe and _recipe.item:
+		var item = _data.get_item_by_uuid(_recipe.item)
+		if item and item.icon:
+			var item_icon = load(item.icon)
+			_texture_item_ui.show()
+			_texture_item_ui.texture = _data.resize_texture(item_icon, Vector2(16, 16))
+	else:
+		_texture_item_ui.hide()
 
 func _draw_view_ingredients_ui() -> void:
 	_clear_view_ingredients()

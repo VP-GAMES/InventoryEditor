@@ -13,7 +13,7 @@ onready var _itemsdata_ui = $Split/CraftItemsData
 func set_data(data: InventoryData) -> void:
 	_data = data
 	_items_ui.set_data(data)
-	#_itemsdata_ui.set_data(_data)
+	_itemsdata_ui.set_data(_data)
 	_init_connections()
 
 func _init_connections() -> void:

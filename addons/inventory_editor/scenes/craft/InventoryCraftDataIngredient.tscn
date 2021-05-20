@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=2]
+
+[node name="HBoxIngredients" type="HBoxContainer"]
+margin_top = 238.0
+margin_right = 1024.0
+margin_bottom = 262.0
+
+[node name="Label" type="Label" parent="."]
+margin_top = 5.0
+margin_right = 31.0
+margin_bottom = 19.0
+text = "Item"
+
+[node name="Dropdown" type="LineEdit" parent="." instance=ExtResource( 2 )]
+margin_left = 35.0
+margin_right = 498.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+popup_maxheight = 150
+
+[node name="LabelQuantity" type="Label" parent="."]
+margin_left = 502.0
+margin_top = 5.0
+margin_right = 557.0
+margin_bottom = 19.0
+text = "Quantity"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 561.0
+margin_right = 1024.0
+margin_bottom = 24.0
+size_flags_horizontal = 3

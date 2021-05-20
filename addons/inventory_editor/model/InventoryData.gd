@@ -381,7 +381,7 @@ func _create_recipe() -> InventoryRecipe:
 	recipe.set_editor(_editor)
 	recipe.uuid = UUID.v4()
 	recipe.name = _next_recipe_name()
-	recipe.items_for_craft = []
+	recipe.ingredients = []
 	return recipe
 
 func _next_recipe_name() -> String:

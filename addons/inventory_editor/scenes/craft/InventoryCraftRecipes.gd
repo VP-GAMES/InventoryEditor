@@ -1,4 +1,4 @@
-# Recipes UI for InventoryEditor : MIT License
+# Inventories UI for RecipeEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends Panel
@@ -8,7 +8,7 @@ var _data: InventoryData
 onready var _add_ui = $Margin/VBox/HBox/Add as Button
 onready var _recipes_ui = $Margin/VBox/Scroll/Recipes
 
-const InventoryRecipeUI = preload("res://addons/inventory_editor/scenes/craft/InventoryCraftRecipeUI.tscn")
+const InventoryCraftRecipeUI = preload("res://addons/inventory_editor/scenes/craft/InventoryCraftRecipeUI.tscn")
 
 func set_data(data: InventoryData) -> void:
 	_data = data
@@ -22,8 +22,6 @@ func _init_connections() -> void:
 		assert(_data.connect("recipe_added", self, "_on_recipe_added") == OK)
 	if not _data.is_connected("recipe_removed", self, "_on_recipe_removed"):
 		assert(_data.connect("recipe_removed", self, "_on_recipe_removed") == OK)
-	if not _data.is_connected("recipe_selection_changed", self, "_on_recipe_selection_changed"):
-		assert(_data.connect("recipe_selection_changed", self, "_on_recipe_selection_changed") == OK)
 
 func _on_add_pressed() -> void:
 	_data.add_recipe()
@@ -33,10 +31,7 @@ func _on_recipe_added(recipe: InventoryRecipe) -> void:
 
 func _on_recipe_removed(recipe: InventoryRecipe) -> void:
 	_update_view()
-
-func _on_recipe_selection_changed(recipe: InventoryRecipe) -> void:
-	_update_view()
-
+	
 func _update_view() -> void:
 	_clear_view()
 	_draw_view()
@@ -51,6 +46,6 @@ func _draw_view() -> void:
 		_draw_recipe(recipe)
 
 func _draw_recipe(recipe: InventoryRecipe) -> void:
-	var recipe_ui = InventoryRecipeUI.instance()
+	var recipe_ui = InventoryCraftRecipeUI.instance()
 	_recipes_ui.add_child(recipe_ui)
 	recipe_ui.set_data(recipe, _data)

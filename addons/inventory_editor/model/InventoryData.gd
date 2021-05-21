@@ -247,6 +247,8 @@ func all_items() -> Array:
 	for type in types:
 		for item in type.items:
 			items.append(item)
+		for recipe in recipes:
+			items.append(recipe)
 	return items
 
 func add_item(sendSignal = true) -> void:

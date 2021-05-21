@@ -27,6 +27,9 @@ const BOOTSKNIGHT = "e4b10f53-f1ef-437d-9d19-f877e7a7075c"
 const BOOTSVIKING = "04c54b13-060a-452b-a5df-96b49d276cb1"
 const SHIELDKNIGHT = "9802268f-f635-4469-8c6a-b12f0720da6a"
 const SHIELDVIKING = "921213e4-4daf-4221-809b-2bfe4a69ccf1"
+const GOLD = "f468cddf-638f-4b2f-9147-a1ceaa0f5c53"
+const METAL = "424be528-8960-4c74-a96f-229724ebd870"
+const HORN = "bbbbfd43-1f98-4b1a-bf3e-9f7383204803"
 
 const ITEMS = [
  "HealthNormal",
@@ -52,5 +55,8 @@ const ITEMS = [
  "BootsKnight",
  "BootsViking",
  "ShieldKnight",
- "ShieldViking"
+ "ShieldViking",
+ "Gold",
+ "Metal",
+ "Horn"
 ]

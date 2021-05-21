@@ -46,7 +46,7 @@ func _on_dropdown_item_selection_changed(item: Dictionary):
 	_draw_view_texture_item_ui()
 
 func _on_quantity_text_changed(new_text: String) -> void:
-	_recipe.change_ingredient_value(_ingredient, new_text, false)
+	_ingredient.quantity = int(new_text)
 
 func _on_del_pressed() -> void:
 	_recipe.del_ingredient(_ingredient)

@@ -11,6 +11,8 @@ onready var _data_ui = $MarginData
 onready var _stacksize_ui = $MarginData/VBox/HBoxTop/VBox/HBoxStack/Stacksize as LineEdit
 onready var _put_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Put as TextureRect
 onready var _icon_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Icon as LineEdit
+onready var _put_scene_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/PutScene as TextureRect
+onready var _scene_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/Scene as LineEdit
 onready var _description_ui =$MarginData/VBox/HBoxTop/VBox/HBoxDescription/Description as TextEdit
 onready var _dropdown_description_ui = $MarginData/VBox/HBoxTop/VBox/HBoxDescription/Dropdown as LineEdit
 onready var _texture_item_ui = $MarginData/VBox/HBoxItem/Texture as TextureRect
@@ -161,6 +163,8 @@ func check_view_visibility() -> void:
 func _update_view_data() -> void:
 	_put_ui.set_data(_recipe, _data)
 	_icon_ui.set_data(_recipe, _data)
+	_put_scene_ui.set_data(_recipe, _data)
+	_scene_ui.set_data(_recipe, _data)
 	_dropdown_item_update()
 
 func _draw_view_stacksize_ui() -> void:

@@ -21,17 +21,23 @@ func set_data(ingredient, recipe: InventoryRecipe, data: InventoryData) -> void:
 	_draw_view()
 
 func _init_connections() -> void:
+	if not _data.is_connected("item_added", self, "_on_item_added"):
+		assert(_data.connect("item_added", self, "_on_item_added") == OK)
+	if not _data.is_connected("item_removed", self, "_on_item_removed"):
+		assert(_data.connect("item_removed", self, "_on_item_removed") == OK)
 	if not _quantity_ui.is_connected("text_changed", self, "_on_quantity_text_changed"):
 		assert(_quantity_ui.connect("text_changed", self, "_on_quantity_text_changed") == OK)
 	if not _del_ui.is_connected("pressed", self, "_on_del_pressed"):
 		assert(_del_ui.connect("pressed", self, "_on_del_pressed") == OK)
 
-func _dropdown_ui_init() -> void:	
-	_dropdown_ui.connect("gui_input", self, "_on_dropdown_item_input")
-	_dropdown_ui.connect("selection_changed", self, "_on_dropdown_item_selection_changed")
-
-func _on_dropdown_item_input(event: InputEvent) -> void:
+func _on_item_added(_item) -> void:
 	_dropdown_item_update()
+	
+func _on_item_removed(_item) -> void:
+	_dropdown_item_update()
+
+func _dropdown_ui_init() -> void:
+	_dropdown_ui.connect("selection_changed", self, "_on_dropdown_item_selection_changed")
 
 func _dropdown_item_update() -> void:
 	if _dropdown_ui:

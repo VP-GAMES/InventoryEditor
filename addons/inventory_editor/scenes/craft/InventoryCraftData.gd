@@ -57,12 +57,8 @@ func _fill_dropdown_description_ui() -> void:
 			_dropdown_description_ui.add_recipe(item)
 		_dropdown_description_ui.set_selected_by_value(_recipe.description)
 
-func _dropdown_item_ui_init() -> void:	
-	_dropdown_item_ui.connect("gui_input", self, "_on_dropdown_item_input")
+func _dropdown_item_ui_init() -> void:
 	_dropdown_item_ui.connect("selection_changed", self, "_on_dropdown_item_selection_changed")
-
-func _on_dropdown_item_input(event: InputEvent) -> void:
-	_dropdown_item_update()
 
 func _dropdown_item_update() -> void:
 	if _dropdown_item_ui:
@@ -77,6 +73,10 @@ func _on_dropdown_item_selection_changed(item: Dictionary):
 	_draw_view_texture_item_ui()
 
 func _init_connections() -> void:
+	if not _data.is_connected("item_added", self, "_on_item_added"):
+		assert(_data.connect("item_added", self, "_on_item_added") == OK)
+	if not _data.is_connected("item_removed", self, "_on_item_removed"):
+		assert(_data.connect("item_removed", self, "_on_item_removed") == OK)
 	if not _data.is_connected("recipe_selection_changed", self, "_on_recipe_selection_changed"):
 		assert(_data.connect("recipe_selection_changed", self, "_on_recipe_selection_changed") == OK)
 	if not _stacksize_ui.is_connected("text_changed", self, "_on_stacksize_text_changed"):
@@ -88,6 +88,12 @@ func _init_connections() -> void:
 	if _data.setting_localization_editor_enabled():
 		if not _dropdown_description_ui.is_connected("selection_changed", self, "_on_selection_changed_description"):
 			assert(_dropdown_description_ui.connect("selection_changed", self, "_on_selection_changed_description") == OK)
+
+func _on_item_added(_item) -> void:
+	_dropdown_item_update()
+	
+func _on_item_removed(_item) -> void:
+	_dropdown_item_update()
 
 func _on_recipe_selection_changed(item: InventoryItem) -> void:
 	_update_selection_view()
@@ -169,6 +175,8 @@ func _draw_view_texture_item_ui() -> void:
 		if item and item.icon:
 			var item_icon = load(item.icon)
 			_texture_item_ui.texture = _data.resize_texture(item_icon, Vector2(16, 16))
+	else:
+		_texture_item_ui.texture = load("res://addons/inventory_editor/icons/Item.png")
 
 func _draw_view_ingredients_ui() -> void:
 	_clear_view_ingredients()

@@ -347,6 +347,9 @@ func get_item_by_uuid(uuid: String) -> InventoryItem:
 		for item in type.items:
 			if item.uuid == uuid:
 				return item
+		for recipe in recipes:
+			if recipe.uuid == uuid:
+				return recipe
 	return null
 
 func get_item_by_name(item_name: String) -> InventoryItem:
@@ -354,6 +357,9 @@ func get_item_by_name(item_name: String) -> InventoryItem:
 		for item in type.items:
 			if item.name == item_name:
 				return item
+		for recipe in recipes:
+			if recipe.name == item_name:
+				return recipe
 	return null
 
 # ***** RECIPE *****

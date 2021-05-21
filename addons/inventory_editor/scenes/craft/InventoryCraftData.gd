@@ -168,10 +168,7 @@ func _draw_view_texture_item_ui() -> void:
 		var item = _data.get_item_by_uuid(_recipe.item)
 		if item and item.icon:
 			var item_icon = load(item.icon)
-			_texture_item_ui.show()
 			_texture_item_ui.texture = _data.resize_texture(item_icon, Vector2(16, 16))
-	else:
-		_texture_item_ui.hide()
 
 func _draw_view_ingredients_ui() -> void:
 	_clear_view_ingredients()
@@ -184,7 +181,7 @@ func _draw_view_ingredients() -> void:
 func _draw_ingredient(ingredient) -> void:
 	var ingredient_ui = InventoryCraftDataIngredient.instance()
 	_ingredients_ui.add_child(ingredient_ui)
-	ingredient_ui.set_data(ingredient, _recipe)
+	ingredient_ui.set_data(ingredient, _recipe, _data)
 
 func _clear_view_ingredients() -> void:
 	for ingredient_ui in _ingredients_ui.get_children():

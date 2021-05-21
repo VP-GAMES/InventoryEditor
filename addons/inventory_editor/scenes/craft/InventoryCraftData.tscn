@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/inventory_editor/scenes/craft/InventoryCraftData.gd" type="Script" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://addons/inventory_editor/scenes/craft/InventoryCraftDataIngredient.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/inventory_editor/icons/Recipe.png" type="Texture" id=7]
 [ext_resource path="res://addons/inventory_editor/icons/Item.png" type="Texture" id=8]
+[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 9 )
 
 [node name="InventoryCraftData" type="VBoxContainer"]
 anchor_right = 1.0
@@ -100,6 +104,7 @@ margin_right = 305.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 0, 120 )
 size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
 
 [node name="Dropdown" parent="MarginData/VBox/HBoxTop/VBox/HBoxDescription" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -142,18 +147,17 @@ rect_min_size = Vector2( 100, 0 )
 text = "Item to craft"
 
 [node name="Texture" type="TextureRect" parent="MarginData/VBox/HBoxItem"]
-visible = false
 margin_left = 104.0
 margin_right = 128.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 texture = ExtResource( 8 )
-stretch_mode = 1
+stretch_mode = 4
 
 [node name="Item" parent="MarginData/VBox/HBoxItem" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 104.0
+margin_left = 132.0
 margin_right = 1024.0
 margin_bottom = 24.0
 

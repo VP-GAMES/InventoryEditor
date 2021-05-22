@@ -100,6 +100,10 @@ func _gui_input(event: InputEvent) -> void:
 			if _item_db and _item_db.description:
 				_create_properties_popup()
 				_popup_ui.show()
+	if event is InputEventMouseButton and event.pressed and event.doubleclick:
+		if _item_db is InventoryRecipe:
+			if _inventoryManager.is_craft_possible(inventory, _item_db.uuid):
+				_inventoryManager.craft_item(inventory, _item_db.uuid)
 
 func _create_properties_popup() -> void:
 	_popup_ui.update_item_data(_item_db)

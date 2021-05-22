@@ -9,7 +9,7 @@
 [ext_resource path="res://addons/inventory_example/2d/items/Metal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/inventory_example/2d/items/RecipeHelmetViking.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/inventory_example/2d/items/Horn.tscn" type="PackedScene" id=9]
-[ext_resource path="res://addons/inventory_example/2d/items/SwordDestroyer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://addons/inventory_example/2d/items/HelmetKnight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://addons/inventory_example/inventories/simple/InventoryUI.tscn" type="PackedScene" id=13]
 [ext_resource path="res://addons/inventory_example/textures/inventories/Chest.png" type="Texture" id=14]
 [ext_resource path="res://addons/inventory_example/2d/items/RecipeHelmetKnight.tscn" type="PackedScene" id=15]
@@ -97,7 +97,7 @@ script = ExtResource( 5 )
 item_put = "97b7c8ba-3c27-4158-9633-11dbd4fefd21"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_97b7c8ba-3c27-4158-9633-11dbd4fefd21" type="Node2D" parent="Items/Item2D" instance=ExtResource( 15 )]
+[node name="InventoryItem_97b7c8ba-3c27-4158-9633-11dbd4fefd21" parent="Items/Item2D" instance=ExtResource( 15 )]
 
 [node name="Item2D2" type="Node2D" parent="Items"]
 position = Vector2( 600, 400 )
@@ -106,7 +106,7 @@ script = ExtResource( 5 )
 item_put = "f468cddf-638f-4b2f-9147-a1ceaa0f5c53"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_f468cddf-638f-4b2f-9147-a1ceaa0f5c53" type="Node2D" parent="Items/Item2D2" instance=ExtResource( 16 )]
+[node name="InventoryItem_f468cddf-638f-4b2f-9147-a1ceaa0f5c53" parent="Items/Item2D2" instance=ExtResource( 16 )]
 
 [node name="Item2D3" type="Node2D" parent="Items"]
 position = Vector2( 800, 500 )
@@ -115,7 +115,7 @@ script = ExtResource( 5 )
 item_put = "73cbb965-26a5-4867-9849-9909c096641f"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_73cbb965-26a5-4867-9849-9909c096641f" type="Node2D" parent="Items/Item2D3" instance=ExtResource( 8 )]
+[node name="InventoryItem_73cbb965-26a5-4867-9849-9909c096641f" parent="Items/Item2D3" instance=ExtResource( 8 )]
 
 [node name="Item2D4" type="Node2D" parent="Items"]
 position = Vector2( 900, 400 )
@@ -124,7 +124,7 @@ script = ExtResource( 5 )
 item_put = "424be528-8960-4c74-a96f-229724ebd870"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_424be528-8960-4c74-a96f-229724ebd870" type="Node2D" parent="Items/Item2D4" instance=ExtResource( 7 )]
+[node name="InventoryItem_424be528-8960-4c74-a96f-229724ebd870" parent="Items/Item2D4" instance=ExtResource( 7 )]
 
 [node name="Item2D5" type="Node2D" parent="Items"]
 position = Vector2( 1200, 400 )
@@ -133,7 +133,7 @@ script = ExtResource( 5 )
 item_put = "bbbbfd43-1f98-4b1a-bf3e-9f7383204803"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_bbbbfd43-1f98-4b1a-bf3e-9f7383204803" type="Node2D" parent="Items/Item2D5" instance=ExtResource( 9 )]
+[node name="InventoryItem_bbbbfd43-1f98-4b1a-bf3e-9f7383204803" parent="Items/Item2D5" instance=ExtResource( 9 )]
 
 [node name="Item2D9" type="Node2D" parent="Items"]
 position = Vector2( 1100, 400 )
@@ -160,15 +160,15 @@ script = ExtResource( 5 )
 item_put = "424be528-8960-4c74-a96f-229724ebd870"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_424be528-8960-4c74-a96f-229724ebd870" type="Node2D" parent="Items/Item2D6" instance=ExtResource( 7 )]
+[node name="InventoryItem_424be528-8960-4c74-a96f-229724ebd870" parent="Items/Item2D6" instance=ExtResource( 7 )]
 
 [node name="Item2D7" type="Node2D" parent="Items"]
 position = Vector2( 1500, 500 )
 script = ExtResource( 5 )
-item_put = "cf240703-26ac-4a2a-88a7-1441ff6c6a0c"
+item_put = "8274191e-eaac-4605-9f3e-f55492b5a4b9"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_cf240703-26ac-4a2a-88a7-1441ff6c6a0c" parent="Items/Item2D7" instance=ExtResource( 11 )]
+[node name="InventoryItem_8274191e-eaac-4605-9f3e-f55492b5a4b9" type="Node2D" parent="Items/Item2D7" instance=ExtResource( 10 )]
 
 [node name="Item2D8" type="Node2D" parent="Items"]
 position = Vector2( 1650, 400 )
@@ -177,7 +177,7 @@ script = ExtResource( 5 )
 item_put = "f468cddf-638f-4b2f-9147-a1ceaa0f5c53"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_f468cddf-638f-4b2f-9147-a1ceaa0f5c53" type="Node2D" parent="Items/Item2D8" instance=ExtResource( 16 )]
+[node name="InventoryItem_f468cddf-638f-4b2f-9147-a1ceaa0f5c53" parent="Items/Item2D8" instance=ExtResource( 16 )]
 
 [node name="CanvasInventory" type="CanvasLayer" parent="."]
 

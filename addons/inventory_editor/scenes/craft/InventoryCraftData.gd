@@ -13,6 +13,7 @@ onready var _put_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Put as TextureRect
 onready var _icon_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Icon as LineEdit
 onready var _put_scene_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/PutScene as TextureRect
 onready var _scene_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/Scene as LineEdit
+onready var _open_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/Open as Button
 onready var _description_ui =$MarginData/VBox/HBoxTop/VBox/HBoxDescription/Description as TextEdit
 onready var _dropdown_description_ui = $MarginData/VBox/HBoxTop/VBox/HBoxDescription/Dropdown as LineEdit
 onready var _texture_item_ui = $MarginData/VBox/HBoxItem/Texture as TextureRect
@@ -83,6 +84,8 @@ func _init_connections() -> void:
 		assert(_data.connect("recipe_selection_changed", self, "_on_recipe_selection_changed") == OK)
 	if not _stacksize_ui.is_connected("text_changed", self, "_on_stacksize_text_changed"):
 		assert(_stacksize_ui.connect("text_changed", self, "_on_stacksize_text_changed") == OK)
+	if not _open_ui.is_connected("pressed", self, "_on_open_pressed"):
+		assert(_open_ui.connect("pressed", self, "_on_open_pressed") == OK)
 	if not _description_ui.is_connected("text_changed", self, "_on_description_text_changed"):
 		assert(_description_ui.connect("text_changed", self, "_on_description_text_changed") == OK)
 	if not _add_ui.is_connected("pressed", self, "_on_add_pressed"):
@@ -107,6 +110,19 @@ func _update_selection_view() -> void:
 
 func _on_stacksize_text_changed(new_text: String) -> void:
 	_recipe.set_stacksize(int(new_text))
+
+func _on_open_pressed() -> void:
+	if _recipe and _recipe.scene:
+		var scene = load(_recipe.scene).instance()
+		if scene:
+			var mainscreen
+			if scene.is_class("Spatial"):
+				mainscreen = "3D"
+			elif scene.is_class("Control") or scene.is_class("Node2D"):
+				mainscreen = "2D"
+			if mainscreen: 
+				_data.editor().get_editor_interface().set_main_screen_editor(mainscreen)
+		_data.editor().get_editor_interface().open_scene_from_path(_recipe.scene)
 
 func _on_description_text_changed() -> void:
 	_recipe.change_description(_description_ui.text)

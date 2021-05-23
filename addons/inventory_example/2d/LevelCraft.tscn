@@ -168,7 +168,7 @@ script = ExtResource( 5 )
 item_put = "8274191e-eaac-4605-9f3e-f55492b5a4b9"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_8274191e-eaac-4605-9f3e-f55492b5a4b9" type="Node2D" parent="Items/Item2D7" instance=ExtResource( 10 )]
+[node name="InventoryItem_8274191e-eaac-4605-9f3e-f55492b5a4b9" parent="Items/Item2D7" instance=ExtResource( 10 )]
 
 [node name="Item2D8" type="Node2D" parent="Items"]
 position = Vector2( 1650, 400 )

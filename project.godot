@@ -176,6 +176,7 @@ cancel={
 
 inventories_split_offset=321
 items_split_offset=382
+craft_split_offset=282
 
 [rendering]
 

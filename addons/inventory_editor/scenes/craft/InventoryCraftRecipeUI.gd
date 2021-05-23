@@ -10,7 +10,6 @@ var _ui_style_selected: StyleBoxFlat
 
 onready var _texture_ui = $HBox/Texture as TextureRect
 onready var _name_ui = $HBox/Name as LineEdit
-onready var _copy_ui = $HBox/Copy as Button
 onready var _del_ui = $HBox/Del as Button
 
 func set_data(recipe: InventoryRecipe, data: InventoryData):
@@ -42,8 +41,6 @@ func _init_connections() -> void:
 		assert(_name_ui.connect("focus_exited", self, "_on_focus_exited") == OK)
 	if not _name_ui.is_connected("text_changed", self, "_on_text_changed"):
 		assert(_name_ui.connect("text_changed", self, "_on_text_changed") == OK)
-	if not _copy_ui.is_connected("pressed", self, "_copy_pressed"):
-		assert(_copy_ui.connect("pressed", self, "_copy_pressed") == OK)
 	if not _del_ui.is_connected("pressed", self, "_del_pressed"):
 		assert(_del_ui.connect("pressed", self, "_del_pressed") == OK)
 
@@ -78,9 +75,6 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _on_text_changed(new_text: String) -> void:
 	_recipe.change_name(new_text)
-
-func _copy_pressed() -> void:
-	_data.copy_recipe(_recipe)
 
 func _del_pressed() -> void:
 	_data.del_recipe(_recipe)

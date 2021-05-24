@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/inventory_editor/ui/InventoryItemUIIcon.gd" type="Script" id=1]
 [ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://addons/inventory_example/inventories/simple/PopupDescription.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/inventory_editor/ui/PopupDescription.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20

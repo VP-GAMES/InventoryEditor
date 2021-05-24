@@ -57,7 +57,7 @@ func _fill_dropdown_description_ui() -> void:
 		_dropdown_description_ui.clear()
 		for key in localization_editor.get_data().data.keys:
 			var item = {"text": key.value, "value": key.value}
-			_dropdown_description_ui.add_recipe(item)
+			_dropdown_description_ui.add_item(item)
 		_dropdown_description_ui.set_selected_by_value(_recipe.description)
 
 func _dropdown_item_ui_init() -> void:

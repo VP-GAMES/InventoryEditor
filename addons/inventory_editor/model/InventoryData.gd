@@ -247,8 +247,8 @@ func all_items() -> Array:
 	for type in types:
 		for item in type.items:
 			items.append(item)
-		for recipe in recipes:
-			items.append(recipe)
+	for recipe in recipes:
+		items.append(recipe)
 	return items
 
 func add_item(sendSignal = true) -> void:
@@ -347,9 +347,9 @@ func get_item_by_uuid(uuid: String) -> InventoryItem:
 		for item in type.items:
 			if item.uuid == uuid:
 				return item
-		for recipe in recipes:
-			if recipe.uuid == uuid:
-				return recipe
+	for recipe in recipes:
+		if recipe.uuid == uuid:
+			return recipe
 	return null
 
 func get_item_by_name(item_name: String) -> InventoryItem:
@@ -357,9 +357,9 @@ func get_item_by_name(item_name: String) -> InventoryItem:
 		for item in type.items:
 			if item.name == item_name:
 				return item
-		for recipe in recipes:
-			if recipe.name == item_name:
-				return recipe
+	for recipe in recipes:
+		if recipe.name == item_name:
+			return recipe
 	return null
 
 # ***** RECIPE *****
